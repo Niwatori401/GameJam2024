@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy7jqkfn06u4w"]
+
+[ext_resource type="Texture2D" uid="uid://vewf3h3p15kx" path="res://asset/w.png" id="1_4ln66"]
+[ext_resource type="PackedScene" uid="uid://b4ygjm37yknm2" path="res://scene/progress_circle.tscn" id="2_kgdth"]
+[ext_resource type="Texture2D" uid="uid://cjka4ticgmsmb" path="res://asset/crt_filter.png" id="3_fyg5w"]
+[ext_resource type="Texture2D" uid="uid://bmhae4py4bsat" path="res://asset/crt_filter_2.png" id="4_dfnj6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnq51"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fyg5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dfnj6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="NextKeyIndicator" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="ProgressCircle" parent="." instance=ExtResource("2_kgdth")]
+background_color = Color(0, 0.54695, 0.55819, 1)
+foreground_color = Color(1, 1, 1, 1)
+disabled_color = Color(3.85046e-07, 0.53824, 0.613723, 1)
+
+[node name="NextKeyIndicator" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, -9.53674e-07)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("1_4ln66")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("3_fyg5w")
+
+[node name="CRT_Effect" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.298039)
+sprite_frames = SubResource("SpriteFrames_wnq51")
+frame_progress = 0.3714

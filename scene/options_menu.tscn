@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://csy8q18vty5h8"]
+
+[ext_resource type="Texture2D" uid="uid://behc06fbgcpib" path="res://asset/options_bg.png" id="1_a3fdk"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a3fdk")
+
+[node name="FullScreenButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 698.0
+offset_top = 595.0
+offset_right = -1182.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VolumeSliderGroup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 919.0
+offset_top = 609.0
+offset_right = -961.0
+offset_bottom = -431.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VolumeSlider" type="HSlider" parent="VolumeSliderGroup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -22.985
+anchor_top = -15.145
+anchor_right = 25.054
+anchor_bottom = 11.735
+offset_left = 731.4
+offset_top = 778.8
+offset_right = -779.16
+offset_bottom = -200.4
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VolumeSliderGroup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -22.985
+anchor_top = -15.19
+anchor_right = 24.945
+anchor_bottom = 11.715
+offset_left = 702.4
+offset_top = 702.6
+offset_right = -755.8
+offset_bottom = -278.6
+theme_override_font_sizes/normal_font_size = 71
+bbcode_enabled = true
+text = "[center]Volume[/center]"
