@@ -89,11 +89,11 @@ sprite_frames = SubResource("SpriteFrames_mo7gb")
 autoplay = "default"
 frame_progress = 0.716147
 
-[node name="OptionsMenu" parent="." instance=ExtResource("5_5g8vp")]
+[node name="Fader" parent="." instance=ExtResource("3_va774")]
 visible = false
 layout_mode = 1
 
-[node name="Fader" parent="." instance=ExtResource("3_va774")]
+[node name="OptionsMenu" parent="." instance=ExtResource("5_5g8vp")]
 visible = false
 layout_mode = 1
 

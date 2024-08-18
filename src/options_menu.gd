@@ -1,4 +1,5 @@
-extends Control
+class_name OptionsMenu extends Control
+
 
 var config = ConfigFile.new();
 
@@ -21,9 +22,7 @@ func _ready() -> void:
 	config.load("user://config.cfg");
 	initialize_video_dropdown();
 	initialize_glyph_dropdown();
-
-func _process(delta: float) -> void:
-	pass
+	
 
 
 func _on_full_screen_checkbox_toggled(toggled_on: bool) -> void:
@@ -49,6 +48,14 @@ func _on_volume_slider_value_changed(value: float) -> void:
 	else:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false);
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), lerp(-30, 15, value / 100));
+	
+func _on_back_button_button_up() -> void:
+	const DARKEN_SECONDS = 1;
+	$Fader.darken(DARKEN_SECONDS);
+	await get_tree().create_timer(DARKEN_SECONDS).timeout.connect(func (): 
+		visible = false;
+		SignalBus.back_button_pressed.emit();
+		);
 
 func initialize_glyph_dropdown():
 	$Options/ControlGlyphs/ControlGlyphDropdown.clear();
@@ -59,3 +66,7 @@ func initialize_video_dropdown():
 	$Options/VideoSettings/VideoResolutionDropdown.clear();
 	for resolution in video_resolutions:
 		$Options/VideoSettings/VideoResolutionDropdown.add_item(resolution);
+
+func show_options():
+	$Fader.lighten(1);
+	visible = true;
