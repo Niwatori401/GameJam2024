@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://csy8q18vty5h8"]
+[gd_scene load_steps=3 format=3 uid="uid://csy8q18vty5h8"]
 
-[ext_resource type="Texture2D" uid="uid://behc06fbgcpib" path="res://asset/options_bg.png" id="1_a3fdk"]
+[ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="1_5ynfn"]
+[ext_resource type="Script" path="res://src/options_menu.gd" id="1_jjr0b"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -9,68 +10,118 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+script = ExtResource("1_jjr0b")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 4.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_a3fdk")
+color = Color(0.162066, 0.162066, 0.162066, 1)
 
-[node name="FullScreenButton" type="Button" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 698.0
-offset_top = 595.0
-offset_right = -1182.0
-offset_bottom = -440.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 80.0
+offset_right = 250.0
+offset_bottom = 180.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VolumeSliderGroup" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 919.0
-offset_top = 609.0
-offset_right = -961.0
-offset_bottom = -431.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VolumeSlider" type="HSlider" parent="VolumeSliderGroup"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -22.985
-anchor_top = -15.145
-anchor_right = 25.054
-anchor_bottom = 11.735
-offset_left = 731.4
-offset_top = 778.8
-offset_right = -779.16
-offset_bottom = -200.4
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VolumeSliderGroup"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -22.985
-anchor_top = -15.19
-anchor_right = 24.945
-anchor_bottom = 11.715
-offset_left = 702.4
-offset_top = 702.6
-offset_right = -755.8
-offset_bottom = -278.6
+pivot_offset = Vector2(250, 50)
 theme_override_font_sizes/normal_font_size = 71
 bbcode_enabled = true
+text = "[center]Options[/center]"
+
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 250.0
+offset_right = 250.0
+offset_bottom = 687.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="ControlGlyphs" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="RichTextLabel" parent="Options/ControlGlyphs"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Control Glyphs[/center]"
+fit_content = true
+
+[node name="ControlGlyphDropdown" type="OptionButton" parent="Options/ControlGlyphs"]
+layout_mode = 2
+tooltip_text = "Choose the button glyphs that show in-game"
+theme_override_fonts/font = ExtResource("1_5ynfn")
+theme_override_font_sizes/font_size = 30
+item_count = 5
+popup/item_0/text = "WASD"
+popup/item_1/text = "Arrow Keys"
+popup/item_1/id = 1
+popup/item_2/text = "XBox"
+popup/item_2/id = 2
+popup/item_3/text = "PlayStation"
+popup/item_3/id = 3
+popup/item_4/text = "Nintendo"
+popup/item_4/id = 4
+
+[node name="VideoSettings" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="RichTextLabel" parent="Options/VideoSettings"]
+layout_mode = 2
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Video Resolution[/center]"
+fit_content = true
+
+[node name="VideoResolutionDropdown" type="OptionButton" parent="Options/VideoSettings"]
+layout_mode = 2
+tooltip_text = "Choose the button glyphs that show in-game"
+theme_override_fonts/font = ExtResource("1_5ynfn")
+theme_override_font_sizes/font_size = 30
+item_count = 3
+popup/item_0/text = "1920 x 1080"
+popup/item_1/text = "1280 x 720"
+popup/item_1/id = 1
+popup/item_2/text = "640 x 360"
+popup/item_2/id = 2
+
+[node name="FullScreenCheckbox" type="CheckBox" parent="Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen"
+
+[node name="AudioSettings" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+tooltip_text = "The audio for this game is very important, so it is recommended not to turn this too low!"
+theme_override_constants/separation = 5
+
+[node name="VolumeLabel" type="RichTextLabel" parent="Options/AudioSettings"]
+layout_mode = 2
+tooltip_text = "The audio for this game is very important, so it is recommended not to turn this too low!"
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
 text = "[center]Volume[/center]"
+fit_content = true
+
+[node name="VolumeSlider" type="HSlider" parent="Options/AudioSettings"]
+layout_mode = 2
+
+[connection signal="item_selected" from="Options/ControlGlyphs/ControlGlyphDropdown" to="." method="_on_control_glyph_dropdown_item_selected"]
+[connection signal="item_selected" from="Options/VideoSettings/VideoResolutionDropdown" to="." method="_on_video_resolution_dropdown_item_selected"]
+[connection signal="toggled" from="Options/FullScreenCheckbox" to="." method="_on_full_screen_checkbox_toggled"]
+[connection signal="value_changed" from="Options/AudioSettings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]

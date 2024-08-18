@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=6 format=3 uid="uid://b30doj1chobkp"]
 
+[ext_resource type="Script" path="res://src/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
+[ext_resource type="Texture2D" uid="uid://dthjq3vjtyate" path="res://asset/main_game_background.png" id="2_hw8oy"]
+[ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="2_i2e82"]
+[ext_resource type="AudioStream" uid="uid://b7o5y26p2k4td" path="res://asset/sound/main_theme.mp3" id="3_ht3mm"]
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_kpve5")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_hw8oy")
 
 [node name="NextKeyIndicator" parent="." instance=ExtResource("1_swcd6")]
-position = Vector2(606, 610)
+position = Vector2(250, 395)
+rotation = -0.359538
+scale = Vector2(3.62, 3.62)
+
+[node name="BGM" parent="." instance=ExtResource("2_i2e82")]
+stream = ExtResource("3_ht3mm")
+autoplay = true

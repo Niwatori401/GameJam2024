@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://caywmk0viwf4t"
+path="res://.godot/imported/FORMSTAMP1 OGG.ogg-8e1459e802b30e16405faa1bd9050cf2.oggvorbisstr"
+
+[deps]
+
+source_file="res://asset/sound/FORMSTAMP1 OGG.ogg"
+dest_files=["res://.godot/imported/FORMSTAMP1 OGG.ogg-8e1459e802b30e16405faa1bd9050cf2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

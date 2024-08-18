@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	$Fader.lighten(4);
+	$AudioFader.fade_in(4);
 
 
 func _process(delta: float) -> void:
@@ -18,3 +19,11 @@ func _on_exit_game_button_button_up() -> void:
 func _on_start_game_button_button_up() -> void:
 	$Fader.darken(1);
 	get_tree().create_timer(1.5).timeout.connect(func(): get_tree().change_scene_to_file("res://main_menu.tscn"));
+
+
+func _on_options_button_button_up() -> void:
+	show_options_menu();
+
+
+func show_options_menu():
+	pass

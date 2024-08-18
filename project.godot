@@ -24,6 +24,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
+theme/custom="res://asset/theme/main.tres"
 theme/custom_font="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf"
 
 [input]
