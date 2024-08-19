@@ -5,7 +5,7 @@ extends Control
 @export var letters_per_second : float = 240;
 var time_since_last_character : float = 0;
 
-var text_to_display : Array[String] = [];
+var text_to_display : Array = [];
 var text_to_display_index : int = 0;
 
 var current_display_letter_index : int = 0;
@@ -22,24 +22,25 @@ func _process(delta: float) -> void:
 	if do_box_transitions(delta):
 		return;
 	
+		# Last line of text finished
+	if is_finished():
+		start_close_box();
+		return;
+	
+	
 	if current_display_letter_index == len(text_to_display[text_to_display_index]):
 		show_continue_icon();
 		oscillate_continue_icon(delta);
 	else:
 		hide_continue_icon();
 	
-	# Last line of text finished
-	if text_to_display_index > len(text_to_display) - 1:
-		start_close_box();
-		return;
-	
+
 	if letters_per_second == 0:
 		$SpeechText.text = text_to_display[text_to_display_index];
 		current_display_letter_index = len(text_to_display[text_to_display_index]);
 		return;
 		
-	# End of current line
-	if current_display_letter_index > len(text_to_display[text_to_display_index]) - 1:
+	if done_with_last_letter():
 		return;
 	
 	time_since_last_character += delta;
@@ -48,7 +49,7 @@ func _process(delta: float) -> void:
 		for i in range(floor(time_since_last_character / (1 / letters_per_second))):
 			$SpeechText.text += text_to_display[text_to_display_index][current_display_letter_index]
 			current_display_letter_index += 1;
-			if current_display_letter_index > len(text_to_display[text_to_display_index]) - 1:
+			if done_with_last_letter():
 				break;
 				
 		time_since_last_character = 0;
@@ -64,6 +65,12 @@ func display_next_line():
 	text_to_display_index += 1;
 	$SpeechText.text = "";
 
+func done_with_last_letter():
+	return current_display_letter_index > len(text_to_display[text_to_display_index]) - 1
+
+func is_finished():
+	return text_to_display_index > len(text_to_display) - 1;
+
 func hide_continue_icon():
 	$ContinueIcon.visible = false;
 	continue_progress = 0;
@@ -75,7 +82,7 @@ func oscillate_continue_icon(delta):
 	continue_progress += delta;
 	$ContinueIcon.modulate.a = abs(sin(continue_progress));
 
-func display_new_text(new_text: Array[String]):
+func display_new_text(new_text: Array):
 	text_to_display = new_text;
 	text_to_display_index = 0;
 	current_display_letter_index = 0;
