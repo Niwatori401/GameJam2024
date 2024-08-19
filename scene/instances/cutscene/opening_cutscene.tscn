@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://cua4p08opu3yu" path="res://scene/cutscene.tscn" id="1_7ad1d"]
 
 [node name="Cutscene" instance=ExtResource("1_7ad1d")]
+delays = Array[float]([0.0, 2.0, 2.0, 0.0, 2.0, 2.0, 2.0])

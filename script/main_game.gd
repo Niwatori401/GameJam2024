@@ -15,7 +15,8 @@ var key_already_pressed_for_cycle := false;
 func _ready() -> void:
 	$BGM.fade_in(2);
 	set_random_new_key();
-
+	clear_current_success();
+	
 func _process(delta: float) -> void:
 	cur_seconds += delta;
 	if cur_seconds > delay_seconds:
