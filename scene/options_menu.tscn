@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csy8q18vty5h8"]
 
 [ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="1_5ynfn"]
-[ext_resource type="Script" path="res://src/options_menu.gd" id="1_jjr0b"]
+[ext_resource type="Script" path="res://script/options_menu.gd" id="1_jjr0b"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="3_y8u1f"]
 
 [node name="OptionsMenu" type="Control"]

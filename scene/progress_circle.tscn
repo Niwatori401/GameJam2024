@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4ygjm37yknm2"]
 
-[ext_resource type="Script" path="res://src/progress_circle.gd" id="1_70cxl"]
+[ext_resource type="Script" path="res://script/progress_circle.gd" id="1_70cxl"]
 [ext_resource type="Texture2D" uid="uid://d2vt0tugwrgpj" path="res://asset/1px.png" id="2_de6hp"]
 
 [node name="ProgressCircle" type="Node2D"]
