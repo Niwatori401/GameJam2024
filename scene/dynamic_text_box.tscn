@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://gs525m4r8f4r"]
+
+[ext_resource type="Script" path="res://src/dynamic_text_box.gd" id="1_pfiob"]
+[ext_resource type="Texture2D" uid="uid://owvfduehu4tm" path="res://asset/speech_box.png" id="2_ck060"]
+[ext_resource type="Texture2D" uid="uid://blw1pxdhkc36n" path="res://asset/next_arrow.png" id="3_xdb4a"]
+
+[node name="DynamicTextBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 0)
+script = ExtResource("1_pfiob")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 708.0
+offset_right = -260.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_ck060")
+
+[node name="SpeechText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -669.0
+offset_top = -359.0
+offset_right = 616.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+
+[node name="ContinueIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 616.0
+offset_top = -152.0
+offset_right = 676.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_xdb4a")
