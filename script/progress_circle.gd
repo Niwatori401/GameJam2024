@@ -13,6 +13,7 @@ var progress_circle_points := PackedVector2Array();
 var current_points : float;
 var max_points : float;
 
+var should_move := false;
 
 
 func _ready() -> void:
@@ -24,13 +25,26 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
-	#current_points += delta;
-	#
-	#if current_points > max_points:
-		#current_points -= max_points;
+	if not should_move:
+		return;
+		
+	current_points += delta;
+	
+	if current_points > max_points:
+		current_points -= max_points;
 #
-	#set_progress_to_next_row(current_points / max_points)
+	set_circle_full_percent(current_points / max_points);
+
+func start_circle(secs_per_cycle):
+	max_points = secs_per_cycle;
+	should_move = true;
+	current_points = 0;
+	set_circle_full_percent(current_points / max_points);
+	
+func stop_circle():
+	should_move = false;
+	current_points = 0;
+	set_circle_full_percent(current_points / max_points);
 
 func set_show_disabled_overlay(shouldBeVisible: bool):
 	$ProgressPolygonDisabledShader.visible = shouldBeVisible;
@@ -47,7 +61,7 @@ func init_background_progress_bar_points():
 	$ProgressPolygonBackground.polygon = points;
 	$ProgressPolygonDisabledShader.polygon = points;
 	
-func set_progress_to_next_row(percent):
+func set_circle_full_percent(percent):
 	# Makes the circle animation look smoother, as it completes the circle before resetting
 	percent += 0.02;
 	

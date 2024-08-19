@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy7jqkfn06u4w"]
+[gd_scene load_steps=13 format=3 uid="uid://cy7jqkfn06u4w"]
 
 [ext_resource type="Script" path="res://script/next_key_indicator.gd" id="1_0soux"]
 [ext_resource type="Texture2D" uid="uid://vewf3h3p15kx" path="res://asset/w.png" id="1_4ln66"]
 [ext_resource type="PackedScene" uid="uid://b4ygjm37yknm2" path="res://scene/progress_circle.tscn" id="2_kgdth"]
+[ext_resource type="Texture2D" uid="uid://xiriwqk0eurm" path="res://asset/NextKeyIndicator/SuccessIcons/pass.png" id="2_ltlqy"]
+[ext_resource type="Texture2D" uid="uid://bxufh81kpywe1" path="res://asset/A.png" id="3_ckvjn"]
 [ext_resource type="Texture2D" uid="uid://cjka4ticgmsmb" path="res://asset/crt_filter.png" id="3_fyg5w"]
 [ext_resource type="Texture2D" uid="uid://bmhae4py4bsat" path="res://asset/crt_filter_2.png" id="4_dfnj6"]
+[ext_resource type="Texture2D" uid="uid://d2vpb2riyiaij" path="res://asset/NextKeyIndicator/SuccessIcons/transparent.png" id="4_hgsoo"]
+[ext_resource type="Texture2D" uid="uid://c4oguly3v14mv" path="res://asset/S.png" id="4_iy4qw"]
+[ext_resource type="Texture2D" uid="uid://swgevx7gqv2l" path="res://asset/D.png" id="5_ech7o"]
+[ext_resource type="Texture2D" uid="uid://dy4qfd30qj3l5" path="res://asset/NextKeyIndicator/SuccessIcons/fail.png" id="7_0qloh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wnq51"]
 animations = [{
@@ -22,7 +28,10 @@ animations = [{
 
 [node name="NextKeyIndicator" type="Node2D"]
 script = ExtResource("1_0soux")
-metadata/_edit_group_ = true
+pass_texture = ExtResource("2_ltlqy")
+fail_texture = ExtResource("7_0qloh")
+transparent_texture = ExtResource("4_hgsoo")
+wasd_textures = Array[Texture2D]([ExtResource("1_4ln66"), ExtResource("3_ckvjn"), ExtResource("4_iy4qw"), ExtResource("5_ech7o")])
 
 [node name="ProgressCircle" parent="." instance=ExtResource("2_kgdth")]
 background_color = Color(0, 0.54695, 0.55819, 1)
@@ -33,6 +42,12 @@ disabled_color = Color(3.85046e-07, 0.53824, 0.613723, 1)
 position = Vector2(9.53674e-07, -9.53674e-07)
 scale = Vector2(0.46875, 0.46875)
 texture = ExtResource("1_4ln66")
+
+[node name="SuccessIndicator" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+position = Vector2(-1, 0)
+scale = Vector2(0.799045, 0.799045)
+texture = ExtResource("7_0qloh")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("3_fyg5w")
