@@ -14,19 +14,19 @@ var open_percent : float = 1;
 var open_duration_seconds : float = 0.2;
 var open_mode : Enums.OPEN_MODE = Enums.OPEN_MODE.NONE;
 
-func _ready():
-	display_new_text(["Velit sit ipsum et dolore tempore vero est. Qui in nihil eaque omnis hic maxime quo. Itaque qui ipsam porro.", "In consequuntur vitae odit non repellendus quas numquam in. Non incidunt est nesciunt et. Deserunt a qui cumque.", "eggs"]);
+var continue_progress : float = 0;
+
 
 func _process(delta: float) -> void:
 
-	if Input.is_action_just_pressed("debug_2"):
-		display_new_text(["Velit sit ipsum et dolore tempore vero est. Qui in nihil eaque omnis hic maxime quo. Itaque qui ipsam porro.", "In consequuntur vitae odit non repellendus quas numquam in. Non incidunt est nesciunt et. Deserunt a qui cumque.", "eggs"]);
-
-	if Input.is_action_just_pressed("debug_1"):
-		display_next_line();
-	
 	if do_box_transitions(delta):
 		return;
+	
+	if current_display_letter_index == len(text_to_display[text_to_display_index]):
+		show_continue_icon();
+		oscillate_continue_icon(delta);
+	else:
+		hide_continue_icon();
 	
 	# Last line of text finished
 	if text_to_display_index > len(text_to_display) - 1:
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 	if letters_per_second == 0:
 		$SpeechText.text = text_to_display[text_to_display_index];
-		current_display_letter_index = len(text_to_display[text_to_display_index]) - 1;
+		current_display_letter_index = len(text_to_display[text_to_display_index]);
 		return;
 		
 	# End of current line
@@ -63,6 +63,17 @@ func display_next_line():
 	current_display_letter_index = 0;
 	text_to_display_index += 1;
 	$SpeechText.text = "";
+
+func hide_continue_icon():
+	$ContinueIcon.visible = false;
+	continue_progress = 0;
+	
+func show_continue_icon():
+	$ContinueIcon.visible = true;
+	
+func oscillate_continue_icon(delta):
+	continue_progress += delta;
+	$ContinueIcon.modulate.a = abs(sin(continue_progress));
 
 func display_new_text(new_text: Array[String]):
 	text_to_display = new_text;

@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 0)
 script = ExtResource("1_pfiob")
+letters_per_second = 60.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
