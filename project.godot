@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://script/signal_bus.gd"
+ButtonGraphics="*res://script/button_graphics.gd"
 
 [display]
 

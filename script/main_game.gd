@@ -1,8 +1,12 @@
 extends Node2D
 
+const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
+const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 3;
+
 var delay_seconds : float = 1;
 var all_keys : Array[Enums.NEXT_KEY] = [Enums.NEXT_KEY.UP, Enums.NEXT_KEY.DOWN, Enums.NEXT_KEY.LEFT, Enums.NEXT_KEY.RIGHT]
-var cur_key : Enums.NEXT_KEY;
+
+var current_keys : Array[Enums.NEXT_KEY] = [];
 
 @export var success_sounds : Array[AudioStream];
 
@@ -10,11 +14,13 @@ var cur_seconds : float = 0;
 var threshold_good : float = 0.9;
 
 var cur_key_success := false;
-var key_already_pressed_for_cycle := false;
+var keys_already_pressed_for_cycle := false;
+
+var cur_pressed_keys : Array[Enums.NEXT_KEY] = [];
 
 func _ready() -> void:
 	$BGM.fade_in(2);
-	set_random_new_key();
+	set_random_new_keys();
 	clear_current_success();
 	
 func _process(delta: float) -> void:
@@ -22,75 +28,82 @@ func _process(delta: float) -> void:
 	if cur_seconds > delay_seconds:
 		cur_seconds -= delay_seconds;
 		if cur_key_success:
-			play_success_sound(cur_key);
-		else:
 			pass
-		set_random_new_key();
+			#add pts or sth
+		else:
+			# some penalty or effect
+			pass
+		set_random_new_keys();
 		clear_current_success();
 	
 	$NextKeyIndicator.set_circle_progress(cur_seconds / delay_seconds);
 	
-	if key_already_pressed_for_cycle:
+	if keys_already_pressed_for_cycle:
 		return;
 		
 	if Input.is_action_just_pressed("Up"):
-		if is_success(Enums.NEXT_KEY.UP):
-			succeed_cur_key();
-		else:
-			fail_cur_key();
+		handle_key_press(Enums.NEXT_KEY.UP);
 	elif Input.is_action_just_pressed("Left"):
-		if is_success(Enums.NEXT_KEY.LEFT):
-			succeed_cur_key();
-		else:
-			fail_cur_key();
+		handle_key_press(Enums.NEXT_KEY.LEFT);
 	elif Input.is_action_just_pressed("Down"):
-		if is_success(Enums.NEXT_KEY.DOWN):
-			succeed_cur_key();
-		else:
-			fail_cur_key();
+		handle_key_press(Enums.NEXT_KEY.DOWN);
 	elif Input.is_action_just_pressed("Right"):
-		if is_success(Enums.NEXT_KEY.RIGHT):
-			succeed_cur_key();
-		else:
-			fail_cur_key();
+		handle_key_press(Enums.NEXT_KEY.RIGHT);
+
+func handle_key_press(key : Enums.NEXT_KEY):
+	cur_pressed_keys.append(key);
+	var pressed_score : Array[int] = [0, 0, 0, 0];
+	var assigned_score : Array[int] = [0, 0, 0, 0];
+	
+	for i in current_keys:
+		assigned_score[i] += 1;
+		
+	for i in cur_pressed_keys:
+		pressed_score[i] += 1;
+	
+	for i in range(len(assigned_score)):
+		if pressed_score[i] > assigned_score[i]:
+			fail_cur_challenge();
+			return;
+			
+	
+	play_success_sound(key);
+	
+	# Not finished yet, but everything right for now
+	if len(cur_pressed_keys) < len(current_keys):
+		return;
+	
+	succeed_cur_challenge();
+	#play_success_sound(key);
+	return;
 
 
-func succeed_cur_key():
+func succeed_cur_challenge():
 	$NextKeyIndicator.set_to_pass_icon();
 	cur_key_success = true;
-	key_already_pressed_for_cycle = true;
+	keys_already_pressed_for_cycle = true;
 	
-func fail_cur_key():
+func fail_cur_challenge():
 	$NextKeyIndicator.set_to_fail_icon();
 	cur_key_success = false;
-	key_already_pressed_for_cycle = true;
+	keys_already_pressed_for_cycle = true;
 
 
 func clear_current_success():
 	$NextKeyIndicator.set_to_none_icon();
 	cur_key_success = false;
-	key_already_pressed_for_cycle = false;
+	keys_already_pressed_for_cycle = false;
+	cur_pressed_keys.clear();
 
-func is_success(pressed_key_direction : Enums.NEXT_KEY) -> bool:
-	if pressed_key_direction != cur_key:
-		return false;
 
-	return true;
-	
 func play_success_sound(pressed_key_direction : Enums.NEXT_KEY) -> void:
 	$SFX.stop();
-
-	if pressed_key_direction == Enums.NEXT_KEY.UP:
-		$SFX.stream = success_sounds[0];
-	elif pressed_key_direction == Enums.NEXT_KEY.LEFT:
-		$SFX.stream = success_sounds[1];
-	elif pressed_key_direction == Enums.NEXT_KEY.DOWN:
-		$SFX.stream = success_sounds[2];
-	elif pressed_key_direction == Enums.NEXT_KEY.RIGHT:
-		$SFX.stream = success_sounds[3];
-
+	$SFX.stream = success_sounds[pressed_key_direction];
 	$SFX.play();
 	
-func set_random_new_key():
-	cur_key = all_keys.pick_random();
-	$NextKeyIndicator.set_next_key_texture(cur_key);
+func set_random_new_keys():
+	current_keys.clear();
+	var num_of_keys = randi_range(MINIMUM_KEY_PRESSES_PER_CHALLENGE, MAXIMUM_KEY_PRESSES_PER_CHALLENGE);
+	for i in range(num_of_keys):
+		current_keys.append(all_keys.pick_random());
+	$NextKeyIndicator.set_next_key_texture(current_keys);

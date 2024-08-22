@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bojsxmxjov14s"
+path="res://.godot/imported/DAY 4 CUT.ogg-d6354ec290ac95627592827e78de7d14.oggvorbisstr"
+
+[deps]
+
+source_file="res://asset/sound/DAY 4 CUT.ogg"
+dest_files=["res://.godot/imported/DAY 4 CUT.ogg-d6354ec290ac95627592827e78de7d14.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

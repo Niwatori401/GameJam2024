@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmhae4py4bsat"
-path="res://.godot/imported/crt_filter_2.png-c316704c019ffc1aade1d93ebc43affc.ctex"
+uid="uid://swgevx7gqv2l"
+path="res://.godot/imported/D.png-361a1bcaef8c59138ec01feb43590826.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/crt_filter_2.png"
-dest_files=["res://.godot/imported/crt_filter_2.png-c316704c019ffc1aade1d93ebc43affc.ctex"]
+source_file="res://asset/NextKeyIndicator/ControlGlyphs/WASD/D.png"
+dest_files=["res://.godot/imported/D.png-361a1bcaef8c59138ec01feb43590826.ctex"]
 
 [params]
 

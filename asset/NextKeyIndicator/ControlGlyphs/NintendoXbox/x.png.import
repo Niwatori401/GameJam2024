@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxufh81kpywe1"
-path="res://.godot/imported/A.png-c38c4935cd448d132af84257b00e70c6.ctex"
+uid="uid://c40kuhqpq5bhs"
+path="res://.godot/imported/x.png-200ebd7a1d97230a230a42d1a98965ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/A.png"
-dest_files=["res://.godot/imported/A.png-c38c4935cd448d132af84257b00e70c6.ctex"]
+source_file="res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/x.png"
+dest_files=["res://.godot/imported/x.png-200ebd7a1d97230a230a42d1a98965ff.ctex"]
 
 [params]
 

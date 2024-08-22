@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjka4ticgmsmb"
-path="res://.godot/imported/crt_filter.png-498ed09a5510326e108a9087b328ae85.ctex"
+uid="uid://0713mnq6y1ws"
+path="res://.godot/imported/triangle.png-dba7f30b8ff37d875c599fa11909ef26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/crt_filter.png"
-dest_files=["res://.godot/imported/crt_filter.png-498ed09a5510326e108a9087b328ae85.ctex"]
+source_file="res://asset/NextKeyIndicator/ControlGlyphs/PS/triangle.png"
+dest_files=["res://.godot/imported/triangle.png-dba7f30b8ff37d875c599fa11909ef26.ctex"]
 
 [params]
 
