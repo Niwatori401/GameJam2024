@@ -1,7 +1,8 @@
 extends Node2D
 
+# can be set [1, 3]
 const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
-const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 3;
+const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
 
 var delay_seconds : float = 1;
 var all_keys : Array[Enums.NEXT_KEY] = [Enums.NEXT_KEY.UP, Enums.NEXT_KEY.DOWN, Enums.NEXT_KEY.LEFT, Enums.NEXT_KEY.RIGHT]
@@ -65,7 +66,6 @@ func handle_key_press(key : Enums.NEXT_KEY):
 		if pressed_score[i] > assigned_score[i]:
 			fail_cur_challenge();
 			return;
-			
 	
 	play_success_sound(key);
 	
