@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=6 format=3 uid="uid://ctpebmqtwkysr"]
 
+[ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
 [ext_resource type="Texture2D" uid="uid://ch5o06goohj6o" path="res://asset/background/break_room.png" id="1_jlm0p"]
 [ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="2_a8fin"]
 [ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="3_8cv0l"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hnwux")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

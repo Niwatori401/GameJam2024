@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://script/signal_bus.gd"
 ButtonGraphics="*res://script/button_graphics.gd"
+Inventory="*res://script/inventory.gd"
+Globals="*res://script/globals.gd"
 
 [display]
 

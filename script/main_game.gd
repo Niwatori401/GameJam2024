@@ -24,6 +24,7 @@ func _ready() -> void:
 	set_random_new_keys();
 	clear_current_success();
 	
+
 func _process(delta: float) -> void:
 	cur_seconds += delta;
 	if cur_seconds > delay_seconds:
