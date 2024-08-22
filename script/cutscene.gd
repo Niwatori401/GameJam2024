@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 			if should_end_cutscene:
 				if not is_ending:
 					$Fader.darken(2);
-					await get_tree().create_timer(2).timeout.connect(func (): load_next_scene_if_finished("res://scene/main_game.tscn"));
+					await Utility.load_scene(2, Globals.SCENE_MAIN_GAME);
 					is_ending = true;
 				return;
 				
@@ -94,6 +94,3 @@ func show_text_box():
 
 func wait(secs : float):
 	await get_tree().create_timer(secs).timeout;
-
-func load_next_scene_if_finished(next_scene_location : String):
-	get_tree().change_scene_to_file(next_scene_location);

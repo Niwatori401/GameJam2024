@@ -2,6 +2,7 @@ extends Node
 
 var trinkets = {
 	"clock": false,
+	"throw_ball": false
 }
 
 var save_file : ConfigFile = ConfigFile.new();

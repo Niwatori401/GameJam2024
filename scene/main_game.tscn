@@ -53,7 +53,7 @@ position = Vector2(1705, 600)
 
 [node name="BallHolder" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BallHolder"]
+[node name="Hitbox" type="CollisionPolygon2D" parent="BallHolder"]
 position = Vector2(1705, 664)
 rotation = 3.14159
 scale = Vector2(711.07, 36.6351)
