@@ -70,3 +70,4 @@ func initialize_video_dropdown():
 func show_options():
 	$Fader.lighten(1);
 	visible = true;
+	$Options/ControlGlyphs/ControlGlyphDropdown.grab_focus();

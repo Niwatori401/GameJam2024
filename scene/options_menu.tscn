@@ -63,6 +63,10 @@ fit_content = true
 [node name="ControlGlyphDropdown" type="OptionButton" parent="Options/ControlGlyphs"]
 layout_mode = 2
 tooltip_text = "Choose the button glyphs that show in-game"
+focus_neighbor_top = NodePath("../../../BackButton")
+focus_neighbor_bottom = NodePath("../../VideoSettings/VideoResolutionDropdown")
+focus_next = NodePath("../../VideoSettings/VideoResolutionDropdown")
+focus_previous = NodePath("../../../BackButton")
 theme_override_fonts/font = ExtResource("1_5ynfn")
 theme_override_font_sizes/font_size = 30
 item_count = 5
@@ -91,6 +95,10 @@ fit_content = true
 [node name="VideoResolutionDropdown" type="OptionButton" parent="Options/VideoSettings"]
 layout_mode = 2
 tooltip_text = "Choose the button glyphs that show in-game"
+focus_neighbor_top = NodePath("../../ControlGlyphs/ControlGlyphDropdown")
+focus_neighbor_bottom = NodePath("../../FullScreenCheckbox")
+focus_next = NodePath("../../FullScreenCheckbox")
+focus_previous = NodePath("../../ControlGlyphs/ControlGlyphDropdown")
 theme_override_fonts/font = ExtResource("1_5ynfn")
 theme_override_font_sizes/font_size = 30
 item_count = 3
@@ -102,6 +110,10 @@ popup/item_2/id = 2
 
 [node name="FullScreenCheckbox" type="CheckBox" parent="Options"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../VideoSettings/VideoResolutionDropdown")
+focus_neighbor_bottom = NodePath("../AudioSettings/VolumeSlider")
+focus_next = NodePath("../AudioSettings/VolumeSlider")
+focus_previous = NodePath("../VideoSettings/VideoResolutionDropdown")
 theme_override_font_sizes/font_size = 24
 text = "Fullscreen"
 
@@ -139,6 +151,10 @@ fit_content = true
 
 [node name="TextSpeedSlider" type="HSlider" parent="Options/TextSpeed"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../AudioSettings/VolumeSlider")
+focus_neighbor_bottom = NodePath("../../../BackButton")
+focus_next = NodePath("../../../BackButton")
+focus_previous = NodePath("../../AudioSettings/VolumeSlider")
 min_value = 60.0
 max_value = 240.0
 value = 60.0
@@ -153,6 +169,10 @@ offset_top = -173.0
 offset_right = 323.0
 offset_bottom = -70.0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../Options/TextSpeed/TextSpeedSlider")
+focus_neighbor_bottom = NodePath("../Options/ControlGlyphs/ControlGlyphDropdown")
+focus_next = NodePath("../Options/ControlGlyphs/ControlGlyphDropdown")
+focus_previous = NodePath("../Options/TextSpeed/TextSpeedSlider")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 

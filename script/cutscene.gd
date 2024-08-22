@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 			$DynamicTextBox.display_new_text(text[foreground_frame_index]);
 			need_to_add_text = false;
 			
-		if Input.is_action_just_pressed("Down"):
+		if Input.is_action_just_pressed("accept"):
 			$DynamicTextBox.display_next_line();
 		
 		if $DynamicTextBox.is_finished():

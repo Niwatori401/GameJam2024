@@ -65,21 +65,36 @@ theme_override_constants/separation = 6
 
 [node name="StartGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../ExitGameButton")
 theme_override_font_sizes/font_size = 70
 text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartGameButton")
+focus_neighbor_bottom = NodePath("../GalleryButton")
+focus_next = NodePath("../GalleryButton")
+focus_previous = NodePath("../StartGameButton")
 theme_override_font_sizes/font_size = 70
 text = "Options"
 
 [node name="GalleryButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../ExitGameButton")
+focus_next = NodePath("../ExitGameButton")
+focus_previous = NodePath("../OptionsButton")
 theme_override_font_sizes/font_size = 70
 text = "Gallery"
 
 [node name="ExitGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GalleryButton")
+focus_neighbor_bottom = NodePath("../StartGameButton")
+focus_next = NodePath("../StartGameButton")
+focus_previous = NodePath("../GalleryButton")
 theme_override_font_sizes/font_size = 70
 text = "Exit Game"
 

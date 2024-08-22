@@ -3,6 +3,7 @@ class_name MainMenu extends Control
 
 
 func _ready() -> void:
+	$VBoxContainer/StartGameButton.grab_focus();
 	$Fader.lighten(4);
 	$AudioFader.fade_in(4);
 	SignalBus.back_button_pressed.connect(hide_options_menu);
@@ -23,6 +24,7 @@ func _on_start_game_button_button_up() -> void:
 
 func _on_options_button_button_up() -> void:
 	show_options_menu();
+	
 
 
 func show_options_menu():
@@ -35,3 +37,4 @@ func show_options_menu():
 func hide_options_menu():
 	$Fader.visible = true;
 	$Fader.lighten(1);
+	$VBoxContainer/StartGameButton.grab_focus();
