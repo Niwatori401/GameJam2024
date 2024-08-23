@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl1nbusimy4vf"]
+
+[ext_resource type="Script" path="res://script/paper_message.gd" id="1_17a31"]
+[ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="1_eyybc"]
+
+[node name="PaperMessage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_17a31")
+
+[node name="Paper" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 160.0
+offset_right = 1100.22
+offset_bottom = 699.465
+scale = Vector2(1.49082, 1.49082)
+mouse_filter = 2
+color = Color(1, 1, 0.933333, 1)
+
+[node name="LetterText" type="RichTextLabel" parent="Paper"]
+layout_mode = 0
+offset_left = 30.8555
+offset_top = 32.197
+offset_right = 382.01
+offset_bottom = 521.322
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_eyybc")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Welcome, new hire. 
+
+Congratulations on your new position of 
+[u][font_size=20][font=\"res://asset/font/michellefont/Michellefont-Regular.otf\"]Inventory Management Technician[/font][/font_size]       ![/u]
+Your workflow is simple, but important. Simply stamp the incoming forms as they arrive on your desk. 
+
+It might benefit you to get a rhythm going.
+Failure to correctly process the required documents may result in early termination.
+
+Welcome to the team!"

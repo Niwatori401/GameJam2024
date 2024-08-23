@@ -41,7 +41,7 @@ func _integrate_forces(state):
 			get_tree().create_timer(2.5).timeout.connect(func ():
 				play_current_sound();
 				impact_index += 1;
-				save.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, impact_index)
+				save.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, impact_index);
 				);
 
 
