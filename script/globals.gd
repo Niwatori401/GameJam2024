@@ -1,7 +1,21 @@
 extends Node
 
 const USER_SAVE_FILE := "user://save.ini";
-const USER_CONFIG_FILE := "user://config.cfg"
+const USER_CONFIG_FILE := "user://config.cfg";
+
+const CONFIG_CATEGORY_OPTIONS := "Options";
+const CONFIG_KEY_TEXT_SPEED := "text_speed";
+const CONFIG_KEY_VOLUME := "master_volume";
+const CONFIG_KEY_FULLSCREEN := "is_fullscreen";
+const CONFIG_KEY_CONTROL_SCEME := "control_scheme";
+const CONFIG_KEY_RESOLUTION := "resolution";
+
+const SAVE_CATEGORY_INVENTORY := "Inventory";
+const SAVE_KEY_TRINKETS := "trinkets";
+
+const SAVE_CATEGORY_PROGRESS := "Progress";
+const SAVE_KEY_THROWN_BALL_IMPACT_INDEX := "thrown_ball_impact_index";
+
 
 const SCENE_BREAK_ROOM := "res://scene/break_room.tscn";
 const SCENE_MAIN_GAME := "res://scene/main_game.tscn";

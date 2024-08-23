@@ -22,7 +22,7 @@ animations = [{
 "texture": ExtResource("5_0bmjq")
 }],
 "loop": true,
-"name": &"default",
+"name": &"title_boil",
 "speed": 1.0
 }]
 
@@ -102,8 +102,7 @@ text = "Exit Game"
 [node name="AnimatedTitle" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_mo7gb")
-autoplay = "default"
-frame_progress = 0.716147
+animation = &"title_boil"
 
 [node name="Fader" parent="." instance=ExtResource("3_va774")]
 layout_mode = 1
@@ -117,6 +116,7 @@ layout_mode = 1
 
 [node name="AudioFader" parent="." instance=ExtResource("6_o67h4")]
 stream = SubResource("AudioStreamOggVorbis_pr6st")
+bus = &"Music"
 
 [connection signal="button_up" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_button_up"]

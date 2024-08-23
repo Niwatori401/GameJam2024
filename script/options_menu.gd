@@ -3,6 +3,12 @@ class_name OptionsMenu extends Control
 
 var config = ConfigFile.new();
 
+const VOLUME_MIN_DB : float = -40;
+const VOLUME_MAX_DB : float = 10;
+
+const MAX_TEXT_SPEED : float = 240;
+const MIN_TEXT_SPEED : float = 60;
+
 var video_resolutions = {
 	"1920 x 1080":Vector2i(1920, 1080),
 	"1366 x 768":Vector2i(1366, 768),
@@ -19,9 +25,14 @@ var glyph_options = {
 }
 
 func _ready() -> void:
-	config.load("user://config.cfg");
+	config.load("user://config.cfg")
 	initialize_video_dropdown();
 	initialize_glyph_dropdown();
+	initialize_volume_slider();
+
+	load_and_init_config_values();
+	
+	
 	
 
 
@@ -30,24 +41,27 @@ func _on_full_screen_checkbox_toggled(toggled_on: bool) -> void:
 		get_tree().get_root().set_mode(Window.MODE_FULLSCREEN);
 	else:
 		get_tree().get_root().set_mode(Window.MODE_WINDOWED);
-
+		
+	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, toggled_on);
+	config.save(Globals.USER_CONFIG_FILE);
 
 func _on_video_resolution_dropdown_item_selected(index: int) -> void:
-	var resolution = video_resolutions[$Options/VideoSettings/VideoResolutionDropdown.get_item_text(index)]
+	var resolution_string = $Options/VideoSettings/VideoResolutionDropdown.get_item_text(index);
+	var resolution = video_resolutions[resolution_string];
 	get_window().size = resolution;
-
+	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, resolution_string);
+	config.save(Globals.USER_CONFIG_FILE);
 
 func _on_control_glyph_dropdown_item_selected(index: int) -> void:
 	var display_glyphs = glyph_options[$Options/ControlGlyphs/ControlGlyphDropdown.get_item_text(index)];
-	config.set_value("options", "control_scheme", display_glyphs);
-	config.save("user://config.cfg")
+	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, display_glyphs);
+	config.save(Globals.USER_CONFIG_FILE);
 
 func _on_volume_slider_value_changed(value: float) -> void:
-	if (value == 0):
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true);
-	else:
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false);
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), lerp(-30, 15, value / 100));
+	set_volume(value);
+	update_volume_text();
+	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, value);
+	config.save(Globals.USER_CONFIG_FILE);
 	
 func _on_back_button_button_up() -> void:
 	const DARKEN_SECONDS = 1;
@@ -56,6 +70,14 @@ func _on_back_button_button_up() -> void:
 		visible = false;
 		SignalBus.back_button_pressed.emit();
 		);
+
+# not in decimal percent, but 0-100
+func set_volume(value : float):
+	if (value == 0):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true);
+	else:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false);
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), lerp(VOLUME_MIN_DB, VOLUME_MAX_DB, value / 100));
 
 func initialize_glyph_dropdown():
 	$Options/ControlGlyphs/ControlGlyphDropdown.clear();
@@ -67,7 +89,81 @@ func initialize_video_dropdown():
 	for resolution in video_resolutions:
 		$Options/VideoSettings/VideoResolutionDropdown.add_item(resolution);
 
+func initialize_volume_slider():
+	var bus_index = AudioServer.get_bus_index("Music");
+	var current_db = AudioServer.get_bus_volume_db(bus_index);
+	var percent_on_slider = (current_db - VOLUME_MIN_DB) / (VOLUME_MAX_DB - VOLUME_MIN_DB)
+	$Options/AudioSettings/VolumeSlider.set_value_no_signal(percent_on_slider * 100);
+	update_volume_text();
+	
+
+func update_volume_text() -> void:
+	$Options/AudioSettings/VolumeLabel.text = "[center]Volume[/center] (%d%%)" % [round($Options/AudioSettings/VolumeSlider.value)]
+	
+func update_text_speed_slider(text_speed : float) -> void:
+	if text_speed == -1:
+		$Options/TextSpeed/TextSpeedSlider.value = MAX_TEXT_SPEED;
+	else:
+		$Options/TextSpeed/TextSpeedSlider.value = text_speed;
+	
+	if $Options/TextSpeed/TextSpeedSlider.value == MAX_TEXT_SPEED:
+		$Options/TextSpeed/TextSpeedLabel.text = "[center]Text Speed (Instant)[/center]";
+	else:
+		$Options/TextSpeed/TextSpeedLabel.text = "[center]Text Speed (%d letters/second)[/center]" % [text_speed];
+	
 func show_options():
 	$Fader.lighten(1);
 	visible = true;
 	$Options/ControlGlyphs/ControlGlyphDropdown.grab_focus();
+
+
+func load_and_init_config_values():
+	var control_glyphs = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.ARROW);
+	var text_speed = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, (MAX_TEXT_SPEED - MIN_TEXT_SPEED) / 2);
+	var resolution = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, "1920 x 1080");
+	var is_fullscreen = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
+	var volume = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
+	
+	# Control Glyphs
+	for glyph_index in range(len(glyph_options)):
+		if control_glyphs == glyph_options.values()[glyph_index]:
+			$Options/ControlGlyphs/ControlGlyphDropdown.select(glyph_index);
+			break;
+	
+	
+	# Volume
+	set_volume(volume);
+	update_volume_text();
+	$Options/AudioSettings/VolumeSlider.set_value(volume);
+
+	# Resolution
+	get_window().call_deferred("set_size", video_resolutions[resolution]);
+	for res_index in range(len(video_resolutions)):
+		if video_resolutions.keys()[res_index] == resolution:
+			$Options/VideoSettings/VideoResolutionDropdown.select(res_index);
+			break;
+	
+	# Fullscreen
+	$Options/FullScreenCheckbox.button_pressed = is_fullscreen;
+	if is_fullscreen:
+		get_tree().get_root().set_mode(Window.MODE_EXCLUSIVE_FULLSCREEN);
+	else:
+		get_tree().get_root().set_mode(Window.MODE_WINDOWED);
+	
+	# Text speed
+	update_text_speed_slider(text_speed);
+
+
+func _on_text_speed_slider_value_changed(value: float) -> void:
+	update_text_speed_slider(value);
+
+
+func _on_text_speed_slider_drag_ended(value_changed: bool) -> void:
+	var value_to_save : float;
+	if $Options/TextSpeed/TextSpeedSlider.value == MAX_TEXT_SPEED:
+		value_to_save = -1;
+	else:
+		value_to_save = $Options/TextSpeed/TextSpeedSlider.value;
+
+	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, value_to_save);
+	config.save(Globals.USER_CONFIG_FILE);

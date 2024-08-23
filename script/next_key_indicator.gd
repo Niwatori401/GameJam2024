@@ -9,13 +9,12 @@ var config = ConfigFile.new();
 var control_icons : Enums.BUTTON_MODE;
 
 func _ready() -> void:
-	config.load("user://config.cfg");
-	control_icons = config.get_value("options", "control_scheme", Enums.BUTTON_MODE.WASD);
-	# start_progress_circle();
+	var status = config.load("user://config.cfg");
+	if status != OK:
+		printerr("Failed to load config in next_key_indicator");
+		
+	control_icons = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.WASD);
 
-
-func _process(delta: float) -> void:
-	pass
 
 func set_to_pass_icon():
 	$SuccessIndicator.texture = pass_texture;

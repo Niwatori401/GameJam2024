@@ -101,8 +101,8 @@ focus_next = NodePath("../../FullScreenCheckbox")
 focus_previous = NodePath("../../ControlGlyphs/ControlGlyphDropdown")
 theme_override_fonts/font = ExtResource("1_5ynfn")
 theme_override_font_sizes/font_size = 30
+selected = 0
 item_count = 3
-popup/item_0/text = "1920 x 1080"
 popup/item_1/text = "1280 x 720"
 popup/item_1/id = 1
 popup/item_2/text = "640 x 360"
@@ -184,5 +184,6 @@ layout_mode = 1
 [connection signal="item_selected" from="Options/VideoSettings/VideoResolutionDropdown" to="." method="_on_video_resolution_dropdown_item_selected"]
 [connection signal="toggled" from="Options/FullScreenCheckbox" to="." method="_on_full_screen_checkbox_toggled"]
 [connection signal="value_changed" from="Options/AudioSettings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="value_changed" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="drag_ended" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_drag_ended"]
+[connection signal="value_changed" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_value_changed"]
 [connection signal="button_up" from="BackButton" to="." method="_on_back_button_button_up"]

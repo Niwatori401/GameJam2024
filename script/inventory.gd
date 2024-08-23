@@ -28,9 +28,9 @@ func unlock_trinket(trinket_name : String) -> void:
 	save_inventory_to_file();
 	
 func save_inventory_to_file() -> void:
-	save_file.set_value("Inventory", "trinkets", trinkets);
+	save_file.set_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS, trinkets);
 	save_file.save(Globals.USER_SAVE_FILE);
 
 func load_inventory_from_file() -> void:
-	if save_file.has_section_key("Inventory", "trinkets"):
-		trinkets = save_file.get_value("Inventory", "trinkets");
+	if save_file.has_section_key(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS):
+		trinkets = save_file.get_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS);

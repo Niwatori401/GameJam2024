@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf7m2nikhypqm"]
+[gd_scene load_steps=9 format=3 uid="uid://bf7m2nikhypqm"]
 
 [ext_resource type="Script" path="res://script/throw_ball.gd" id="1_s3hr5"]
 [ext_resource type="Texture2D" uid="uid://br4yqo7fy86ti" path="res://asset/desk_trinkets/throw_ball/throw_ball.png" id="1_y1jrb"]
 [ext_resource type="AudioStream" uid="uid://c8sf2k6pgi37f" path="res://asset/sound/sfx/glass_shatter.ogg" id="3_ykbc8"]
+[ext_resource type="AudioStream" uid="uid://dvham8d0xrepu" path="res://asset/sound/sfx/box.ogg" id="4_gxtm4"]
+[ext_resource type="AudioStream" uid="uid://b6dqsv7om6m2" path="res://asset/sound/sfx/cat.ogg" id="5_ardht"]
+[ext_resource type="AudioStream" uid="uid://rgvj52og26kh" path="res://asset/sound/sfx/explosion_car_alarm.ogg" id="6_1syhg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_efkkk"]
 friction = 0.5
@@ -25,8 +28,20 @@ shape = SubResource("CircleShape2D_h6kch")
 [node name="BallSprite" type="Sprite2D" parent="CollisionShape2D"]
 texture = ExtResource("1_y1jrb")
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
+[node name="SFX1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ykbc8")
+volume_db = -15.0
+
+[node name="SFX2-1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gxtm4")
+volume_db = -15.0
+
+[node name="SFX2-2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ardht")
+volume_db = -15.0
+
+[node name="SFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1syhg")
 volume_db = -15.0
 
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
