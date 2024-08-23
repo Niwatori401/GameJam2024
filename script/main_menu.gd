@@ -1,11 +1,8 @@
 class_name MainMenu extends Control
 
 
-
 func _ready() -> void:
-	$VBoxContainer/StartGameButton.grab_focus();
-	$Fader.lighten(4);
-	$AudioFader.fade_in(4);
+	SignalBus.credit_splash_finished.connect(_on_credit_splash_finished);
 	SignalBus.back_button_pressed.connect(hide_options_menu);
 
 func _process(delta: float) -> void:
@@ -25,7 +22,11 @@ func _on_start_game_button_button_up() -> void:
 func _on_options_button_button_up() -> void:
 	show_options_menu();
 	
-
+func _on_credit_splash_finished():
+	$Fader.lighten(2);
+	# Slight offset to align with animation
+	$AudioFader.play(0.1);
+	$AudioFader.fade_in(4);
 
 func show_options_menu():
 	$Fader.darken(1);

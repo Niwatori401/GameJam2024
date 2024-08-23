@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca0nsqqy6ftya"]
+
+[ext_resource type="Script" path="res://script/credits_splash.gd" id="1_cnpts"]
+[ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="2_q8ou4"]
+[ext_resource type="Texture2D" uid="uid://yxxjxkl05laa" path="res://asset/background/credit_splash.png" id="2_us17g"]
+
+[node name="CreditsSplash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cnpts")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_us17g")
+
+[node name="Fader" parent="." instance=ExtResource("2_q8ou4")]
+visible = false
+layout_mode = 1

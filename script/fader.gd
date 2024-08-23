@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 	cur_fade_seconds += delta;
 	
 	if fade_mode == FADE_DIRECTION.DARKEN:
-		$BlackBackground.modulate.a = clampf(cur_fade_seconds / goal_fade_seconds, 0, 1);
+		$ColorRect.modulate.a = clampf(cur_fade_seconds / goal_fade_seconds, 0, 1);
 	else:
-		$BlackBackground.modulate.a = clampf(1 - cur_fade_seconds / goal_fade_seconds, 0, 1);
+		$ColorRect.modulate.a = clampf(1 - cur_fade_seconds / goal_fade_seconds, 0, 1);
 	
 
 func darken(seconds_to_fade : float):

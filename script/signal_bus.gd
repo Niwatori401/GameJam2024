@@ -1,3 +1,4 @@
 extends Node
 
 signal back_button_pressed
+signal credit_splash_finished

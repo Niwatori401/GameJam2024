@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cjsckyf7hdxid"]
+[gd_scene load_steps=12 format=4 uid="uid://cjsckyf7hdxid"]
 
 [ext_resource type="Script" path="res://script/main_menu.gd" id="1_h3hhb"]
 [ext_resource type="Texture2D" uid="uid://pbc3vedlvm72" path="res://asset/mainmenu_letters/title_1.png" id="3_uyl4y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmuejc8t4rowa" path="res://asset/mainmenu_letters/title_3.png" id="5_0bmjq"]
 [ext_resource type="PackedScene" uid="uid://csy8q18vty5h8" path="res://scene/options_menu.tscn" id="5_5g8vp"]
 [ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="6_o67h4"]
+[ext_resource type="PackedScene" uid="uid://ca0nsqqy6ftya" path="res://scene/credits_splash.tscn" id="7_gs8lg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mo7gb"]
 animations = [{
@@ -105,16 +106,17 @@ autoplay = "default"
 frame_progress = 0.716147
 
 [node name="Fader" parent="." instance=ExtResource("3_va774")]
-visible = false
 layout_mode = 1
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_5g8vp")]
 visible = false
 layout_mode = 1
 
+[node name="CreditsSplash" parent="." instance=ExtResource("7_gs8lg")]
+layout_mode = 1
+
 [node name="AudioFader" parent="." instance=ExtResource("6_o67h4")]
 stream = SubResource("AudioStreamOggVorbis_pr6st")
-autoplay = true
 
 [connection signal="button_up" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_button_up"]
