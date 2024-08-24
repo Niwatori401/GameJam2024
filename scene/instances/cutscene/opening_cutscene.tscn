@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://borcrtfrinw5c"]
+[gd_scene load_steps=13 format=3 uid="uid://borcrtfrinw5c"]
 
 [ext_resource type="PackedScene" uid="uid://cua4p08opu3yu" path="res://scene/cutscene.tscn" id="1_7ad1d"]
+[ext_resource type="Texture2D" uid="uid://ci1hane7f03s1" path="res://asset/cutscene/intro/-4.png" id="2_vv40i"]
+[ext_resource type="Texture2D" uid="uid://dlv7pvh1surlh" path="res://asset/cutscene/intro/-3.png" id="3_p17rj"]
+[ext_resource type="Texture2D" uid="uid://bdqcvkj4gsiv" path="res://asset/cutscene/intro/-2.png" id="4_aum0j"]
+[ext_resource type="Texture2D" uid="uid://nena3umlwfdu" path="res://asset/cutscene/intro/-1.png" id="5_to7vn"]
+[ext_resource type="Texture2D" uid="uid://uniphsjmwppv" path="res://asset/cutscene/intro/1.png" id="6_pqacs"]
+[ext_resource type="Texture2D" uid="uid://bkajg8yq37auy" path="res://asset/cutscene/intro/2.png" id="7_yi8fo"]
+[ext_resource type="Texture2D" uid="uid://r03dk4f4bqkf" path="res://asset/cutscene/intro/3.png" id="8_ktff5"]
+[ext_resource type="Texture2D" uid="uid://cqyqffeps5thp" path="res://asset/cutscene/intro/4.png" id="9_4u3g1"]
+[ext_resource type="Texture2D" uid="uid://4anyd8ftj5bk" path="res://asset/cutscene/intro/5.png" id="10_rghiw"]
+[ext_resource type="Texture2D" uid="uid://cujjm6jxfqai5" path="res://asset/cutscene/intro/6.png" id="11_1riau"]
+[ext_resource type="Texture2D" uid="uid://mkduf1sc2k4q" path="res://asset/cutscene/intro/7.png" id="12_fq0wa"]
 
 [node name="Cutscene" instance=ExtResource("1_7ad1d")]
-delays = Array[float]([0.0, 2.0, 2.0, 0.0, 2.0, 2.0, 2.0])
+frames = Array[Texture2D]([ExtResource("2_vv40i"), ExtResource("3_p17rj"), ExtResource("4_aum0j"), ExtResource("5_to7vn"), ExtResource("6_pqacs"), ExtResource("7_yi8fo"), ExtResource("8_ktff5"), ExtResource("9_4u3g1"), ExtResource("10_rghiw"), ExtResource("11_1riau"), ExtResource("12_fq0wa")])
+delays = Array[float]([3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 0.0, 3.0, 3.0, 3.0])
+text = Array[Array]([[], [], [], [], [], [], [], ["Hmm. Well, I suppose the fact that you even showed up at all is commendable."], [], [], []])

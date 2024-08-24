@@ -13,10 +13,10 @@ var cur_fade_time : float = 0;
 
 # Full of arrays of strings
 @export var text : Array[Array] = [[]];
-var should_end_cutscene := false;
 var is_ending := false;
 
 var need_to_add_text := true;
+var skip_frame := false;
 
 func _ready() -> void:
 	assert(len(delays) == len(frames));
@@ -25,29 +25,33 @@ func _ready() -> void:
 	$Fader.lighten(INITIAL_FADE_IN_DELAY);
 	$Foreground.texture = frames[0];
 
-	# Add check
-	if foreground_frame_index == len(frames):
-		should_end_cutscene = true;
+	if should_end_cutscene():
 		return;
 		
 	$Background.texture = frames[foreground_frame_index + 1];
 
+func should_end_cutscene():
+	if foreground_frame_index == len(frames) - 1:
+			return true;
 
 func should_use_delays():
 	return delays[foreground_frame_index] != 0;
 
 func _process(delta: float) -> void:
 	if should_use_delays():
+		if Input.is_action_just_pressed("accept"):
+			skip_frame = true;
+			
 		cur_wait_time += delta;
 		
-		if cur_wait_time >= get_cur_total_wait_time():
-			if should_end_cutscene:
+		if cur_wait_time >= get_cur_total_wait_time() or skip_frame:
+			if should_end_cutscene():
 				if not is_ending:
 					$Fader.darken(2);
 					await Utility.load_scene(2, Globals.SCENE_MAIN_GAME);
 					is_ending = true;
 				return;
-				
+			
 			fadeout_and_increment(delta);
 	else:
 		show_text_box();
@@ -72,10 +76,9 @@ func fadeout_and_increment(delta):
 		
 		foreground_frame_index += 1;
 		cur_wait_time = 0;
+		skip_frame = false;
 		
-		# Add check
-		if foreground_frame_index == len(frames) - 1:
-			should_end_cutscene = true;
+		if should_end_cutscene():
 			return true;
 			
 		$Background.texture = frames[foreground_frame_index + 1];
