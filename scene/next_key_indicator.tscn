@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy7jqkfn06u4w"]
+[gd_scene load_steps=11 format=3 uid="uid://cy7jqkfn06u4w"]
 
 [ext_resource type="Script" path="res://script/next_key_indicator.gd" id="1_0soux"]
 [ext_resource type="Texture2D" uid="uid://vewf3h3p15kx" path="res://asset/NextKeyIndicator/ControlGlyphs/WASD/w.png" id="1_4ln66"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjka4ticgmsmb" path="res://asset/NextKeyIndicator/Monitor/crt_filter.png" id="3_fyg5w"]
 [ext_resource type="Texture2D" uid="uid://bmhae4py4bsat" path="res://asset/NextKeyIndicator/Monitor/crt_filter_2.png" id="4_dfnj6"]
 [ext_resource type="Texture2D" uid="uid://d2vpb2riyiaij" path="res://asset/NextKeyIndicator/SuccessIcons/transparent.png" id="4_hgsoo"]
+[ext_resource type="Texture2D" uid="uid://bj5ampg5vdgew" path="res://asset/NextKeyIndicator/Monitor/crt_background.png" id="5_t0ama"]
 [ext_resource type="Texture2D" uid="uid://dy4qfd30qj3l5" path="res://asset/NextKeyIndicator/SuccessIcons/fail.png" id="7_0qloh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wnq51"]
@@ -29,12 +30,18 @@ pass_texture = ExtResource("2_ltlqy")
 fail_texture = ExtResource("7_0qloh")
 transparent_texture = ExtResource("4_hgsoo")
 
-[node name="ProgressCircle" parent="." instance=ExtResource("2_kgdth")]
+[node name="ComputerBackground" type="Sprite2D" parent="."]
+position = Vector2(21, 0)
+scale = Vector2(1.05, 1)
+texture = ExtResource("5_t0ama")
+
+[node name="NextKeyGroup" type="Node2D" parent="."]
+position = Vector2(7.11, 0)
+
+[node name="ProgressCircle" parent="NextKeyGroup" instance=ExtResource("2_kgdth")]
 background_color = Color(0, 0.54695, 0.55819, 1)
 foreground_color = Color(1, 1, 1, 1)
 disabled_color = Color(3.85046e-07, 0.53824, 0.613723, 1)
-
-[node name="NextKeyGroup" type="Node2D" parent="."]
 
 [node name="Single" type="Node2D" parent="NextKeyGroup"]
 
@@ -79,10 +86,14 @@ scale = Vector2(0.799045, 0.799045)
 texture = ExtResource("7_0qloh")
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(21, 0)
+scale = Vector2(1.05, 1)
 texture = ExtResource("3_fyg5w")
 
 [node name="CRT_Effect" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.298039)
+position = Vector2(21, 0)
+scale = Vector2(1.05, 1)
 sprite_frames = SubResource("SpriteFrames_wnq51")
 autoplay = "default"
 frame_progress = 0.555287

@@ -27,13 +27,13 @@ func set_to_none_icon():
 
 
 func stop_progress_circle():
-	$ProgressCircle.stop_circle();
+	$NextKeyGroup/ProgressCircle.stop_circle();
 
 func start_progress_circle():
-	$ProgressCircle.start_circle(1);
+	$NextKeyGroup/ProgressCircle.start_circle(1);
 
 func set_circle_progress(percent : float):
-	$ProgressCircle.set_circle_full_percent(percent);
+	$NextKeyGroup/ProgressCircle.set_circle_full_percent(percent);
 
 func set_next_key_texture(next_key : Array[Enums.NEXT_KEY]):
 	var node : Node2D;

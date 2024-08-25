@@ -108,3 +108,12 @@ func set_random_new_keys():
 	for i in range(num_of_keys):
 		current_keys.append(all_keys.pick_random());
 	$NextKeyIndicator.set_next_key_texture(current_keys);
+
+var paper_is_up := false;
+func _on_clip_board_button_down() -> void:
+	if paper_is_up:
+		$Control/PaperMessage.start_move_down();
+	else:
+		$Control/PaperMessage.start_move_up();
+	
+	paper_is_up = !paper_is_up;

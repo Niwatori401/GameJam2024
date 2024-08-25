@@ -46,6 +46,21 @@ func _process(delta: float) -> void:
 	time_since_last_character += delta;
 	
 	if time_since_last_character >= (1 / letters_per_second):
+		while text_to_display[text_to_display_index][current_display_letter_index] == "[":
+			while text_to_display[text_to_display_index][current_display_letter_index] != "]":
+				$SpeechText.text += text_to_display[text_to_display_index][current_display_letter_index];
+				current_display_letter_index += 1;
+				if done_with_last_letter():
+					time_since_last_character = 0;
+					return;
+			
+			$SpeechText.text += "]";
+			current_display_letter_index += 1;
+
+		if done_with_last_letter():
+			time_since_last_character = 0;
+			return;
+			
 		for i in range(floor(time_since_last_character / (1 / letters_per_second))):
 			$SpeechText.text += text_to_display[text_to_display_index][current_display_letter_index]
 			current_display_letter_index += 1;

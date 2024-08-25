@@ -11,11 +11,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_1"):
-		start_move_up();
-	elif Input.is_action_just_pressed("debug_2"):
-		start_move_down();
-	
 	if not is_moving:
 		return;
 	
