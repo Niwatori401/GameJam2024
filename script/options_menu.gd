@@ -68,7 +68,7 @@ func _on_volume_slider_value_changed(value: float) -> void:
 func _on_back_button_button_up() -> void:
 	const DARKEN_SECONDS = 1;
 	$Fader.darken(DARKEN_SECONDS);
-	await get_tree().create_timer(DARKEN_SECONDS).timeout.connect(func (): 
+	get_tree().create_timer(DARKEN_SECONDS).timeout.connect(func (): 
 		visible = false;
 		SignalBus.back_button_pressed.emit();
 		);
@@ -161,7 +161,7 @@ func _on_text_speed_slider_value_changed(value: float) -> void:
 	update_text_speed_slider(value);
 
 
-func _on_text_speed_slider_drag_ended(value_changed: bool) -> void:
+func _on_text_speed_slider_drag_ended(_value_changed: bool) -> void:
 	var value_to_save : float;
 	if $Options/TextSpeed/TextSpeedSlider.value == MAX_TEXT_SPEED:
 		value_to_save = -1;

@@ -1,7 +1,5 @@
 extends Control
 
-signal CreditSplashFinished
-
 var time_to_wait : float = 3;
 var cur_wait_time : float = 0;
 var should_end : bool = false;

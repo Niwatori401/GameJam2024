@@ -8,7 +8,7 @@ func _ready() -> void:
 	SignalBus.credit_splash_finished.connect(_on_credit_splash_finished);
 	SignalBus.back_button_pressed.connect(hide_options_menu);
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit();
 
@@ -19,8 +19,7 @@ func _on_exit_game_button_button_up() -> void:
 
 func _on_start_game_button_button_up() -> void:
 	$Fader.darken(1);
-	get_tree().create_timer(1.5).timeout.connect(func(): get_tree().change_scene_to_file("res://scene/instances/cutscene/opening_cutscene.tscn"));
-
+	Utility.load_scene(1.5, Globals.SCENE_OPENING_CUTSCENE);
 
 func _on_options_button_button_up() -> void:
 	show_options_menu();
@@ -34,7 +33,7 @@ func _on_credit_splash_finished():
 
 func show_options_menu():
 	$Fader.darken(1);
-	await get_tree().create_timer(1).timeout.connect(
+	get_tree().create_timer(1).timeout.connect(
 		func (): 
 			$OptionsMenu.show_options()
 			);

@@ -29,12 +29,9 @@ func _process(delta: float) -> void:
 	cur_seconds += delta;
 	if cur_seconds > delay_seconds:
 		cur_seconds -= delay_seconds;
-		if cur_key_success:
-			pass
-			#add pts or sth
-		else:
-			# some penalty or effect
-			pass
+		if not cur_key_success:
+			SignalBus.key_miss.emit();
+			
 		set_random_new_keys();
 		clear_current_success();
 	
@@ -83,11 +80,13 @@ func succeed_cur_challenge():
 	$NextKeyIndicator.set_to_pass_icon();
 	cur_key_success = true;
 	keys_already_pressed_for_cycle = true;
+	SignalBus.key_hit.emit();
 	
 func fail_cur_challenge():
 	$NextKeyIndicator.set_to_fail_icon();
 	cur_key_success = false;
 	keys_already_pressed_for_cycle = true;
+	SignalBus.key_miss.emit();
 
 
 func clear_current_success():

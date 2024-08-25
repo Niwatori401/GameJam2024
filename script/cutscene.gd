@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 			if should_end_cutscene():
 				if not is_ending:
 					$Fader.darken(2);
-					await Utility.load_scene(2, Globals.SCENE_MAIN_GAME);
+					Utility.load_scene(2, Globals.SCENE_MAIN_GAME);
 					is_ending = true;
 				return;
 			

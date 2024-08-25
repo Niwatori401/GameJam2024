@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5w6ltojx3g88"]
+
+[ext_resource type="Texture2D" uid="uid://6y8qvtq80dme" path="res://asset/progress_bar/progress_bar_background.png" id="1_jbca1"]
+[ext_resource type="Texture2D" uid="uid://c5jjwdv83yc2w" path="res://asset/progress_bar/progress_bar_top.png" id="2_wyytl"]
+[ext_resource type="Texture2D" uid="uid://dkpv6iipie3mv" path="res://asset/progress_bar/progress_bar_progress.png" id="3_oj38d"]
+[ext_resource type="Script" path="res://script/score_progress_bar.gd" id="4_6emfk"]
+
+[node name="ScoreProgressBar" type="TextureProgressBar"]
+offset_left = 437.0
+offset_top = 741.0
+offset_right = 1445.0
+offset_bottom = 1070.0
+step = 0.05
+value = 90.0
+texture_under = ExtResource("1_jbca1")
+texture_over = ExtResource("2_wyytl")
+texture_progress = ExtResource("3_oj38d")
+script = ExtResource("4_6emfk")

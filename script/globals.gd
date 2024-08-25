@@ -19,7 +19,7 @@ const SAVE_CATEGORY_PROGRESS := "Progress";
 const SAVE_KEY_THROWN_BALL_IMPACT_INDEX := "thrown_ball_impact_index";
 
 
-
+const SCENE_OPENING_CUTSCENE := "res://scene/instances/cutscene/opening_cutscene.tscn";
 const SCENE_BREAK_ROOM := "res://scene/break_room.tscn";
 const SCENE_MAIN_GAME := "res://scene/main_game.tscn";
 const SCENE_MAIN_MENU := "res://scene/main_menu.tscn";
