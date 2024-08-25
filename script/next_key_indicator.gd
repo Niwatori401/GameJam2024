@@ -3,7 +3,7 @@ extends Node2D
 @export var pass_texture : Texture2D;
 @export var fail_texture : Texture2D;
 @export var transparent_texture : Texture2D;
-
+@export var screen_off := false;
 
 var config = ConfigFile.new();
 var control_icons : Enums.BUTTON_MODE;
@@ -12,7 +12,11 @@ func _ready() -> void:
 	var status = config.load("user://config.cfg");
 	if status != OK:
 		printerr("Failed to load config in next_key_indicator");
-		
+	
+	if screen_off:
+		$NextKeyGroup.visible = false;
+		$SuccessIndicator.visible = false;
+		$ComputerBackground.modulate = Color(0.1, 0.1, 0.1, 1);
 	control_icons = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.WASD);
 
 

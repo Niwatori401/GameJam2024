@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://beffoy8mwx73a"
+path="res://.godot/imported/clipboard_new_mask.bmp-9179d91c9dea034fddcc6e77b1f585aa.res"
+
+[deps]
+
+source_file="res://asset/desk_trinkets/paper_orders/clipboard_new_mask.bmp"
+dest_files=["res://.godot/imported/clipboard_new_mask.bmp-9179d91c9dea034fddcc6e77b1f585aa.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

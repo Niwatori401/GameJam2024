@@ -5,7 +5,7 @@ const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
 const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
 
 var delay_seconds : float = 1;
-var all_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
+var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];
 
@@ -18,14 +18,25 @@ var cur_key_success := false;
 var keys_already_pressed_for_cycle := false;
 
 var cur_pressed_keys : Array[Enums.KEY_DIRECTION] = [];
+var game_over := false;
 
 func _ready() -> void:
+	SignalBus.game_loss.connect(func() : 
+		game_over = true;
+		Utility.load_scene(3, Globals.SCENE_GAME_OVER);
+		$BGM.fade_out(2.5);
+		$Fader.darken(2.5);
+		);
+	$Fader.lighten(1);
 	$BGM.fade_in(2);
 	set_random_new_keys();
 	clear_current_success();
 	
 
 func _process(delta: float) -> void:
+	if game_over:
+		return;
+		
 	cur_seconds += delta;
 	if cur_seconds > delay_seconds:
 		cur_seconds -= delay_seconds;
@@ -105,7 +116,7 @@ func set_random_new_keys():
 	current_keys.clear();
 	var num_of_keys = randi_range(MINIMUM_KEY_PRESSES_PER_CHALLENGE, MAXIMUM_KEY_PRESSES_PER_CHALLENGE);
 	for i in range(num_of_keys):
-		current_keys.append(all_keys.pick_random());
+		current_keys.append(all_game_keys.pick_random());
 	$NextKeyIndicator.set_next_key_texture(current_keys);
 
 var paper_is_up := false;

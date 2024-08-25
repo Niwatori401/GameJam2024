@@ -8,7 +8,8 @@ var wasd_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/S.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/D.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/enter.png"),
-	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/esc.png")
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/esc.png"),
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/WASD/navigation.png")
 ];
 var arrowkey_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/Up.png"),
@@ -16,7 +17,8 @@ var arrowkey_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/down.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/right.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/enter.png"),
-	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/esc.png")
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/esc.png"),
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/Arrow/navigation.png")
 ];
 var xbox_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/y.png"),
@@ -25,6 +27,7 @@ var xbox_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/b.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/a.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/b.png"),
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/dpad.png")
 ];
 var ps_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/PS/triangle.png"),
@@ -33,6 +36,7 @@ var ps_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/PS/circle.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/PS/cross.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/PS/circle.png"),
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/PS/dpad.png")
 ];
 var nintendo_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/x.png"),
@@ -41,6 +45,7 @@ var nintendo_textures : Array[Texture2D] = [
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/a.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/b.png"),
 	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/a.png"),
+	preload("res://asset/NextKeyIndicator/ControlGlyphs/NintendoXbox/dpad.png")
 ];
 
 var iconSet : Enums.BUTTON_MODE = Enums.BUTTON_MODE.ARROW;

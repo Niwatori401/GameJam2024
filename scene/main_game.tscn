@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=19 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
@@ -12,11 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_hen2x"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="9_l1df8"]
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="10_xxeil"]
-[ext_resource type="PackedScene" uid="uid://dl1nbusimy4vf" path="res://scene/trinket/paper_message.tscn" id="11_3gdr2"]
 [ext_resource type="Texture2D" uid="uid://dre63g83bqtr8" path="res://asset/desk_trinkets/paper_orders/clipboard.png" id="12_0161y"]
-[ext_resource type="Texture2D" uid="uid://tieb5p8j5vjb" path="res://asset/desk_trinkets/paper_orders/clipboard_down.png" id="13_mvfts"]
-[ext_resource type="Texture2D" uid="uid://cdtiuoxq0khfd" path="res://asset/desk_trinkets/paper_orders/clipboard_hover.png" id="14_rxlnq"]
-[ext_resource type="Texture2D" uid="uid://vf00n85dq8fh" path="res://asset/desk_trinkets/paper_orders/clipboard_startpaper.png" id="16_y7l4n"]
+[ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="15_5waki"]
 [ext_resource type="PackedScene" uid="uid://b5w6ltojx3g88" path="res://scene/UI/score_progress_bar.tscn" id="17_2xc6k"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_c8g2m"]
@@ -27,6 +24,17 @@ sampling_rate = 44100.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_fa3uv"]
 packet_sequence = SubResource("OggPacketSequence_c8g2m")
 loop = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx1cl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0161y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_kpve5")
@@ -66,41 +74,7 @@ scale = Vector2(0.371042, 0.371042)
 
 [node name="ThrowBall" parent="." instance=ExtResource("10_xxeil")]
 position = Vector2(1705, 600)
-
-[node name="BallHolder" type="StaticBody2D" parent="."]
-
-[node name="Hitbox" type="CollisionPolygon2D" parent="BallHolder"]
-position = Vector2(1705, 664)
-rotation = 3.14159
-scale = Vector2(711.07, 36.6351)
-polygon = PackedVector2Array(-4, 4, -4, -4, 4, -4, 4, 4, 0, 0)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ClipBoard" type="TextureButton" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("12_0161y")
-texture_pressed = ExtResource("13_mvfts")
-texture_hover = ExtResource("14_rxlnq")
-texture_focused = ExtResource("14_rxlnq")
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 806.0
-offset_top = 600.0
-offset_right = 1147.0
-offset_bottom = 873.0
-texture = ExtResource("16_y7l4n")
-
-[node name="PaperMessage" parent="Control" instance=ExtResource("11_3gdr2")]
-visible = false
-layout_mode = 1
+freeze = true
 
 [node name="ScoreProgressBar" parent="." instance=ExtResource("17_2xc6k")]
 offset_left = 498.0
@@ -108,4 +82,10 @@ offset_top = 780.0
 offset_right = 1506.0
 offset_bottom = 1109.0
 
-[connection signal="button_down" from="Control/ClipBoard" to="." method="_on_clip_board_button_down"]
+[node name="Clipboard" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 536)
+sprite_frames = SubResource("SpriteFrames_kx1cl")
+
+[node name="Fader" parent="." instance=ExtResource("15_5waki")]
+offset_right = 1920.0
+offset_bottom = 1080.0
