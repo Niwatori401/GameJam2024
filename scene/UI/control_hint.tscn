@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsl6rcjklo1pb"]
+
+[ext_resource type="Script" path="res://script/control_hint.gd" id="1_el3c5"]
+[ext_resource type="Texture2D" uid="uid://vewf3h3p15kx" path="res://asset/NextKeyIndicator/ControlGlyphs/WASD/w.png" id="2_un37e"]
+
+[node name="ControlHint" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_el3c5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="GlyphTexture" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_un37e")
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "- Continue"

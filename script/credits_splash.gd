@@ -8,6 +8,7 @@ var should_end : bool = false;
 var is_ending : bool = false;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = true;
 	$Fader.lighten(0.5);
 
 

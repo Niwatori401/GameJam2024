@@ -35,7 +35,7 @@ func start_progress_circle():
 func set_circle_progress(percent : float):
 	$NextKeyGroup/ProgressCircle.set_circle_full_percent(percent);
 
-func set_next_key_texture(next_key : Array[Enums.NEXT_KEY]):
+func set_next_key_texture(next_key : Array[Enums.KEY_DIRECTION]):
 	var node : Node2D;
 	
 	$NextKeyGroup/Single.visible = len(next_key) == 1;
@@ -54,6 +54,6 @@ func set_next_key_texture(next_key : Array[Enums.NEXT_KEY]):
 	
 	
 	for i in range(len(next_key)):
-		node.get_children()[i].texture = ButtonGraphics.get_texture_set(control_icons)[next_key[i]];
+		node.get_children()[i].texture = ButtonGraphics.get_texture_set()[next_key[i]];
 
 		

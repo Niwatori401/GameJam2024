@@ -29,7 +29,6 @@ func _ready() -> void:
 	initialize_video_dropdown();
 	initialize_glyph_dropdown();
 	initialize_volume_slider();
-
 	load_and_init_config_values();
 	
 	
@@ -56,6 +55,9 @@ func _on_control_glyph_dropdown_item_selected(index: int) -> void:
 	var display_glyphs = glyph_options[$Options/ControlGlyphs/ControlGlyphDropdown.get_item_text(index)];
 	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, display_glyphs);
 	config.save(Globals.USER_CONFIG_FILE);
+	ButtonGraphics.set_key_set(display_glyphs);
+	SignalBus.glyphs_updated.emit();
+
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	set_volume(value);
@@ -130,6 +132,7 @@ func load_and_init_config_values():
 			$Options/ControlGlyphs/ControlGlyphDropdown.select(glyph_index);
 			break;
 	
+	ButtonGraphics.set_key_set(control_glyphs);
 	
 	# Volume
 	set_volume(volume);

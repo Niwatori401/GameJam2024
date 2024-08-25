@@ -5,9 +5,9 @@ const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
 const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
 
 var delay_seconds : float = 1;
-var all_keys : Array[Enums.NEXT_KEY] = [Enums.NEXT_KEY.UP, Enums.NEXT_KEY.DOWN, Enums.NEXT_KEY.LEFT, Enums.NEXT_KEY.RIGHT]
+var all_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
 
-var current_keys : Array[Enums.NEXT_KEY] = [];
+var current_keys : Array[Enums.KEY_DIRECTION] = [];
 
 @export var success_sounds : Array[AudioStream];
 
@@ -17,7 +17,7 @@ var threshold_good : float = 0.9;
 var cur_key_success := false;
 var keys_already_pressed_for_cycle := false;
 
-var cur_pressed_keys : Array[Enums.NEXT_KEY] = [];
+var cur_pressed_keys : Array[Enums.KEY_DIRECTION] = [];
 
 func _ready() -> void:
 	$BGM.fade_in(2);
@@ -44,15 +44,15 @@ func _process(delta: float) -> void:
 		return;
 		
 	if Input.is_action_just_pressed("Up"):
-		handle_key_press(Enums.NEXT_KEY.UP);
+		handle_key_press(Enums.KEY_DIRECTION.UP);
 	elif Input.is_action_just_pressed("Left"):
-		handle_key_press(Enums.NEXT_KEY.LEFT);
+		handle_key_press(Enums.KEY_DIRECTION.LEFT);
 	elif Input.is_action_just_pressed("Down"):
-		handle_key_press(Enums.NEXT_KEY.DOWN);
+		handle_key_press(Enums.KEY_DIRECTION.DOWN);
 	elif Input.is_action_just_pressed("Right"):
-		handle_key_press(Enums.NEXT_KEY.RIGHT);
+		handle_key_press(Enums.KEY_DIRECTION.RIGHT);
 
-func handle_key_press(key : Enums.NEXT_KEY):
+func handle_key_press(key : Enums.KEY_DIRECTION):
 	cur_pressed_keys.append(key);
 	var pressed_score : Array[int] = [0, 0, 0, 0];
 	var assigned_score : Array[int] = [0, 0, 0, 0];
@@ -97,7 +97,7 @@ func clear_current_success():
 	cur_pressed_keys.clear();
 
 
-func play_success_sound(pressed_key_direction : Enums.NEXT_KEY) -> void:
+func play_success_sound(pressed_key_direction : Enums.KEY_DIRECTION) -> void:
 	$SFX.stop();
 	$SFX.stream = success_sounds[pressed_key_direction];
 	$SFX.play();

@@ -73,6 +73,7 @@ func start_close_box():
 	open_mode = Enums.OPEN_MODE.CLOSE;
 
 func start_open_box():
+	visible = true;
 	open_mode = Enums.OPEN_MODE.OPEN;
 
 func display_next_line():
@@ -120,6 +121,7 @@ func do_box_transitions(delta) -> bool:
 		else:
 			if open_change > scale.x:
 				scale.x = 0;
+				visible = false;
 				open_mode = Enums.OPEN_MODE.NONE;
 				return true;
 			
