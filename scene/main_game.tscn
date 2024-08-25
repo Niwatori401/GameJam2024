@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=21 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
-[ext_resource type="Texture2D" uid="uid://dthjq3vjtyate" path="res://asset/main_game_background.png" id="2_hw8oy"]
 [ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="2_i2e82"]
 [ext_resource type="AudioStream" uid="uid://en4gyi6ux02d" path="res://asset/sound/ButtonSounds/CPU DING 1 OGG.ogg" id="2_ii6ym"]
 [ext_resource type="AudioStream" uid="uid://c4rokka5u35wh" path="res://asset/sound/ButtonSounds/CPU DING 2 OGG.ogg" id="3_qewms"]
 [ext_resource type="AudioStream" uid="uid://cgcafpuo1ybwx" path="res://asset/sound/ButtonSounds/FORMSTAMP1 OGG.ogg" id="4_hho0a"]
 [ext_resource type="AudioStream" uid="uid://bfn80i1hwtcso" path="res://asset/sound/ButtonSounds/TUBE OGG.ogg" id="5_whq7l"]
+[ext_resource type="Texture2D" uid="uid://djwg5qq683s1i" path="res://asset/background/office_background.png" id="6_vqcy6"]
 [ext_resource type="Texture2D" uid="uid://cscyitfi0804o" path="res://asset/desk.png" id="7_q8brv"]
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_hen2x"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="9_l1df8"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dre63g83bqtr8" path="res://asset/desk_trinkets/paper_orders/clipboard.png" id="12_0161y"]
 [ext_resource type="Texture2D" uid="uid://tieb5p8j5vjb" path="res://asset/desk_trinkets/paper_orders/clipboard_down.png" id="13_mvfts"]
 [ext_resource type="Texture2D" uid="uid://cdtiuoxq0khfd" path="res://asset/desk_trinkets/paper_orders/clipboard_hover.png" id="14_rxlnq"]
+[ext_resource type="Texture2D" uid="uid://vf00n85dq8fh" path="res://asset/desk_trinkets/paper_orders/clipboard_startpaper.png" id="16_y7l4n"]
 [ext_resource type="PackedScene" uid="uid://b5w6ltojx3g88" path="res://scene/UI/score_progress_bar.tscn" id="17_2xc6k"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_c8g2m"]
@@ -32,9 +33,8 @@ script = ExtResource("1_kpve5")
 success_sounds = Array[AudioStream]([ExtResource("2_ii6ym"), ExtResource("3_qewms"), ExtResource("4_hho0a"), ExtResource("5_whq7l")])
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(960, 540)
-texture = ExtResource("2_hw8oy")
+texture = ExtResource("6_vqcy6")
 
 [node name="Desk" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -89,6 +89,14 @@ texture_normal = ExtResource("12_0161y")
 texture_pressed = ExtResource("13_mvfts")
 texture_hover = ExtResource("14_rxlnq")
 texture_focused = ExtResource("14_rxlnq")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 600.0
+offset_right = 1147.0
+offset_bottom = 873.0
+texture = ExtResource("16_y7l4n")
 
 [node name="PaperMessage" parent="Control" instance=ExtResource("11_3gdr2")]
 visible = false
