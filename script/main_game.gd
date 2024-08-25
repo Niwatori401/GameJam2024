@@ -76,6 +76,7 @@ func handle_key_press(key : Enums.KEY_DIRECTION):
 			fail_cur_challenge();
 			return;
 	
+	play_success_animation(key);
 	play_success_sound(key);
 	
 	# Not finished yet, but everything right for now
@@ -92,6 +93,7 @@ func succeed_cur_challenge():
 	cur_key_success = true;
 	keys_already_pressed_for_cycle = true;
 	SignalBus.key_hit.emit();
+	
 	
 func fail_cur_challenge():
 	$NextKeyIndicator.set_to_fail_icon();
@@ -119,11 +121,7 @@ func set_random_new_keys():
 		current_keys.append(all_game_keys.pick_random());
 	$NextKeyIndicator.set_next_key_texture(current_keys);
 
-var paper_is_up := false;
-func _on_clip_board_button_down() -> void:
-	if paper_is_up:
-		$Control/PaperMessage.start_move_down();
-	else:
-		$Control/PaperMessage.start_move_up();
+func play_success_animation(key_direction : Enums.KEY_DIRECTION):
+	if key_direction == Enums.KEY_DIRECTION.UP:
+		$Clipboard.cycle_clipboard_animation();
 	
-	paper_is_up = !paper_is_up;

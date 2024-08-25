@@ -1,0 +1,80 @@
+[gd_scene load_steps=16 format=3 uid="uid://bux7apbqh8fim"]
+
+[ext_resource type="Script" path="res://script/clipboard.gd" id="1_6wjiw"]
+[ext_resource type="Texture2D" uid="uid://dc52ksuwmmm4v" path="res://asset/desk_trinkets/paper_orders/clipboard_new_normal.png" id="1_pm60m"]
+[ext_resource type="Texture2D" uid="uid://b7r4qswtiuxik" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_6.png" id="2_l18gg"]
+[ext_resource type="Texture2D" uid="uid://dyqr7of7gsoou" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_1.png" id="3_vx88k"]
+[ext_resource type="Texture2D" uid="uid://bce022l7biegv" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_2.png" id="4_fxnsi"]
+[ext_resource type="Texture2D" uid="uid://d1n7p1nlygk7q" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_3.png" id="5_n3fhq"]
+[ext_resource type="Texture2D" uid="uid://drtn3s3wmca7v" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_4.png" id="6_qd0ol"]
+[ext_resource type="Texture2D" uid="uid://lc5b3gf4xfr4" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_1/paper_5.png" id="7_ahql8"]
+[ext_resource type="Texture2D" uid="uid://bcva7rtikk4vu" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_1.png" id="8_1podo"]
+[ext_resource type="Texture2D" uid="uid://y4wdl2votbcv" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_2.png" id="9_mn702"]
+[ext_resource type="Texture2D" uid="uid://13ouoyeqrlx4" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_3.png" id="10_frcj0"]
+[ext_resource type="Texture2D" uid="uid://dui7v4wb22arr" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_4.png" id="11_2piuh"]
+[ext_resource type="Texture2D" uid="uid://bqddhskohhjxb" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_5.png" id="12_wdk7n"]
+[ext_resource type="Texture2D" uid="uid://cl0i2h0234gpl" path="res://asset/desk_trinkets/paper_orders/paper_flip/cycle_2/paper_6.png" id="13_7ygje"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx1cl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vx88k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fxnsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n3fhq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qd0ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ahql8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l18gg")
+}],
+"loop": false,
+"name": &"flip_1",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1podo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mn702")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_frcj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2piuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wdk7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7ygje")
+}],
+"loop": false,
+"name": &"flip_2",
+"speed": 12.0
+}]
+
+[node name="Clipboard" type="Node2D"]
+position = Vector2(958, 600)
+script = ExtResource("1_6wjiw")
+
+[node name="ClipboardBase" type="Sprite2D" parent="."]
+texture = ExtResource("1_pm60m")
+
+[node name="RolledPaperBack" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_l18gg")
+
+[node name="ClipboardAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kx1cl")
+animation = &"flip_1"

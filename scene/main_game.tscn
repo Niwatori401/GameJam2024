@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=18 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_hen2x"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="9_l1df8"]
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="10_xxeil"]
-[ext_resource type="Texture2D" uid="uid://dre63g83bqtr8" path="res://asset/desk_trinkets/paper_orders/clipboard.png" id="12_0161y"]
+[ext_resource type="PackedScene" uid="uid://bux7apbqh8fim" path="res://scene/trinket/Clipboard.tscn" id="14_2aa7m"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="15_5waki"]
 [ext_resource type="PackedScene" uid="uid://b5w6ltojx3g88" path="res://scene/UI/score_progress_bar.tscn" id="17_2xc6k"]
 
@@ -24,17 +24,6 @@ sampling_rate = 44100.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_fa3uv"]
 packet_sequence = SubResource("OggPacketSequence_c8g2m")
 loop = true
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kx1cl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_0161y")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_kpve5")
@@ -82,10 +71,9 @@ offset_top = 780.0
 offset_right = 1506.0
 offset_bottom = 1109.0
 
-[node name="Clipboard" type="AnimatedSprite2D" parent="."]
-position = Vector2(960, 536)
-sprite_frames = SubResource("SpriteFrames_kx1cl")
+[node name="Clipboard" parent="." instance=ExtResource("14_2aa7m")]
 
 [node name="Fader" parent="." instance=ExtResource("15_5waki")]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
