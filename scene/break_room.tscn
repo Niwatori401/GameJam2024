@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
-[ext_resource type="Texture2D" uid="uid://ch5o06goohj6o" path="res://asset/background/break_room.png" id="1_jlm0p"]
 [ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="2_a8fin"]
+[ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
 [ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="3_8cv0l"]
 [ext_resource type="Texture2D" uid="uid://7pa05v0jm1ut" path="res://asset/buttons/water_cooler/water_cooler_base.png" id="3_38r4h"]
 [ext_resource type="Texture2D" uid="uid://beq6v33y56spe" path="res://asset/pepper_pressed.png" id="3_q1odl"]
@@ -23,21 +23,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hnwux")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_jlm0p")
+texture = ExtResource("2_smvn6")
 
 [node name="WaterCoolerButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1537.0
-offset_top = 296.0
-offset_right = 2263.0
-offset_bottom = 1086.0
+offset_left = 1526.0
+offset_top = 327.0
+offset_right = 2252.0
+offset_bottom = 1117.0
 scale = Vector2(0.427, 1)
 focus_neighbor_left = NodePath("../ReturnToWorkButton")
 focus_neighbor_right = NodePath("../EmployeeStoreButton")
@@ -70,12 +70,12 @@ stretch_mode = 0
 
 [node name="ReturnToWorkButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 911.0
-offset_top = 372.0
-offset_right = 1824.0
-offset_bottom = 1157.0
+offset_left = 848.0
+offset_top = 333.0
+offset_right = 1761.0
+offset_bottom = 1118.0
 rotation = -0.0523599
-scale = Vector2(0.554377, 0.530888)
+scale = Vector2(0.599235, 0.573845)
 focus_neighbor_left = NodePath("../EmployeeStoreButton")
 focus_neighbor_right = NodePath("../WaterCoolerButton")
 focus_next = NodePath("../WaterCoolerButton")

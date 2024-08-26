@@ -7,10 +7,7 @@ func _ready() -> void:
 	make_config_and_save_files_if_needed();
 	SignalBus.credit_splash_finished.connect(_on_credit_splash_finished);
 	SignalBus.back_button_pressed.connect(hide_options_menu);
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
-		get_tree().quit();
+	$OptionsMenu/Options/DeleteSaveButton.disabled = false;
 
 
 func _on_exit_game_button_button_up() -> void:

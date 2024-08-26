@@ -43,4 +43,4 @@ func _on_employee_store_button_button_down() -> void:
 func _on_return_to_work_button_button_down() -> void:
 	$Fader.darken(LONG_FADE_OUT_TIME);
 	set_buttons_disabled(true);
-	Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_MAIN_GAME);
+	Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_PRE_MAIN_GAME);

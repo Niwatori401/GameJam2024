@@ -30,9 +30,7 @@ func _ready() -> void:
 	initialize_glyph_dropdown();
 	initialize_volume_slider();
 	load_and_init_config_values();
-	
-	
-	
+	$Options/DeleteSaveButton.disabled = false;
 
 
 func _on_full_screen_checkbox_toggled(toggled_on: bool) -> void:
@@ -170,3 +168,12 @@ func _on_text_speed_slider_drag_ended(_value_changed: bool) -> void:
 
 	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, value_to_save);
 	config.save(Globals.USER_CONFIG_FILE);
+
+
+func _on_delete_save_button_button_down() -> void:
+	var savefile = ConfigFile.new();
+	savefile.load(Globals.USER_SAVE_FILE);
+	savefile.clear();
+	savefile.save(Globals.USER_SAVE_FILE);
+	$BackButton.grab_focus();
+	$Options/DeleteSaveButton.disabled = true;

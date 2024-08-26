@@ -21,5 +21,19 @@ func get_item_name() -> String:
 func get_description() -> String:
 	return description;
 
+
+
 func _on_focus_entered() -> void:
 	SignalBus.store_item_selected.emit(item_name, description, cost);
+
+
+func _on_mouse_entered() -> void:
+	SignalBus.store_item_selected.emit(item_name, description, cost);
+
+
+func _on_focus_exited() -> void:
+	SignalBus.no_item_selected.emit();
+
+
+func _on_mouse_exited() -> void:
+	SignalBus.no_item_selected.emit();

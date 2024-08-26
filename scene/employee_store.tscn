@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c37egpepk78y2"]
+[gd_scene load_steps=15 format=3 uid="uid://c37egpepk78y2"]
 
 [ext_resource type="Script" path="res://script/employee_store.gd" id="1_lcorx"]
 [ext_resource type="Texture2D" uid="uid://bk6sf1hj6oq5l" path="res://asset/background/store_1.png" id="2_hobv2"]
 [ext_resource type="Texture2D" uid="uid://canxihhafwe05" path="res://asset/background/store_2.png" id="3_8n2sp"]
 [ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="4_6srie"]
 [ext_resource type="PackedScene" uid="uid://dbu88awi58qi2" path="res://scene/store_item.tscn" id="5_epf2n"]
+[ext_resource type="Texture2D" uid="uid://c6oy5w58i07p7" path="res://asset/desk_trinkets/throw_ball/throw_ball_normal.png" id="6_ivghw"]
+[ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="6_swgdw"]
+[ext_resource type="Texture2D" uid="uid://bn2kqxp6xml3g" path="res://asset/desk_trinkets/throw_ball/throw_ball_pressed.png" id="7_7c0o0"]
+[ext_resource type="Texture2D" uid="uid://beq6v33y56spe" path="res://asset/pepper_pressed.png" id="7_yippu"]
+[ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="8_5f2sp"]
+[ext_resource type="Texture2D" uid="uid://g0egcwaivalk" path="res://asset/desk_trinkets/throw_ball/throw_ball_hover.png" id="8_08jc0"]
+[ext_resource type="Texture2D" uid="uid://cg1j44d27a21v" path="res://asset/pepper_disabled.png" id="9_gaod0"]
+[ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="10_q7gwf"]
+[ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="14_tbfow"]
 
 [node name="EmployeeStore" type="Control"]
 layout_mode = 3
@@ -67,6 +76,32 @@ text = "[center][font_size=100]Example Item[/font_size][/center]
 This item, is in fact an item"
 fit_content = true
 
+[node name="ButtonControls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -358.0
+offset_top = -1015.0
+offset_right = 442.0
+offset_bottom = -715.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.527408, 0.527408)
+theme_override_constants/separation = 130
+
+[node name="Confirm" parent="ButtonControls" instance=ExtResource("14_tbfow")]
+layout_mode = 2
+controlFunctionText = "- Buy / Confirm"
+buttonType = 4
+
+[node name="Navigation" parent="ButtonControls" instance=ExtResource("14_tbfow")]
+layout_mode = 2
+controlFunctionText = "- Navigation"
+buttonType = 6
+
 [node name="DynamicTextBox" parent="." instance=ExtResource("4_6srie")]
 layout_mode = 1
 
@@ -75,15 +110,21 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="StoreItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
+[node name="BaseballItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
-offset_left = 512.0
-offset_top = 193.0
-offset_right = 984.0
-offset_bottom = 665.0
-scale = Vector2(0.256253, 0.256253)
-description = "It's up!"
-item_name = "Upper Pepper"
+offset_left = 870.0
+offset_top = 469.0
+offset_right = 1342.0
+offset_bottom = 941.0
+scale = Vector2(0.192943, 0.192943)
+texture_normal = ExtResource("6_ivghw")
+texture_pressed = ExtResource("7_7c0o0")
+texture_hover = ExtResource("8_08jc0")
+texture_disabled = null
+texture_focused = ExtResource("8_08jc0")
+cost = 5
+description = "It has small teeth marks, as if chewed by a small dog."
+item_name = "Baseball"
 
 [node name="StoreItem2" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
@@ -104,3 +145,22 @@ offset_bottom = 869.0
 scale = Vector2(0.226222, 0.0843427)
 description = "It's quite flat"
 item_name = "Flat Pepper"
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 353.0
+offset_right = 572.0
+offset_bottom = 865.0
+scale = Vector2(0.478202, 0.451049)
+texture_normal = ExtResource("6_swgdw")
+texture_pressed = ExtResource("7_yippu")
+texture_hover = ExtResource("8_5f2sp")
+texture_disabled = ExtResource("9_gaod0")
+texture_focused = ExtResource("8_5f2sp")
+
+[node name="Fader" parent="." instance=ExtResource("10_q7gwf")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]

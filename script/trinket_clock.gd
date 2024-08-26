@@ -15,3 +15,10 @@ func _process(delta: float) -> void:
 		cur_seconds -= total_seconds_per_rotation;
 	$ClockHand.rotation_degrees = 360 * cur_seconds / total_seconds_per_rotation;
 	
+func stop_clock(reset_clock : bool = false) -> void:
+	if reset_clock:
+		$ClockHand.rotation_degrees = 0;
+		
+	not_moving = true;
+	
+	

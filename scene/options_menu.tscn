@@ -160,6 +160,16 @@ min_value = 60.0
 max_value = 240.0
 value = 60.0
 
+[node name="DeleteSaveButton" type="Button" parent="Options"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../TextSpeed/TextSpeedSlider")
+focus_neighbor_bottom = NodePath("../ControlGlyphs/ControlGlyphDropdown")
+focus_next = NodePath("../ControlGlyphs/ControlGlyphDropdown")
+focus_previous = NodePath("../TextSpeed/TextSpeedSlider")
+theme_override_colors/font_color = Color(0.505882, 0.2, 0.109804, 1)
+theme_override_font_sizes/font_size = 44
+text = "Delete Save (Irreversible)"
+
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -214,4 +224,5 @@ layout_mode = 1
 [connection signal="value_changed" from="Options/AudioSettings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="drag_ended" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_drag_ended"]
 [connection signal="value_changed" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_value_changed"]
+[connection signal="button_down" from="Options/DeleteSaveButton" to="." method="_on_delete_save_button_button_down"]
 [connection signal="button_up" from="BackButton" to="." method="_on_back_button_button_up"]

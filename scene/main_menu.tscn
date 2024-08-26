@@ -133,7 +133,7 @@ buttonType = 5
 
 [node name="Navigation" parent="ButtonControls" instance=ExtResource("9_5ftut")]
 layout_mode = 2
-controlFunctionText = "-Navigation"
+controlFunctionText = "- Navigation"
 buttonType = 6
 
 [node name="Fader" parent="." instance=ExtResource("3_va774")]
