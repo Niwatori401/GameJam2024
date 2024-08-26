@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://cjsckyf7hdxid"]
+[gd_scene load_steps=14 format=4 uid="uid://cjsckyf7hdxid"]
 
 [ext_resource type="Script" path="res://script/main_menu.gd" id="1_h3hhb"]
+[ext_resource type="PackedScene" uid="uid://dedldrw5n0p42" path="res://scene/UI/sound_button.tscn" id="2_e48vk"]
 [ext_resource type="Texture2D" uid="uid://pbc3vedlvm72" path="res://asset/mainmenu_letters/title_1.png" id="3_uyl4y"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="3_va774"]
 [ext_resource type="Texture2D" uid="uid://duw4o6nlawwjp" path="res://asset/mainmenu_letters/title_2.png" id="4_p7kbr"]
@@ -65,39 +66,20 @@ offset_right = 402.0
 offset_bottom = 1137.0
 theme_override_constants/separation = 6
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+[node name="StartGameButton" parent="VBoxContainer" instance=ExtResource("2_e48vk")]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../OptionsButton")
-focus_next = NodePath("../OptionsButton")
-focus_previous = NodePath("../ExitGameButton")
-theme_override_font_sizes/font_size = 70
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" parent="VBoxContainer" instance=ExtResource("2_e48vk")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartGameButton")
-focus_neighbor_bottom = NodePath("../GalleryButton")
-focus_next = NodePath("../GalleryButton")
-focus_previous = NodePath("../StartGameButton")
-theme_override_font_sizes/font_size = 70
 text = "Options"
 
-[node name="GalleryButton" type="Button" parent="VBoxContainer"]
+[node name="GalleryButton" parent="VBoxContainer" instance=ExtResource("2_e48vk")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../ExitGameButton")
-focus_next = NodePath("../ExitGameButton")
-focus_previous = NodePath("../OptionsButton")
-theme_override_font_sizes/font_size = 70
 text = "Gallery"
 
-[node name="ExitGameButton" type="Button" parent="VBoxContainer"]
+[node name="ExitGameButton" parent="VBoxContainer" instance=ExtResource("2_e48vk")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../GalleryButton")
-focus_neighbor_bottom = NodePath("../StartGameButton")
-focus_next = NodePath("../StartGameButton")
-focus_previous = NodePath("../GalleryButton")
-theme_override_font_sizes/font_size = 70
 text = "Exit Game"
 
 [node name="AnimatedTitle" type="AnimatedSprite2D" parent="."]

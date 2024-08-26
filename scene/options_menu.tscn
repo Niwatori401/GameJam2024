@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csy8q18vty5h8"]
+[gd_scene load_steps=6 format=3 uid="uid://csy8q18vty5h8"]
 
 [ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="1_5ynfn"]
 [ext_resource type="Script" path="res://script/options_menu.gd" id="1_jjr0b"]
+[ext_resource type="PackedScene" uid="uid://dedldrw5n0p42" path="res://scene/UI/sound_button.tscn" id="3_r172q"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="3_y8u1f"]
 [ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="4_1dgd5"]
 
@@ -64,10 +65,8 @@ fit_content = true
 [node name="ControlGlyphDropdown" type="OptionButton" parent="Options/ControlGlyphs"]
 layout_mode = 2
 tooltip_text = "Choose the button glyphs that show in-game"
-focus_neighbor_top = NodePath("../../../BackButton")
 focus_neighbor_bottom = NodePath("../../VideoSettings/VideoResolutionDropdown")
 focus_next = NodePath("../../VideoSettings/VideoResolutionDropdown")
-focus_previous = NodePath("../../../BackButton")
 theme_override_fonts/font = ExtResource("1_5ynfn")
 theme_override_font_sizes/font_size = 30
 item_count = 5
@@ -153,37 +152,26 @@ fit_content = true
 [node name="TextSpeedSlider" type="HSlider" parent="Options/TextSpeed"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../AudioSettings/VolumeSlider")
-focus_neighbor_bottom = NodePath("../../../BackButton")
-focus_next = NodePath("../../../BackButton")
 focus_previous = NodePath("../../AudioSettings/VolumeSlider")
 min_value = 60.0
 max_value = 240.0
 value = 60.0
 
-[node name="DeleteSaveButton" type="Button" parent="Options"]
+[node name="DeleteSaveButton" parent="Options" instance=ExtResource("3_r172q")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../TextSpeed/TextSpeedSlider")
-focus_neighbor_bottom = NodePath("../ControlGlyphs/ControlGlyphDropdown")
-focus_next = NodePath("../ControlGlyphs/ControlGlyphDropdown")
-focus_previous = NodePath("../TextSpeed/TextSpeedSlider")
 theme_override_colors/font_color = Color(0.505882, 0.2, 0.109804, 1)
 theme_override_font_sizes/font_size = 44
 text = "Delete Save (Irreversible)"
 
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 83.0
-offset_top = -173.0
+[node name="BackButton" parent="." instance=ExtResource("3_r172q")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 85.0
+offset_top = 911.0
 offset_right = 323.0
-offset_bottom = -70.0
-grow_vertical = 0
-focus_neighbor_top = NodePath("../Options/TextSpeed/TextSpeedSlider")
-focus_neighbor_bottom = NodePath("../Options/ControlGlyphs/ControlGlyphDropdown")
-focus_next = NodePath("../Options/ControlGlyphs/ControlGlyphDropdown")
-focus_previous = NodePath("../Options/TextSpeed/TextSpeedSlider")
+offset_bottom = 1012.0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
@@ -207,12 +195,6 @@ theme_override_constants/separation = 130
 layout_mode = 2
 controlFunctionText = "- Confirm"
 buttonType = 4
-
-[node name="Cancel_Back" parent="ButtonControls" instance=ExtResource("4_1dgd5")]
-visible = false
-layout_mode = 2
-controlFunctionText = "- Back"
-buttonType = 5
 
 [node name="Fader" parent="." instance=ExtResource("3_y8u1f")]
 visible = false

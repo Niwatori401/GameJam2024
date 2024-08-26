@@ -2,7 +2,8 @@ extends Node
 
 var trinkets = {
 	"clock": false,
-	"throw_ball": false
+	"throw_ball": false,
+	"kobold": false
 }
 
 var money : int = 0;

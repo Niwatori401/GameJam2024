@@ -4,8 +4,15 @@ extends Control
 
 
 var loading_next_area : bool = false;
+var saveFile = ConfigFile.new();
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var status = saveFile.load(Globals.USER_SAVE_FILE);
+	if status != OK:
+		printerr("Failed to load save in BreakRoom");
+
+	
 	$Fader.lighten(1);
 	$EmployeeStoreButton.grab_focus();
 	loading_next_area = false;
@@ -41,6 +48,10 @@ func _on_employee_store_button_button_down() -> void:
 
 
 func _on_return_to_work_button_button_down() -> void:
+	#var day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
+	#saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
+	#saveFile.save(Globals.USER_SAVE_FILE);
+	
 	$Fader.darken(LONG_FADE_OUT_TIME);
 	set_buttons_disabled(true);
-	Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_PRE_MAIN_GAME);
+	Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_POST_LUNCH_PRE_MAIN_GAME);

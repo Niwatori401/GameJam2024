@@ -6,17 +6,21 @@ var total_points_to_apply : float = 0;
 var max_points_per_application : float = 1;
 
 var game_over := false;
+var game_win := false;
+
 const POINTS_FOR_KEY_HIT : float = 5;
 const POINTS_FOR_KEY_FAIL : float = -5;
 
-
+func _on_game_win() -> void:
+	game_win = true;
 
 func _ready() -> void:
 	SignalBus.key_miss.connect(lose_points);
 	SignalBus.key_hit.connect(gain_points);
+	SignalBus.game_win.connect(_on_game_win);
 
 func _process(delta: float) -> void:
-	if game_over:
+	if game_over or game_win:
 		return;
 		
 	do_basic_fall_amount(delta);

@@ -5,17 +5,17 @@ const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
 const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
 
 
-var seconds_per_day : float = 30;
+var seconds_per_day : float = 60;
 var seconds_elapsed_total : float = 0;
 
 var delay_seconds : float = 1;
 var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];
-
 @export var success_sounds : Array[AudioStream];
-
 var cur_seconds : float = 0;
+
+
 
 var cur_key_success := false;
 var keys_already_pressed_for_cycle := false;
@@ -23,11 +23,19 @@ var keys_already_pressed_for_cycle := false;
 var cur_pressed_keys : Array[Enums.KEY_DIRECTION] = [];
 var game_over := false;
 
+# starts at 1, not 0
+var day_number : float = 1;
+var saveFile = ConfigFile.new();
+
 func _ready() -> void:
+	saveFile.load(Globals.USER_SAVE_FILE);
+	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
+	
 	SignalBus.game_loss.connect(func() : 
 		game_over = true;
 		Utility.load_scene(3, Globals.SCENE_GAME_OVER);
 		$BGM.fade_out(2.5);
+		get_tree().create_timer(2.5).timeout.connect(func(): $BGM.stop());
 		$Fader.darken(2.5);
 		$Trinkets/TrinketClock.stop_clock();
 		);
@@ -36,14 +44,19 @@ func _ready() -> void:
 	set_random_new_keys();
 	clear_current_success();
 	
-
+var is_loading := false;
 func _process(delta: float) -> void:
-	if game_over:
+	if Input.is_action_just_pressed("debug_12"):
+		succeed_shift();
+		
+	if game_over or is_loading:
 		return;
 	
 	seconds_elapsed_total += delta;
 	if seconds_elapsed_total >= seconds_per_day:
 		succeed_shift();
+		return;
+		
 	
 	
 	cur_seconds += delta;
@@ -134,9 +147,27 @@ func play_success_animation(key_direction : Enums.KEY_DIRECTION):
 	if key_direction == Enums.KEY_DIRECTION.UP:
 		$Clipboard.cycle_clipboard_animation();
 	
+func is_prelunch() -> bool:
+	return abs(day_number - roundi(day_number)) < 0.002;
 	
+
 func succeed_shift():
+	SignalBus.game_win.emit();
+	is_loading = true;
+	if is_prelunch():
+		$LunchTimeSound.play();
+		Utility.load_scene(3, Globals.SCENE_PRE_LUNCH_MAIN_GAME);
+	else:
+		$EndOfDaySound.play();
+		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
+	
+	$BGM.fade_out(2.5);
+	get_tree().create_timer(2.5).timeout.connect(func(): $BGM.stop());
+
+	saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
+	saveFile.save(Globals.USER_SAVE_FILE);
+	
 	$Fader.darken(3);
 	# play sound for lunch time
 	$Trinkets/TrinketClock.stop_clock(true);
-	Utility.load_scene(3, Globals.SCENE_PRE_LUNCH_MAIN_GAME);
+	

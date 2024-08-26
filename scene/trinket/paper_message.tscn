@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl1nbusimy4vf"]
+[gd_scene load_steps=6 format=3 uid="uid://dl1nbusimy4vf"]
 
 [ext_resource type="Script" path="res://script/paper_message.gd" id="1_17a31"]
 [ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="1_eyybc"]
+[ext_resource type="FontFile" uid="uid://0vo556df70rv" path="res://asset/font/roboto-condensed/RobotoCondensed-Italic.ttf" id="3_858o5"]
+[ext_resource type="FontFile" uid="uid://ogjfxs51u5d7" path="res://asset/font/roboto-condensed/RobotoCondensed-BoldItalic.ttf" id="4_8bcgt"]
+[ext_resource type="FontFile" uid="uid://ci4yykne7hnhx" path="res://asset/font/roboto-condensed/RobotoCondensed-Bold.ttf" id="5_8w8is"]
 
 [node name="PaperMessage" type="Control"]
 layout_mode = 3
@@ -32,6 +35,9 @@ offset_bottom = 521.322
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_eyybc")
+theme_override_fonts/italics_font = ExtResource("3_858o5")
+theme_override_fonts/bold_italics_font = ExtResource("4_8bcgt")
+theme_override_fonts/bold_font = ExtResource("5_8w8is")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "Welcome, new hire. 

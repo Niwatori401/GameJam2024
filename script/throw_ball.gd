@@ -48,7 +48,7 @@ func _integrate_forces(state):
 		state.linear_velocity = launch_velocity;
 		const GLASS_BREAK_VELOCITY_MAGNITUDE = 1600;
 		if sqrt(launch_velocity[0]**2 + launch_velocity[1]**2) >= GLASS_BREAK_VELOCITY_MAGNITUDE:
-			get_tree().create_timer(2.5).timeout.connect(func ():
+			get_tree().create_timer(2.0).timeout.connect(func ():
 				play_current_sound();
 				visible = false;
 				impact_index += 1;
@@ -74,7 +74,7 @@ func play_current_sound():
 	else:
 		$SFX_Squeak.volume_db = $SFX_Squeak.volume_db - 20;
 		$SFX_Squeak.play();
-		$SFX_Squeak.finished.connect(func (): $SFX_Squeak.volume_db = $SFX_Squeak.volume_db + 10);
+		$SFX_Squeak.finished.connect(func (): $SFX_Squeak.volume_db = $SFX_Squeak.volume_db + 20);
 
 func _on_mouse_shape_entered(shape_idx: int) -> void:
 	is_hovered_over = true;

@@ -65,3 +65,4 @@ layout_mode = 1
 stream = ExtResource("7_wp1nc")
 autoplay = true
 bus = &"Music"
+high_db = 10.0
