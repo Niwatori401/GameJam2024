@@ -79,12 +79,11 @@ func handle_key_press(key : Enums.KEY_DIRECTION):
 	play_success_animation(key);
 	play_success_sound(key);
 	
-	# Not finished yet, but everything right for now
+	# The player is not finished yet, but everything right for now
 	if len(cur_pressed_keys) < len(current_keys):
 		return;
 	
 	succeed_cur_challenge();
-	#play_success_sound(key);
 	return;
 
 

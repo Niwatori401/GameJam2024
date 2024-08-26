@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf7m2nikhypqm"]
+[gd_scene load_steps=10 format=3 uid="uid://bf7m2nikhypqm"]
 
 [ext_resource type="Script" path="res://script/throw_ball.gd" id="1_s3hr5"]
 [ext_resource type="Texture2D" uid="uid://br4yqo7fy86ti" path="res://asset/desk_trinkets/throw_ball/throw_ball.png" id="1_y1jrb"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dvham8d0xrepu" path="res://asset/sound/sfx/box.ogg" id="4_gxtm4"]
 [ext_resource type="AudioStream" uid="uid://b6dqsv7om6m2" path="res://asset/sound/sfx/cat.ogg" id="5_ardht"]
 [ext_resource type="AudioStream" uid="uid://rgvj52og26kh" path="res://asset/sound/sfx/explosion_car_alarm.ogg" id="6_1syhg"]
+[ext_resource type="AudioStream" uid="uid://by4hvsqvrwjqe" path="res://asset/sound/sfx/ball_squeak.ogg" id="7_k655a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_efkkk"]
 friction = 0.5
@@ -43,6 +44,11 @@ volume_db = -15.0
 [node name="SFX3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1syhg")
 volume_db = -15.0
+
+[node name="SFX_Squeak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k655a")
+volume_db = -8.096
+bus = &"Music"
 
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://d3kjj1loy3lti"
+path="res://.godot/imported/pail_mask.png-7bbcefa41deb59ad7bb44dbd997adc50.res"
+
+[deps]
+
+source_file="res://asset/desk_trinkets/lunch_pail/pail_mask.png"
+dest_files=["res://.godot/imported/pail_mask.png-7bbcefa41deb59ad7bb44dbd997adc50.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
