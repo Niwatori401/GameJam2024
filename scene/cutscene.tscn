@@ -46,3 +46,7 @@ layout_mode = 1
 [node name="Fader" parent="." instance=ExtResource("10_5kvty")]
 visible = false
 layout_mode = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"

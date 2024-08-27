@@ -3,6 +3,7 @@ extends Control
 
 # 0 for instant
 @export var letters_per_second : float = 240;
+
 var time_since_last_character : float = 0;
 
 var text_to_display : Array = [];
@@ -46,23 +47,38 @@ func _process(delta: float) -> void:
 	time_since_last_character += delta;
 	
 	if time_since_last_character >= (1 / letters_per_second):
-		while text_to_display[text_to_display_index][current_display_letter_index] == "[":
-			while text_to_display[text_to_display_index][current_display_letter_index] != "]":
-				$SpeechText.text += text_to_display[text_to_display_index][current_display_letter_index];
+		var text_to_add : String = "";
+		while not done_with_last_letter() and text_to_display[text_to_display_index][current_display_letter_index] == "[":
+			while not done_with_last_letter() and text_to_display[text_to_display_index][current_display_letter_index] != "]":
+				text_to_add += text_to_display[text_to_display_index][current_display_letter_index];
 				current_display_letter_index += 1;
 				if done_with_last_letter():
+					$SpeechText.text += text_to_add;
 					time_since_last_character = 0;
 					return;
 			
-			$SpeechText.text += "]";
+			text_to_add += "]";
 			current_display_letter_index += 1;
-
+		
+		if text_to_add != "":
+			$SpeechText.text += text_to_add;
+		
 		if done_with_last_letter():
 			time_since_last_character = 0;
 			return;
-			
+		
+		if text_to_display[text_to_display_index][current_display_letter_index] == "/":
+			if text_to_display[text_to_display_index][current_display_letter_index + 1] == "n":
+				$SpeechText.text += "\n";
+				current_display_letter_index += 2;
+		
+		
 		for i in range(floor(time_since_last_character / (1 / letters_per_second))):
-			$SpeechText.text += text_to_display[text_to_display_index][current_display_letter_index]
+			var cur_char = text_to_display[text_to_display_index][current_display_letter_index];
+			if cur_char == "[" or cur_char == "]":
+				break;
+				
+			$SpeechText.text += cur_char;
 			current_display_letter_index += 1;
 			if done_with_last_letter():
 				break;

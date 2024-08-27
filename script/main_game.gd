@@ -32,8 +32,13 @@ func _ready() -> void:
 	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
 	
 	SignalBus.game_loss.connect(func() : 
+		var first_hr_visit = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, false);
 		game_over = true;
-		Utility.load_scene(3, Globals.SCENE_GAME_OVER);
+		
+		if first_hr_visit:
+			Utility.load_scene(3, Globals.SCENE_HR_FIRST_TIME_CUTSCENE);
+		else:
+			Utility.load_scene(3, Globals.SCENE_GAME_OVER);
 		$BGM.fade_out(2.5);
 		get_tree().create_timer(2.5).timeout.connect(func(): $BGM.stop());
 		$Fader.darken(2.5);
