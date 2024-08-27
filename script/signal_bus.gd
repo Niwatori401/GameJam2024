@@ -9,3 +9,4 @@ signal game_loss
 signal game_win
 signal key_miss
 signal key_hit
+signal save_deleted

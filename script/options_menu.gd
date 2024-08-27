@@ -177,3 +177,4 @@ func _on_delete_save_button_button_down() -> void:
 	savefile.save(Globals.USER_SAVE_FILE);
 	$BackButton.grab_focus();
 	$Options/DeleteSaveButton.disabled = true;
+	SignalBus.save_deleted.emit();

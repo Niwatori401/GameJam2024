@@ -32,7 +32,7 @@ func _ready() -> void:
 	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
 	
 	SignalBus.game_loss.connect(func() : 
-		var first_hr_visit = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, false);
+		var first_hr_visit = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, true);
 		game_over = true;
 		
 		if first_hr_visit:

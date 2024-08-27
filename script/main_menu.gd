@@ -12,6 +12,7 @@ func _ready() -> void:
 
 	SignalBus.credit_splash_finished.connect(_on_credit_splash_finished);
 	SignalBus.back_button_pressed.connect(hide_options_menu);
+	SignalBus.save_deleted.connect(func() : $VBoxContainer/StartGameButton.text = "Start Game");
 	$OptionsMenu/Options/DeleteSaveButton.disabled = false;
 
 

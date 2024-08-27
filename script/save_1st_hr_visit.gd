@@ -8,5 +8,5 @@ func _ready() -> void:
 		printerr("Failed to load save in extra_script on HRFirstEncounter");
 		return;
 		
-	saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, true);
+	saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, false);
 	saveFile.save(Globals.USER_SAVE_FILE);
