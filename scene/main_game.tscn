@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=22 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
 [ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="2_i2e82"]
 [ext_resource type="AudioStream" uid="uid://en4gyi6ux02d" path="res://asset/sound/ButtonSounds/CPU DING 1 OGG.ogg" id="2_ii6ym"]
-[ext_resource type="AudioStream" uid="uid://c4rokka5u35wh" path="res://asset/sound/ButtonSounds/CPU DING 2 OGG.ogg" id="3_qewms"]
 [ext_resource type="AudioStream" uid="uid://cgcafpuo1ybwx" path="res://asset/sound/ButtonSounds/FORMSTAMP1 OGG.ogg" id="4_hho0a"]
+[ext_resource type="AudioStream" uid="uid://dry8ncoyy8ybr" path="res://asset/sound/sfx/stamp1.ogg" id="4_jga3c"]
 [ext_resource type="AudioStream" uid="uid://bfn80i1hwtcso" path="res://asset/sound/ButtonSounds/TUBE OGG.ogg" id="5_whq7l"]
 [ext_resource type="Texture2D" uid="uid://djwg5qq683s1i" path="res://asset/background/office_background.png" id="6_vqcy6"]
 [ext_resource type="Texture2D" uid="uid://cscyitfi0804o" path="res://asset/desk.png" id="7_q8brv"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="10_xxeil"]
 [ext_resource type="PackedScene" uid="uid://bux7apbqh8fim" path="res://scene/trinket/Clipboard.tscn" id="14_2aa7m"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="15_5waki"]
+[ext_resource type="PackedScene" uid="uid://ccjsuhsgj7fn3" path="res://scene/trinket/stamp_1.tscn" id="15_wk0dy"]
+[ext_resource type="PackedScene" uid="uid://bs165tsbtojqj" path="res://scene/trinket/stamp_2.tscn" id="16_1v3if"]
 [ext_resource type="AudioStream" uid="uid://cjioeey2lre4q" path="res://asset/sound/sfx/day_end_bell.ogg" id="16_w5x4k"]
 [ext_resource type="PackedScene" uid="uid://b5w6ltojx3g88" path="res://scene/UI/score_progress_bar.tscn" id="17_2xc6k"]
 [ext_resource type="AudioStream" uid="uid://bpybcwpsknqwi" path="res://asset/sound/sfx/lunch_whistle.ogg" id="17_h8jnm"]
@@ -29,7 +31,7 @@ loop = true
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_kpve5")
-success_sounds = Array[AudioStream]([ExtResource("2_ii6ym"), ExtResource("3_qewms"), ExtResource("4_hho0a"), ExtResource("5_whq7l")])
+success_sounds = Array[AudioStream]([ExtResource("2_ii6ym"), ExtResource("4_hho0a"), ExtResource("4_jga3c"), ExtResource("5_whq7l")])
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -50,7 +52,6 @@ texture = ExtResource("9_hen2x")
 
 [node name="BGM" parent="." instance=ExtResource("2_i2e82")]
 stream = SubResource("AudioStreamOggVorbis_fa3uv")
-autoplay = true
 low_db = -30.0
 high_db = -20.0
 
@@ -74,6 +75,12 @@ offset_right = 1506.0
 offset_bottom = 1109.0
 
 [node name="Clipboard" parent="." instance=ExtResource("14_2aa7m")]
+
+[node name="Stamp_2" parent="." instance=ExtResource("16_1v3if")]
+position = Vector2(1167, 581)
+
+[node name="Stamp_1" parent="." instance=ExtResource("15_wk0dy")]
+position = Vector2(1161, 692)
 
 [node name="Fader" parent="." instance=ExtResource("15_5waki")]
 visible = false

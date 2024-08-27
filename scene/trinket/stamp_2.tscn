@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://bs165tsbtojqj"]
+
+[ext_resource type="Texture2D" uid="uid://nc0ugapfw8by" path="res://asset/desk_trinkets/stamp2/stamp2_0.png" id="1_2vf8v"]
+[ext_resource type="Texture2D" uid="uid://t8x1il2wb4x5" path="res://asset/desk_trinkets/stamp2/stamp2_1.png" id="2_n11ee"]
+[ext_resource type="Texture2D" uid="uid://bdq68xycohltr" path="res://asset/desk_trinkets/stamp2/stamp2_2.png" id="3_a3hgr"]
+[ext_resource type="Texture2D" uid="uid://bq8lao0puojm6" path="res://asset/desk_trinkets/stamp2/stamp2_3.png" id="4_5dc6x"]
+[ext_resource type="Texture2D" uid="uid://465lwaqs3k2k" path="res://asset/desk_trinkets/stamp2/stamp2_4.png" id="5_1cmn5"]
+[ext_resource type="Texture2D" uid="uid://co36v7r1jt8i8" path="res://asset/desk_trinkets/stamp2/stamp2_5.png" id="6_pwfrn"]
+[ext_resource type="Texture2D" uid="uid://dkomg5460vrvk" path="res://asset/desk_trinkets/stamp2/stamp2_6.png" id="7_uji63"]
+[ext_resource type="Texture2D" uid="uid://b15x0jpi8jirq" path="res://asset/desk_trinkets/stamp2/stamp2_7.png" id="8_ap8cn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg7v7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2vf8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n11ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a3hgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5dc6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1cmn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pwfrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uji63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ap8cn")
+}],
+"loop": false,
+"name": &"stamp2",
+"speed": 24.0
+}]
+
+[node name="Stamp_2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_xg7v7")
+animation = &"stamp2"

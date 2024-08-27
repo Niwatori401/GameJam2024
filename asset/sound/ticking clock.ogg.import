@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/ticking clock.ogg-bb3f0ce5a5f8d540f5007cdc5c5
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

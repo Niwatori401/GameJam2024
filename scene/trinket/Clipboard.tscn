@@ -78,3 +78,5 @@ texture = ExtResource("2_l18gg")
 [node name="ClipboardAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kx1cl")
 animation = &"flip_1"
+frame = 5
+frame_progress = 1.0

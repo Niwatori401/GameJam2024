@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://ccjsuhsgj7fn3"]
+
+[ext_resource type="Texture2D" uid="uid://bcl0wngbpafrw" path="res://asset/desk_trinkets/stamp1/stamp1_0.png" id="1_iwfs0"]
+[ext_resource type="Texture2D" uid="uid://c2qj01uy44f0a" path="res://asset/desk_trinkets/stamp1/stamp1_1.png" id="2_upt2b"]
+[ext_resource type="Texture2D" uid="uid://ctqye0gbush1y" path="res://asset/desk_trinkets/stamp1/stamp1_2.png" id="3_gde0r"]
+[ext_resource type="Texture2D" uid="uid://bkvldcqd853xc" path="res://asset/desk_trinkets/stamp1/stamp1_3.png" id="4_r0qbr"]
+[ext_resource type="Texture2D" uid="uid://bxgwirdl3lifc" path="res://asset/desk_trinkets/stamp1/stamp1_4.png" id="5_cmmqc"]
+[ext_resource type="Texture2D" uid="uid://csnruh4mk7e0a" path="res://asset/desk_trinkets/stamp1/stamp1_5.png" id="6_2gcmh"]
+[ext_resource type="Texture2D" uid="uid://drhkm7mkmcgye" path="res://asset/desk_trinkets/stamp1/stamp1_6.png" id="7_bxq6s"]
+[ext_resource type="Texture2D" uid="uid://f2qig2k8v3wh" path="res://asset/desk_trinkets/stamp1/stamp1_7.png" id="8_5hg8w"]
+[ext_resource type="Script" path="res://script/stamp_1.gd" id="8_ffdyy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d155u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iwfs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_upt2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gde0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r0qbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cmmqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2gcmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bxq6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5hg8w")
+}],
+"loop": false,
+"name": &"stamp1",
+"speed": 24.0
+}]
+
+[node name="Stamp_1" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_d155u")
+animation = &"stamp1"
+script = ExtResource("8_ffdyy")

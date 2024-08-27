@@ -26,14 +26,16 @@ func _process(delta: float) -> void:
 		$ColorRect.modulate.a = clampf(cur_fade_seconds / goal_fade_seconds, 0, 1);
 	else:
 		$ColorRect.modulate.a = clampf(1 - cur_fade_seconds / goal_fade_seconds, 0, 1);
-	
+
 
 func darken(seconds_to_fade : float):
+	visible = true;
 	cur_fade_seconds = 0;
 	goal_fade_seconds = seconds_to_fade;
 	fade_mode = FADE_DIRECTION.DARKEN;
 	
 func lighten(seconds_to_fade : float):
+	visible = true;
 	cur_fade_seconds = 0;
 	goal_fade_seconds = seconds_to_fade;
 	fade_mode = FADE_DIRECTION.LIGHTEN;

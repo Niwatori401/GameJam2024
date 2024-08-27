@@ -23,6 +23,7 @@ var skip_frame := false;
 func _ready() -> void:
 	assert(len(delays) == len(frames));
 	assert(len(delays) == len(text));
+	$BGM.fade_in(2);
 	$DynamicTextBox.visible = false;
 	$Fader.lighten(INITIAL_FADE_IN_DELAY);
 	$Foreground.texture = frames[0];
@@ -50,6 +51,7 @@ func _process(delta: float) -> void:
 			if should_end_cutscene():
 				if not is_ending:
 					$Fader.darken(2);
+					$BGM.fade_out(2);
 					Utility.load_scene(2, scene_to_load_upon_completion);
 					is_ending = true;
 				return;

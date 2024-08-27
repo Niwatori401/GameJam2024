@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4nndm5sqvkq"]
+
+[ext_resource type="Script" path="res://script/button_listener_label.gd" id="1_d2iyg"]
+
+[node name="ButtonListenerLabel" type="RichTextLabel"]
+offset_right = 1920.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+theme_override_colors/font_outline_color = Color(0.462291, 0.462291, 0.462291, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Lorem Ipsum[/center]"
+script = ExtResource("1_d2iyg")

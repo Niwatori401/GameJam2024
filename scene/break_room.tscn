@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=16 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
 [ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
+[ext_resource type="PackedScene" uid="uid://86syd1gxc5vg" path="res://scene/button_with_label.tscn" id="3_2hga7"]
 [ext_resource type="Texture2D" uid="uid://7pa05v0jm1ut" path="res://asset/buttons/water_cooler/water_cooler_base.png" id="3_38r4h"]
 [ext_resource type="Texture2D" uid="uid://f8ff6llbadrc" path="res://asset/buttons/water_cooler/water_cooler_pressed.png" id="4_l33bx"]
 [ext_resource type="Texture2D" uid="uid://cpslbpwthb62l" path="res://asset/buttons/water_cooler/water_cooler_highlighted.png" id="5_ia5jr"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cph5gifko5fnu" path="res://asset/buttons/store/store_hover.png" id="8_t8ryg"]
 [ext_resource type="BitMap" uid="uid://d1x22wmqiqgu2" path="res://asset/buttons/store/store_mask.png" id="9_k7d1s"]
 [ext_resource type="Texture2D" uid="uid://crd1dknsuo5bd" path="res://asset/buttons/table/table_selected.png" id="9_rphxu"]
+[ext_resource type="PackedScene" uid="uid://q4nndm5sqvkq" path="res://scene/button_listener_label.tscn" id="14_nf8sm"]
 
 [node name="BreakRoom" type="Control"]
 layout_mode = 3
@@ -32,60 +34,54 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_smvn6")
 
-[node name="WaterCoolerButton" type="TextureButton" parent="."]
+[node name="EmployeeStoreButton" parent="." instance=ExtResource("3_2hga7")]
 layout_mode = 0
-offset_left = 1526.0
-offset_top = 327.0
-offset_right = 2252.0
-offset_bottom = 1117.0
-scale = Vector2(0.427, 1)
-focus_neighbor_left = NodePath("../ReturnToWorkButton")
-focus_neighbor_right = NodePath("../EmployeeStoreButton")
-focus_next = NodePath("../EmployeeStoreButton")
-focus_previous = NodePath("../ReturnToWorkButton")
-texture_normal = ExtResource("3_38r4h")
-texture_pressed = ExtResource("4_l33bx")
-texture_hover = ExtResource("5_ia5jr")
-texture_focused = ExtResource("5_ia5jr")
-stretch_mode = 0
-
-[node name="EmployeeStoreButton" type="TextureButton" parent="."]
-layout_mode = 0
+offset_left = 0.0
 offset_right = 597.0
 offset_bottom = 944.0
-focus_neighbor_left = NodePath("../WaterCoolerButton")
-focus_neighbor_right = NodePath("../ReturnToWorkButton")
-focus_next = NodePath("../ReturnToWorkButton")
-focus_previous = NodePath("../WaterCoolerButton")
 texture_normal = ExtResource("6_r7qtk")
 texture_pressed = ExtResource("7_1e2w5")
 texture_hover = ExtResource("8_t8ryg")
 texture_focused = ExtResource("8_t8ryg")
 texture_click_mask = ExtResource("9_k7d1s")
-stretch_mode = 0
+button_description_text = "Employee Store"
 
-[node name="ReturnToWorkButton" type="TextureButton" parent="."]
+[node name="WaterCoolerButton" parent="." instance=ExtResource("3_2hga7")]
+layout_mode = 1
+offset_left = 1526.0
+offset_top = 327.0
+offset_right = 1526.0
+offset_bottom = 327.0
+texture_normal = ExtResource("3_38r4h")
+texture_pressed = ExtResource("4_l33bx")
+texture_hover = ExtResource("5_ia5jr")
+texture_focused = ExtResource("5_ia5jr")
+button_description_text = "Water Cooler"
+
+[node name="ReturnToWorkButton" parent="." instance=ExtResource("3_2hga7")]
 layout_mode = 0
-offset_left = 848.0
-offset_top = 333.0
-offset_right = 1761.0
-offset_bottom = 1118.0
+offset_left = 828.0
+offset_top = 327.0
+offset_right = 1444.0
+offset_bottom = 771.0
 rotation = -0.0523599
-scale = Vector2(0.599235, 0.573845)
-focus_neighbor_left = NodePath("../EmployeeStoreButton")
-focus_neighbor_right = NodePath("../WaterCoolerButton")
-focus_next = NodePath("../WaterCoolerButton")
-focus_previous = NodePath("../EmployeeStoreButton")
+scale = Vector2(0.934113, 1.03863)
 texture_normal = ExtResource("7_ahy5g")
 texture_pressed = ExtResource("8_h1d2c")
 texture_hover = ExtResource("9_rphxu")
 texture_focused = ExtResource("9_rphxu")
-stretch_mode = 0
+button_description_text = "End Lunch"
+
+[node name="ButtonLabel" parent="." instance=ExtResource("14_nf8sm")]
+layout_mode = 1
+offset_top = 917.0
+offset_bottom = 1117.0
+theme_override_colors/default_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [node name="Fader" parent="." instance=ExtResource("6_724lq")]
 visible = false
 layout_mode = 1
 
-[connection signal="button_down" from="WaterCoolerButton" to="." method="_on_water_cooler_button_button_down"]
 [connection signal="button_down" from="EmployeeStoreButton" to="." method="_on_employee_store_button_button_down"]
+[connection signal="button_down" from="WaterCoolerButton" to="." method="_on_water_cooler_button_button_down"]
 [connection signal="button_down" from="ReturnToWorkButton" to="." method="_on_return_to_work_button_button_down"]

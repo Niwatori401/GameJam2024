@@ -4,6 +4,24 @@ extends Node2D
 @export var show_clipboard := false;
 @export var show_message := false;
 
+var day_splash_screens : Array[Texture2D] = [
+	preload("res://asset/background/day_counter/day1.png"),
+	preload("res://asset/background/day_counter/day2.png"),
+	preload("res://asset/background/day_counter/day3.png"),
+	preload("res://asset/background/day_counter/day4.png"),
+	preload("res://asset/background/day_counter/day5.png"),
+	preload("res://asset/background/day_counter/day6.png"),
+	preload("res://asset/background/day_counter/day7.png"),
+	preload("res://asset/background/day_counter/day8.png"),
+	preload("res://asset/background/day_counter/day9.png"),
+	preload("res://asset/background/day_counter/day10.png"),
+	preload("res://asset/background/day_counter/day11.png"),
+	preload("res://asset/background/day_counter/day12.png"),
+	preload("res://asset/background/day_counter/day13.png"),
+	preload("res://asset/background/day_counter/day14.png"),
+	preload("res://asset/background/day_counter/day_x.png"),
+]
+
 var clipboard_messages = [
 	#1
 	"Welcome, new hire. 
@@ -52,7 +70,17 @@ func _ready() -> void:
 	saveFile.load(Globals.USER_SAVE_FILE);
 	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
 	
-	$NonGameOffice/Fader.lighten(2);
+	var is_beginning_of_day = show_clipboard and show_message;
+	if is_beginning_of_day:
+		$NonGameOffice/TextureFader.texture = day_splash_screens[clampi(floori(day_number) - 1, 0, 14)];
+		$NonGameOffice/TextureFader.lighten(2, 2);
+		$NonGameOffice/Fader.visible = false;
+	else:
+		$NonGameOffice/TextureFader.visible = false;
+		$NonGameOffice/Fader.lighten(2);
+
+	
+	
 	$BGM.fade_in(2);
 	
 	$NonGameOffice/ClipBoard.visible = show_clipboard;
@@ -64,6 +92,7 @@ func _ready() -> void:
 		$NonGameOffice/LunchPail.grab_focus();
 		
 	$NonGameOffice/StartPage.visible = should_show_start_page();
+	$NonGameOffice/ManagementNote.visible = show_message;
 
 
 func _process(delta: float) -> void:
@@ -78,7 +107,7 @@ func get_clipboard_text_for_day():
 
 
 func should_show_start_page() -> bool:
-	return (show_clipboard and not show_message) or paper_viewed  or get_clipboard_text_for_day() == "";
+	return (show_clipboard and (not show_message or get_clipboard_text_for_day() == "")) or paper_viewed;
 	
 
 var paper_viewed := false;
@@ -99,7 +128,10 @@ func _on_clip_board_button_down() -> void:
 	if show_message and not paper_viewed:
 		var text_for_day : String = get_clipboard_text_for_day();
 		const TRANSITION_TIME : float = 0.65;
-		get_tree().create_timer(TRANSITION_TIME).timeout.connect(func(): $NonGameOffice/StartPage.visible = true);
+		get_tree().create_timer(TRANSITION_TIME).timeout.connect(func(): 
+			$NonGameOffice/StartPage.visible = true
+			$NonGameOffice/ManagementNote.visible = false;
+			);
 		
 		$NonGameOffice/PaperMessage.set_text(text_for_day);
 		$NonGameOffice/PaperMessage.start_move_up(TRANSITION_TIME);

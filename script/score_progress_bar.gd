@@ -15,7 +15,7 @@ func _on_game_win() -> void:
 	game_win = true;
 
 func _ready() -> void:
-	SignalBus.key_miss.connect(lose_points);
+	SignalBus.key_challenge_fail.connect(lose_points);
 	SignalBus.key_hit.connect(gain_points);
 	SignalBus.game_win.connect(_on_game_win);
 

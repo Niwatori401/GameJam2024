@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cua4p08opu3yu"]
+[gd_scene load_steps=12 format=3 uid="uid://cua4p08opu3yu"]
 
 [ext_resource type="Script" path="res://script/cutscene.gd" id="1_3m3ul"]
 [ext_resource type="Texture2D" uid="uid://uniphsjmwppv" path="res://asset/cutscene/intro/1.png" id="2_lgjel"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://mkduf1sc2k4q" path="res://asset/cutscene/intro/7.png" id="8_8snqg"]
 [ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="9_8vw7t"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="10_5kvty"]
+[ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="11_xhtt8"]
 
 [node name="Cutscene" type="Control"]
 layout_mode = 3
@@ -47,6 +48,5 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
+[node name="BGM" parent="." instance=ExtResource("11_xhtt8")]
 autoplay = true
-bus = &"Music"

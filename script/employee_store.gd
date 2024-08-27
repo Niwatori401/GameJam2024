@@ -4,8 +4,8 @@ var current_item_name : String = "";
 
 func _ready() -> void:
 	$Fader.lighten(1);
-	$Background_1.visible = randi_range(0, 1) == 0;
-	$Background_2.visible = not $Background_1.visible;
+	$Background_1.visible = true;
+	$Background_2.visible = false;
 	SignalBus.store_item_selected.connect(set_text_for_currently_selected_item);
 	SignalBus.no_item_selected.connect(hide_description);
 	$BackButton.grab_focus();
