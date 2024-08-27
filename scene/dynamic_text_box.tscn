@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://gs525m4r8f4r"]
+[gd_scene load_steps=8 format=3 uid="uid://gs525m4r8f4r"]
 
 [ext_resource type="Script" path="res://script/dynamic_text_box.gd" id="1_pfiob"]
 [ext_resource type="Texture2D" uid="uid://owvfduehu4tm" path="res://asset/speech_box.png" id="2_ck060"]
 [ext_resource type="FontFile" uid="uid://rg52w6i7c1sx" path="res://asset/font/roboto-condensed/RobotoCondensed-Regular.ttf" id="3_ratc2"]
 [ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="3_tsuhq"]
-[ext_resource type="Texture2D" uid="uid://blw1pxdhkc36n" path="res://asset/next_arrow.png" id="3_xdb4a"]
 [ext_resource type="FontFile" uid="uid://0vo556df70rv" path="res://asset/font/roboto-condensed/RobotoCondensed-Italic.ttf" id="4_jfs4b"]
 [ext_resource type="FontFile" uid="uid://ogjfxs51u5d7" path="res://asset/font/roboto-condensed/RobotoCondensed-BoldItalic.ttf" id="5_8e7yv"]
 [ext_resource type="FontFile" uid="uid://ci4yykne7hnhx" path="res://asset/font/roboto-condensed/RobotoCondensed-Bold.ttf" id="6_a7f5v"]
@@ -66,19 +65,3 @@ offset_bottom = 928.0
 scale = Vector2(0.466223, 0.466223)
 controlFunctionText = ""
 buttonType = 4
-
-[node name="ContinueIcon_old" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 616.0
-offset_top = -152.0
-offset_right = 676.0
-offset_bottom = -92.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_xdb4a")

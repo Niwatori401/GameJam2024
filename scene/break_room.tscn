@@ -1,17 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=13 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
-[ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="2_a8fin"]
 [ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
-[ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="3_8cv0l"]
 [ext_resource type="Texture2D" uid="uid://7pa05v0jm1ut" path="res://asset/buttons/water_cooler/water_cooler_base.png" id="3_38r4h"]
-[ext_resource type="Texture2D" uid="uid://beq6v33y56spe" path="res://asset/pepper_pressed.png" id="3_q1odl"]
 [ext_resource type="Texture2D" uid="uid://f8ff6llbadrc" path="res://asset/buttons/water_cooler/water_cooler_pressed.png" id="4_l33bx"]
 [ext_resource type="Texture2D" uid="uid://cpslbpwthb62l" path="res://asset/buttons/water_cooler/water_cooler_highlighted.png" id="5_ia5jr"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="6_724lq"]
-[ext_resource type="Texture2D" uid="uid://cg1j44d27a21v" path="res://asset/pepper_disabled.png" id="6_k37yi"]
+[ext_resource type="Texture2D" uid="uid://dcc6ttm4p38rh" path="res://asset/buttons/store/store_normal.png" id="6_r7qtk"]
+[ext_resource type="Texture2D" uid="uid://ru8x4j8kssiv" path="res://asset/buttons/store/store_pressed.png" id="7_1e2w5"]
 [ext_resource type="Texture2D" uid="uid://cip8qxkcqg1pe" path="res://asset/buttons/table/table_normal.png" id="7_ahy5g"]
 [ext_resource type="Texture2D" uid="uid://cwip7jrnk384p" path="res://asset/buttons/table/table_pressed.png" id="8_h1d2c"]
+[ext_resource type="Texture2D" uid="uid://cph5gifko5fnu" path="res://asset/buttons/store/store_hover.png" id="8_t8ryg"]
 [ext_resource type="Texture2D" uid="uid://crd1dknsuo5bd" path="res://asset/buttons/table/table_selected.png" id="9_rphxu"]
 
 [node name="BreakRoom" type="Control"]
@@ -51,21 +50,16 @@ stretch_mode = 0
 
 [node name="EmployeeStoreButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 412.0
-offset_top = 302.0
-offset_right = 924.0
-offset_bottom = 814.0
-rotation = 0.61455
-scale = Vector2(0.625912, 1.46526)
+offset_right = 597.0
+offset_bottom = 944.0
 focus_neighbor_left = NodePath("../WaterCoolerButton")
 focus_neighbor_right = NodePath("../ReturnToWorkButton")
 focus_next = NodePath("../ReturnToWorkButton")
 focus_previous = NodePath("../WaterCoolerButton")
-texture_normal = ExtResource("2_a8fin")
-texture_pressed = ExtResource("3_q1odl")
-texture_hover = ExtResource("3_8cv0l")
-texture_disabled = ExtResource("6_k37yi")
-texture_focused = ExtResource("3_8cv0l")
+texture_normal = ExtResource("6_r7qtk")
+texture_pressed = ExtResource("7_1e2w5")
+texture_hover = ExtResource("8_t8ryg")
+texture_focused = ExtResource("8_t8ryg")
 stretch_mode = 0
 
 [node name="ReturnToWorkButton" type="TextureButton" parent="."]

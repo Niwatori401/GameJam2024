@@ -1,0 +1,8 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnyenv4040wms"]
+
+[ext_resource type="PackedScene" uid="uid://nptlsdn4i55y" path="res://scene/voice_bubbler.tscn" id="1_i78nr"]
+[ext_resource type="AudioStream" uid="uid://bk5gpx26s0a13" path="res://asset/sound/voiceBits/hr/voice_bit_hr1.ogg" id="2_a3jo5"]
+[ext_resource type="AudioStream" uid="uid://dwf70weagckuv" path="res://asset/sound/voiceBits/hr/voice_bit_hr2.ogg" id="3_5j107"]
+
+[node name="VoiceBubbler" instance=ExtResource("1_i78nr")]
+voice_bubbles = Array[AudioStream]([ExtResource("2_a3jo5"), ExtResource("3_5j107")])

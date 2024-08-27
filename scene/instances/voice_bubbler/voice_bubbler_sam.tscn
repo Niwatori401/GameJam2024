@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7bib8fn6nw6"]
+
+[ext_resource type="PackedScene" uid="uid://nptlsdn4i55y" path="res://scene/voice_bubbler.tscn" id="1_ws1ex"]
+[ext_resource type="AudioStream" uid="uid://s3tv8k6tkyso" path="res://asset/sound/voiceBits/shady_sam/voice_bit_shady_sam.ogg" id="2_rs16o"]
+
+[node name="VoiceBubbler" instance=ExtResource("1_ws1ex")]
+voice_bubbles = Array[AudioStream]([ExtResource("2_rs16o")])
