@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0xx6kwtgq1fs"]
 
-[ext_resource type="PackedScene" uid="uid://nptlsdn4i55y" path="res://scene/voice_bubbler.tscn" id="1_cbga6"]
-[ext_resource type="AudioStream" uid="uid://bsexui4bfeici" path="res://asset/sound/voiceBits/client/voice_bit_client_1.ogg" id="2_gln21"]
-[ext_resource type="AudioStream" uid="uid://bs28nuressoer" path="res://asset/sound/voiceBits/client/voice_bit_client_2.ogg" id="3_0833y"]
-[ext_resource type="AudioStream" uid="uid://cp3kicprhtdmj" path="res://asset/sound/voiceBits/client/voice_bit_client_3.ogg" id="4_uaqyc"]
+[ext_resource type="PackedScene" uid="uid://nptlsdn4i55y" path="res://scene/voice_bubbler.tscn" id="1_hrjv8"]
+[ext_resource type="AudioStream" uid="uid://bsexui4bfeici" path="res://asset/sound/voiceBits/client/voice_bit_client_1.ogg" id="2_0jgbq"]
+[ext_resource type="AudioStream" uid="uid://bs28nuressoer" path="res://asset/sound/voiceBits/client/voice_bit_client_2.ogg" id="3_m8saq"]
+[ext_resource type="AudioStream" uid="uid://cp3kicprhtdmj" path="res://asset/sound/voiceBits/client/voice_bit_client_3.ogg" id="4_5klbs"]
 
-[node name="VoiceBubbler" instance=ExtResource("1_cbga6")]
-voice_bubbles = Array[AudioStream]([ExtResource("2_gln21"), ExtResource("3_0833y"), ExtResource("4_uaqyc")])
+[node name="VoiceBubbler" instance=ExtResource("1_hrjv8")]
+voice_bubbles = Array[AudioStream]([ExtResource("2_0jgbq"), ExtResource("3_m8saq"), ExtResource("4_5klbs")])

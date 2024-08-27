@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=14 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
 [ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cip8qxkcqg1pe" path="res://asset/buttons/table/table_normal.png" id="7_ahy5g"]
 [ext_resource type="Texture2D" uid="uid://cwip7jrnk384p" path="res://asset/buttons/table/table_pressed.png" id="8_h1d2c"]
 [ext_resource type="Texture2D" uid="uid://cph5gifko5fnu" path="res://asset/buttons/store/store_hover.png" id="8_t8ryg"]
+[ext_resource type="BitMap" uid="uid://d1x22wmqiqgu2" path="res://asset/buttons/store/store_mask.png" id="9_k7d1s"]
 [ext_resource type="Texture2D" uid="uid://crd1dknsuo5bd" path="res://asset/buttons/table/table_selected.png" id="9_rphxu"]
 
 [node name="BreakRoom" type="Control"]
@@ -60,6 +61,7 @@ texture_normal = ExtResource("6_r7qtk")
 texture_pressed = ExtResource("7_1e2w5")
 texture_hover = ExtResource("8_t8ryg")
 texture_focused = ExtResource("8_t8ryg")
+texture_click_mask = ExtResource("9_k7d1s")
 stretch_mode = 0
 
 [node name="ReturnToWorkButton" type="TextureButton" parent="."]
