@@ -10,7 +10,7 @@ var seconds_elapsed_total : float = 0;
 
 var delay_seconds : float = 1;
 #var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
-var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT]
+var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];
 @export var success_sounds : Array[AudioStream];
@@ -215,7 +215,7 @@ func play_success_animation(key_direction : Enums.KEY_DIRECTION):
 	elif key_direction == Enums.KEY_DIRECTION.LEFT:
 		$DeskButton.play("press_button");
 	elif key_direction == Enums.KEY_DIRECTION.UP:
-		pass
+		$PneumaticTube.play("shoot_tube");
 	else:
 		printerr("Unknown button in play_success_animation");
 	
