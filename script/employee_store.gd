@@ -71,10 +71,13 @@ func try_buy_item(item_name : String, cost : int):
 		return;
 		
 	if Inventory.get_money_amount() >= cost:
+		$BuySFX.play();
 		Inventory.unlock_trinket(item_name);
 		Inventory.change_and_commit_money_amount(-cost);
 		update_shown_items();
 		update_wallet_text();
+	else:
+		$FailSFX.play();
 
 func _on_clock_item_button_down() -> void:
 	try_buy_item(Globals.TRINKET_CLOCK, 10);

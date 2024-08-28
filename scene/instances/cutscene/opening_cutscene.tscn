@@ -31,4 +31,4 @@ text = Array[Array]([[], [], [], [], [], [], [], ["Hmm. Well, I suppose the fact
 [node name="BGM" parent="." index="4"]
 stream = SubResource("AudioStreamOggVorbis_8k5gp")
 low_db = -35.0
-high_db = -15.0
+high_db = -10.0

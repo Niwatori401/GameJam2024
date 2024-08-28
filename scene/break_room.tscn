@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=17 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
 [ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="6_724lq"]
 [ext_resource type="Texture2D" uid="uid://dcc6ttm4p38rh" path="res://asset/buttons/store/store_normal.png" id="6_r7qtk"]
 [ext_resource type="Texture2D" uid="uid://ru8x4j8kssiv" path="res://asset/buttons/store/store_pressed.png" id="7_1e2w5"]
+[ext_resource type="Texture2D" uid="uid://di2wyjpiivu1u" path="res://asset/buttons/store/store_disabled.png" id="7_28bpp"]
 [ext_resource type="Texture2D" uid="uid://cip8qxkcqg1pe" path="res://asset/buttons/table/table_normal.png" id="7_ahy5g"]
 [ext_resource type="Texture2D" uid="uid://cwip7jrnk384p" path="res://asset/buttons/table/table_pressed.png" id="8_h1d2c"]
 [ext_resource type="Texture2D" uid="uid://cph5gifko5fnu" path="res://asset/buttons/store/store_hover.png" id="8_t8ryg"]
@@ -42,7 +43,7 @@ offset_bottom = 944.0
 texture_normal = ExtResource("6_r7qtk")
 texture_pressed = ExtResource("7_1e2w5")
 texture_hover = ExtResource("8_t8ryg")
-texture_focused = ExtResource("8_t8ryg")
+texture_disabled = ExtResource("7_28bpp")
 texture_click_mask = ExtResource("9_k7d1s")
 button_description_text = "Employee Store"
 
@@ -55,7 +56,6 @@ offset_bottom = 327.0
 texture_normal = ExtResource("3_38r4h")
 texture_pressed = ExtResource("4_l33bx")
 texture_hover = ExtResource("5_ia5jr")
-texture_focused = ExtResource("5_ia5jr")
 button_description_text = "Water Cooler"
 
 [node name="ReturnToWorkButton" parent="." instance=ExtResource("3_2hga7")]
@@ -69,7 +69,6 @@ scale = Vector2(0.934113, 1.03863)
 texture_normal = ExtResource("7_ahy5g")
 texture_pressed = ExtResource("8_h1d2c")
 texture_hover = ExtResource("9_rphxu")
-texture_focused = ExtResource("9_rphxu")
 button_description_text = "End Lunch"
 
 [node name="ButtonLabel" parent="." instance=ExtResource("14_nf8sm")]

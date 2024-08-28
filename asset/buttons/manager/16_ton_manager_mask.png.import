@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://c0efi2bbm28ty"
+path="res://.godot/imported/16_ton_manager_mask.png-3a79d26a7cf49bff5408bbbab5e80036.res"
+
+[deps]
+
+source_file="res://asset/buttons/manager/16_ton_manager_mask.png"
+dest_files=["res://.godot/imported/16_ton_manager_mask.png-3a79d26a7cf49bff5408bbbab5e80036.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
