@@ -18,11 +18,13 @@ const SAVE_KEY_TRINKETS := "trinkets";
 const SAVE_CATEGORY_PROGRESS := "Progress";
 const SAVE_KEY_THROWN_BALL_IMPACT_INDEX := "thrown_ball_impact_index";
 const SAVE_KEY_DAY_NUMBER := "day_number";
-const SAVE_KEY_HAD_FIRST_HR_VISIT := "had_first_hr_visit";
+const SAVE_KEY_IS_FIRST_HR_VISIT := "is_first_hr_visit";
+const SAVE_KEY_IS_FIRST_STORE_VISIT := "is_first_store_visit";
 
 const SCENE_LEVEL_DISPATCH := "res://scene/level_dispatch.tscn";
 const SCENE_OPENING_CUTSCENE := "res://scene/instances/cutscene/opening_cutscene.tscn";
 const SCENE_HR_FIRST_TIME_CUTSCENE := "res://scene/instances/cutscene/hr_1st_encounter.tscn";
+const SCENE_STORE_FIRST_TIME_CUTSCENE := "res://scene/instances/cutscene/employee_shop_cutscene.tscn";
 const SCENE_BREAK_ROOM := "res://scene/break_room.tscn";
 const SCENE_MAIN_GAME := "res://scene/main_game.tscn";
 const SCENE_PRE_MAIN_GAME := "res://scene/pre_main_game.tscn";

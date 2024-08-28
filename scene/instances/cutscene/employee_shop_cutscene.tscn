@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfp4emntkf60u"]
+
+[ext_resource type="PackedScene" uid="uid://cua4p08opu3yu" path="res://scene/cutscene.tscn" id="1_2880f"]
+[ext_resource type="Texture2D" uid="uid://sgr8whc0fv3v" path="res://asset/background/store_cutscene.png" id="2_warq6"]
+[ext_resource type="AudioStream" uid="uid://c25knort31upm" path="res://asset/sound/music/store_theme.ogg" id="3_13qgi"]
+[ext_resource type="Script" path="res://script/first_store_visit.gd" id="4_lm2va"]
+
+[node name="Cutscene" instance=ExtResource("1_2880f")]
+scene_to_load_upon_completion = "res://scene/break_room.tscn"
+frames = Array[Texture2D]([ExtResource("2_warq6")])
+delays = Array[float]([0.0])
+text = Array[Array]([["m:Oh, it's you. Congratulations on your unparalleled ability to find the break room, I suppose.", "m:This is the company store. You can spend some of your money here. You do know how a shop works, right?", "m:If you want to spice up your desk a little, I sell trinkets and other assorted rubbish.", "m:We used to sell assorted snacks and drinks, but all of our stock mysteriously vanished last week.", "m:Once you're done with...you call that lunch? Oh dear. Anyway, finish your morsels and get back to your desk."]])
+
+[node name="BGM" parent="." index="4"]
+stream = ExtResource("3_13qgi")
+low_db = -30.0
+high_db = -10.0
+
+[node name="ExtraScript" type="Node" parent="." index="5"]
+script = ExtResource("4_lm2va")

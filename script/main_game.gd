@@ -96,24 +96,20 @@ var cycle_used_stamps := false;
 var player_hit_stamp_button_this_cycle := false;
 var stamp_directions : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT];
 
-func show_only_appropriate_work_items():
-	for item_index in range(len(desk_item_to_unlock_day)):
-		get_node(desk_item_to_unlock_day.keys()[item_index]).visible = day_number >= desk_item_to_unlock_day.values()[item_index];
-
-func show_only_unlocked_trinkets():
-	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
-	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
-	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
 
 
 func _ready() -> void:
 	Inventory.get_save().load(Globals.USER_SAVE_FILE);
 	day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
+	
+	if day_number == 1:
+		seconds_per_day = 30;
+		
 	maximum_key_presses_per_challenge = day_to_max_arrows.get(floori(day_number));
 	show_only_unlocked_trinkets();
 	show_only_appropriate_work_items();
 	SignalBus.game_loss.connect(func() : 
-		var first_hr_visit = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, true);
+		var first_hr_visit = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_IS_FIRST_HR_VISIT, true);
 		game_over = true;
 		
 		if first_hr_visit:
@@ -169,6 +165,16 @@ func _process(delta: float) -> void:
 		handle_key_press(Enums.KEY_DIRECTION.DOWN);
 	elif Input.is_action_just_pressed("Right"):
 		handle_key_press(Enums.KEY_DIRECTION.RIGHT);
+
+func show_only_appropriate_work_items():
+	for item_index in range(len(desk_item_to_unlock_day)):
+		get_node(desk_item_to_unlock_day.keys()[item_index]).visible = day_number >= desk_item_to_unlock_day.values()[item_index];
+
+func show_only_unlocked_trinkets():
+	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
+	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
+	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
+
 
 func set_correct_bgm(day_number : float) -> void:
 	if day_number >= 14:

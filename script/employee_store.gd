@@ -27,6 +27,7 @@ var day_to_unique_manager_dialog = {
 
 func _ready() -> void:
 	$Fader.lighten(1);
+	$AudioFader.fade_in(1);
 	SignalBus.store_item_selected.connect(set_text_for_currently_selected_item);
 	SignalBus.no_item_selected.connect(hide_description);
 	update_wallet_text();
@@ -62,6 +63,7 @@ func hide_description():
 func _on_back_button_button_down() -> void:
 	Utility.load_scene(1, Globals.SCENE_BREAK_ROOM);
 	$Fader.darken(1);
+	$AudioFader.fade_out(1);
 
 
 func try_buy_item(item_name : String, cost : int):

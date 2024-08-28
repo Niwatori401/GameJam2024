@@ -28,8 +28,14 @@ func _on_water_cooler_button_button_down() -> void:
 
 
 func _on_employee_store_button_button_down() -> void:
+	var is_first_time = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_IS_FIRST_STORE_VISIT, true);
+	
 	$Fader.darken(SHORT_FADE_OUT_TIME);
-	Utility.load_scene(SHORT_FADE_OUT_TIME, Globals.SCENE_EMPLOYEE_STORE);
+	
+	if is_first_time:
+		Utility.load_scene(SHORT_FADE_OUT_TIME, Globals.SCENE_STORE_FIRST_TIME_CUTSCENE);
+	else:
+		Utility.load_scene(SHORT_FADE_OUT_TIME, Globals.SCENE_EMPLOYEE_STORE);
 
 
 func _on_return_to_work_button_button_down() -> void:
