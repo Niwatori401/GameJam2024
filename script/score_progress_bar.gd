@@ -46,6 +46,8 @@ func update_bar_graphic():
 			last_index = threshold_index;
 			return;
 
+
+
 func do_basic_fall_amount(delta : float) -> void:
 	var base_fall_amount : float = 100 * delta / seconds_to_fall;
 	if value <= base_fall_amount:
@@ -55,10 +57,12 @@ func do_basic_fall_amount(delta : float) -> void:
 	else:
 		value -= base_fall_amount;
 
+
+var target_loss_per_second : float = 20;
 func do_gained_change_amount(delta : float) -> void:
 	var amount_to_apply : float;
-	if abs(total_points_to_apply) >= max_points_per_application:
-		amount_to_apply = sign(total_points_to_apply) * max_points_per_application;
+	if abs(total_points_to_apply) >= delta * target_loss_per_second:
+		amount_to_apply = sign(total_points_to_apply) * delta * target_loss_per_second;
 		total_points_to_apply -= amount_to_apply;
 	else:
 		amount_to_apply = total_points_to_apply;
@@ -66,6 +70,7 @@ func do_gained_change_amount(delta : float) -> void:
 		
 		
 	if value + amount_to_apply > 100:
+		amount_to_apply = 0;
 		value = 100;
 		return;
 	elif value + amount_to_apply < 0:
