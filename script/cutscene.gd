@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func should_end_cutscene():
 	if foreground_frame_index == len(frames) - 1:
-			return true;
+		return true;
 
 func should_use_delays():
 	return delays[foreground_frame_index] != 0;
@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 				if should_end_cutscene():
 					if not is_ending:
 						$Fader.darken(2);
+						$BGM.fade_out(2);
 						Utility.load_scene(2, scene_to_load_upon_completion);
 						is_ending = true;
 					return;

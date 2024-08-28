@@ -2,7 +2,26 @@ extends Control
 
 var current_item_name : String = "";
 
-func day_to_manager_dialog = {}
+day_to_random_manager_dialog = {
+	3 : []
+}
+
+func day_to_unique_manager_dialog = {
+	1 : "",
+	2 : "",
+	3 : "",
+	4 : "",
+	5 : "",
+	6 : "",
+	7 : "",
+	8 : "",
+	9 : "",
+	10 : "",
+	11 : "",
+	12 : "",
+	13 : "",
+	14 : ""
+}
 
 
 

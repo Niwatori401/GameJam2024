@@ -18,10 +18,12 @@ loop = true
 scene_to_load_upon_completion = "res://scene/level_dispatch.tscn"
 frames = Array[Texture2D]([ExtResource("2_ctlfr"), ExtResource("3_qfesw"), ExtResource("2_ctlfr")])
 delays = Array[float]([0.0, 0.0, 0.0])
-text = Array[Array]([["[i]You're led into a fully darkened room. An overwhelming sense of dread fills your very being. Just when you're about to wonder aloud what's about to happen to you...[/i]", "[i]a desk lamp flickers into life.[/i]"], ["[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]...[/b]", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]Hello.[/b]", "[color=#00ff00][b][i]You[/i][/b][/color]/n[i]*squeak*[/i]", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]Management wanted us to have a little chat.[/b]", "[color=#00ff00][b][i]You[/i][/b][/color]/nBuh.", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]Now, I appreciate that you're new, and we respect that. It can be tough to settle into a new job with new surroundings.[/b]", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]But we still have a quota to meet. Be a little more careful next time, yeah?[/b]", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]...would you like a cup of tea?[/b]", "[color=#00ff00][b][i]You[/i][/b][/color]/n[font_size=20]nothankyou[/font_size]", "[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b] All right. Well, as long as you try your best, I'm sure you'll do fine. [i][/i][/b]"], ["[color=#ffffff][b][i]Human Resources[/i][/b][/color]/n[b]Please don't let us down.[/b]"]])
+text = Array[Array]([["[i]You're led into a fully darkened room. An overwhelming sense of dread fills your very being. Just when you're about to wonder aloud what's about to happen to you...[/i]", "[i]a desk lamp flickers into life.[/i]"], ["h:[b]...[/b]", "h:[b]Hello.[/b]", "p:[i]*squeak*[/i]", "h:[b]Management wanted us to have a little chat.[/b]", "p:Buh.", "h:[b]Now, I appreciate that you're new, and we respect that. It can be tough to settle into a new job with new surroundings.[/b]", "h:[b]But we still have a quota to meet. Be a little more careful next time, yeah?[/b]", "h:[b].`.`.``would you like a cup of tea?[/b]", "p:[font_size=20]nothankyou[/font_size]", "h:[b] All right. Well, as long as you try your best, I'm sure you'll do fine. [i][/i][/b]"], ["h:[b]Please don't let us down.[/b]"]])
 
 [node name="extra_script" type="Node" parent="." index="4"]
 script = ExtResource("4_w4jnd")
 
 [node name="BGM" parent="." index="5"]
 stream = SubResource("AudioStreamOggVorbis_nutm6")
+low_db = -30.0
+high_db = -10.0
