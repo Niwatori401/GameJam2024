@@ -284,7 +284,10 @@ func succeed_shift():
 	
 	if not is_prelunch() or day_number == 1:
 		$EndOfDaySound.play();
-		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
+		if day_number == 1:
+			Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 1);
+		else:
+			Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
 		Inventory.change_and_commit_money_amount(5);
 		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
 	else:
