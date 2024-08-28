@@ -77,7 +77,7 @@ not_moving = true
 [node name="KoboldTrinket" parent="Trinkets" instance=ExtResource("8_0b0cq")]
 position = Vector2(1119, 536)
 
-[node name="ThrowBall" parent="." instance=ExtResource("12_xc2kt")]
+[node name="ThrowBall" parent="Trinkets" instance=ExtResource("12_xc2kt")]
 position = Vector2(1705, 600)
 
 [node name="BallHolder" type="StaticBody2D" parent="."]

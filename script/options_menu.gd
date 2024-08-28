@@ -171,10 +171,8 @@ func _on_text_speed_slider_drag_ended(_value_changed: bool) -> void:
 
 
 func _on_delete_save_button_button_down() -> void:
-	var savefile = ConfigFile.new();
-	savefile.load(Globals.USER_SAVE_FILE);
-	savefile.clear();
-	savefile.save(Globals.USER_SAVE_FILE);
+	Inventory.get_save().clear();
+	Inventory.get_save().save(Globals.USER_SAVE_FILE);
 	$BackButton.grab_focus();
 	$Options/DeleteSaveButton.disabled = true;
 	SignalBus.save_deleted.emit();

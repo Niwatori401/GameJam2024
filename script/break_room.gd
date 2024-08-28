@@ -4,15 +4,9 @@ extends Control
 
 
 var loading_next_area : bool = false;
-var saveFile = ConfigFile.new();
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var status = saveFile.load(Globals.USER_SAVE_FILE);
-	if status != OK:
-		printerr("Failed to load save in BreakRoom");
-
-	
 	$Fader.lighten(1);
 	$WaterCoolerButton.grab_focus();
 	loading_next_area = false;

@@ -19,7 +19,11 @@ func _ready() -> void:
 
 func get_money_amount():
 	return money;
-	
+
+func get_save():
+	return save_file;
+
+
 func change_and_commit_money_amount(amount_to_change : int):
 	money += amount_to_change;
 	save_file.set_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_MONEY, money);

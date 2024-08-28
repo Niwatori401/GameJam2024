@@ -53,10 +53,8 @@ func make_config_and_save_files_if_needed():
 	var save_load_status = save.load(Globals.USER_SAVE_FILE);
 	var config_load_status = config.load(Globals.USER_CONFIG_FILE);
 
-	
-
 	if save_load_status != OK:
-		save = ConfigFile.new()
+		save = ConfigFile.new();
 		save.save(Globals.USER_SAVE_FILE);
 		
 	if config_load_status != OK:
@@ -64,7 +62,7 @@ func make_config_and_save_files_if_needed():
 		config.save(Globals.USER_CONFIG_FILE);
 
 	# Makes level dispatcher work correctly
-	first_day = not save.has_section_key(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)
+	first_day = not Inventory.get_save().has_section_key(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)
 	if first_day:
-		save.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 0);
-		save.save(Globals.USER_SAVE_FILE);
+		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 0);
+		Inventory.get_save().save(Globals.USER_SAVE_FILE);

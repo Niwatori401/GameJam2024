@@ -10,14 +10,9 @@ var impact_index : int = 0;
 
 var rubber_ball_texture : Texture2D = preload("res://asset/desk_trinkets/throw_ball/throw_ball_rubber.png");
 var baseball_texture : Texture2D = preload("res://asset/desk_trinkets/throw_ball/throw_ball.png");
-var save = ConfigFile.new();
 
 func _ready() -> void:
-	var status = save.load(Globals.USER_SAVE_FILE);
-	if status != OK:
-		printerr("Failed to load save in throw_ball.gd");
-	
-	impact_index = save.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, 0);
+	impact_index = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, 0);
 	update_ball_texture();
 
 
@@ -52,8 +47,8 @@ func _integrate_forces(state):
 				play_current_sound();
 				visible = false;
 				impact_index += 1;
-				save.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, impact_index);
-				save.save(Globals.USER_SAVE_FILE);
+				Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_THROWN_BALL_IMPACT_INDEX, impact_index);
+				Inventory.get_save().save(Globals.USER_SAVE_FILE);
 				);
 
 func update_ball_texture():

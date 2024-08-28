@@ -1,19 +1,60 @@
 extends Node2D
 
 # can be set [1, 3]
-const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
-const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
+var minimum_key_presses_per_challenge = 1;
+var maximum_key_presses_per_challenge = 1;
 
 
 var seconds_per_day : float = 60;
 var seconds_elapsed_total : float = 0;
 
 var delay_seconds : float = 1;
-var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];
 @export var success_sounds : Array[AudioStream];
 var cur_seconds : float = 0;
+
+var day_to_button_map = {
+	1: [Enums.KEY_DIRECTION.DOWN],
+	2: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT],
+	3: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT],
+	4: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	5: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	6: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	7: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	8: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT],
+	9: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT],
+	10: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	11: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	12: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	13: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+	14: [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP],
+}
+
+var day_to_max_arrows = {
+	1: 1,
+	2: 1,
+	3: 1,
+	4: 1,
+	5: 1,
+	6: 1,
+	7: 1,
+	8: 2,
+	9: 2,
+	10: 2,
+	11: 2,
+	12: 2,
+	13: 2,
+	14: 3,
+}
+
+var desk_item_to_unlock_day = {
+	"Clipboard" : 1,
+	"Stamp_1": 1,
+	"Stamp_2": 2,
+	"DeskButton": 3,
+	"PneumaticTube": 4,
+}
 
 var music_tracks : Array[AudioStream] = [
 	preload("res://asset/sound/clock_2s.ogg"),
@@ -50,19 +91,29 @@ var game_over := false;
 
 # starts at 1, not 0
 var day_number : float = 1;
-var saveFile = ConfigFile.new();
 
 var cycle_used_stamps := false;
 var player_hit_stamp_button_this_cycle := false;
 var stamp_directions : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT];
 
+func show_only_appropriate_work_items():
+	for item_index in range(len(desk_item_to_unlock_day)):
+		get_node(desk_item_to_unlock_day.keys()[item_index]).visible = day_number >= desk_item_to_unlock_day.values()[item_index];
+
+func show_only_unlocked_trinkets():
+	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
+	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
+	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
+
 
 func _ready() -> void:
-	saveFile.load(Globals.USER_SAVE_FILE);
-	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
-	
+	Inventory.get_save().load(Globals.USER_SAVE_FILE);
+	day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
+	maximum_key_presses_per_challenge = day_to_max_arrows.get(floori(day_number));
+	show_only_unlocked_trinkets();
+	show_only_appropriate_work_items();
 	SignalBus.game_loss.connect(func() : 
-		var first_hr_visit = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, true);
+		var first_hr_visit = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_HAD_FIRST_HR_VISIT, true);
 		game_over = true;
 		
 		if first_hr_visit:
@@ -82,7 +133,7 @@ func _ready() -> void:
 	
 var is_loading := false;
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_12"):
+	if not is_loading and Input.is_action_just_pressed("debug_12"):
 		succeed_shift();
 		
 	if game_over or is_loading:
@@ -199,9 +250,9 @@ func play_success_sound(pressed_key_direction : Enums.KEY_DIRECTION) -> void:
 func set_random_new_keys():
 	cycle_used_stamps = false;
 	current_keys.clear();
-	var num_of_keys = randi_range(MINIMUM_KEY_PRESSES_PER_CHALLENGE, MAXIMUM_KEY_PRESSES_PER_CHALLENGE);
+	var num_of_keys = randi_range(minimum_key_presses_per_challenge, maximum_key_presses_per_challenge);
 	for i in range(num_of_keys):
-		var cur_key = all_game_keys.pick_random();
+		var cur_key = day_to_button_map.get(floori(day_number)).pick_random();
 		cycle_used_stamps = cycle_used_stamps or cur_key == stamp_directions[0] or cur_key == stamp_directions[1];
 		current_keys.append(cur_key);
 	$NextKeyIndicator.set_next_key_texture(current_keys);
@@ -223,34 +274,23 @@ func is_prelunch() -> bool:
 	
 
 func succeed_shift():
-	if day_number == 1:
-		SignalBus.game_win.emit();
-		is_loading = true;
-		$EndOfDaySound.play();
-		$BGM.fade_out(2.5);
-		get_tree().create_timer(2.5).timeout.connect(func(): $BGM.stop());
-		saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 1);
-		saveFile.save(Globals.USER_SAVE_FILE);
-		$Fader.darken(3);
-		$Trinkets/TrinketClock.stop_clock(true);
-		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
-		return;
-	
-	SignalBus.game_win.emit();
 	is_loading = true;
-	if is_prelunch():
-		$LunchTimeSound.play();
-		Utility.load_scene(3, Globals.SCENE_PRE_LUNCH_MAIN_GAME);
-	else:
-		$EndOfDaySound.play();
-		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
-	
+	SignalBus.game_win.emit();
 	$BGM.fade_out(2.5);
 	get_tree().create_timer(2.5).timeout.connect(func(): $BGM.stop());
-
-	saveFile.set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
-	saveFile.save(Globals.USER_SAVE_FILE);
-	
 	$Fader.darken(3);
 	$Trinkets/TrinketClock.stop_clock(true);
+	
+	
+	if not is_prelunch() or day_number == 1:
+		$EndOfDaySound.play();
+		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
+		Inventory.change_and_commit_money_amount(5);
+		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
+	else:
+		$LunchTimeSound.play();
+		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
+		Inventory.get_save().save(Globals.USER_SAVE_FILE);
+		Utility.load_scene(3, Globals.SCENE_PRE_LUNCH_MAIN_GAME);
+	
 	

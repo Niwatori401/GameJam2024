@@ -48,6 +48,7 @@ texture_disabled = ExtResource("8_50lu2")
 texture_focused = ExtResource("7_kr4ge")
 
 [node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 784.0
 offset_right = 552.0

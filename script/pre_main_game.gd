@@ -4,6 +4,10 @@ extends Node2D
 @export var show_clipboard := false;
 @export var show_message := false;
 
+
+
+
+
 var day_splash_screens : Array[Texture2D] = [
 	preload("res://asset/background/day_counter/day1.png"),
 	preload("res://asset/background/day_counter/day2.png"),
@@ -66,10 +70,8 @@ Oh, and I'll need you to start putting these [b]tubes[/b] in the [b]pneumatic la
 var day_number : float = 1;
 
 func _ready() -> void:
-	var saveFile = ConfigFile.new();
-	saveFile.load(Globals.USER_SAVE_FILE);
-	day_number = saveFile.get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
-	
+	day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
+	show_only_unlocked_trinkets();
 	var is_beginning_of_day = show_clipboard and show_message;
 	if is_beginning_of_day:
 		$NonGameOffice/TextureFader.texture = day_splash_screens[clampi(floori(day_number) - 1, 0, 14)];
@@ -92,7 +94,7 @@ func _ready() -> void:
 		$NonGameOffice/LunchPail.grab_focus();
 		
 	$NonGameOffice/StartPage.visible = should_show_start_page();
-	$NonGameOffice/ManagementNote.visible = show_message;
+	$NonGameOffice/ManagementNote.visible = is_beginning_of_day and not should_show_start_page();
 
 
 func _process(delta: float) -> void:
@@ -142,3 +144,9 @@ func _on_clip_board_button_down() -> void:
 func _on_lunch_pail_button_down() -> void:
 	Utility.load_scene(3, Globals.SCENE_BREAK_ROOM);
 	$NonGameOffice/Fader.darken(2.5);
+
+
+func show_only_unlocked_trinkets():
+	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
+	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
+	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
