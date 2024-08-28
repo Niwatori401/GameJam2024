@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://b15aw4muvlplt"
+path="res://.godot/imported/back_arrow_mask.png-5da5e767c99670ab1a1d34369798dd61.res"
+
+[deps]
+
+source_file="res://asset/back_arrow_mask.png"
+dest_files=["res://.godot/imported/back_arrow_mask.png-5da5e767c99670ab1a1d34369798dd61.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

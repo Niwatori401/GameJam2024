@@ -1,9 +1,9 @@
 extends Node
 
 var trinkets = {
-	"clock": false,
-	"throw_ball": false,
-	"kobold": false
+	Globals.TRINKET_CLOCK: false,
+	Globals.TRINKET_BALL: false,
+	Globals.TRINKET_KOBOLD: false
 }
 
 var money : int = 0;

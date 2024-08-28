@@ -1,14 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://j0ytyv0ir6fj"]
+[gd_scene load_steps=15 format=3 uid="uid://j0ytyv0ir6fj"]
 
-[ext_resource type="Texture2D" uid="uid://bdml6iqj2nayg" path="res://asset/background/water_cooler.png" id="1_hdfoc"]
 [ext_resource type="Script" path="res://script/water_cooler.gd" id="1_nweno"]
 [ext_resource type="Texture2D" uid="uid://c8ixfxspkyv48" path="res://asset/background/shady_sam_1.png" id="2_fwfv4"]
+[ext_resource type="Texture2D" uid="uid://b5i1ihqs64xuk" path="res://asset/background/water_cooler/water_cooler_formatted.png" id="2_vjb18"]
 [ext_resource type="Texture2D" uid="uid://cy1jfb0x0d51j" path="res://asset/background/shady_sam_2.png" id="3_i73nd"]
 [ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="5_rvpqo"]
 [ext_resource type="Texture2D" uid="uid://beq6v33y56spe" path="res://asset/pepper_pressed.png" id="6_k1hqr"]
+[ext_resource type="Texture2D" uid="uid://c821o5u8c75b3" path="res://asset/background/Shady_Sam.png" id="7_27pwy"]
 [ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="7_kr4ge"]
+[ext_resource type="Texture2D" uid="uid://b5d7ahdi7oyeo" path="res://asset/back_arrow.png" id="7_trq6l"]
 [ext_resource type="Texture2D" uid="uid://cg1j44d27a21v" path="res://asset/pepper_disabled.png" id="8_50lu2"]
+[ext_resource type="Texture2D" uid="uid://cxqucd1rej3au" path="res://asset/back_arrow_pressed.png" id="8_xa3bx"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="9_sesrh"]
+[ext_resource type="Texture2D" uid="uid://c1u0ix0si0xgm" path="res://asset/back_arrow_hover.png" id="9_yfhil"]
+[ext_resource type="BitMap" uid="uid://b15aw4muvlplt" path="res://asset/back_arrow_mask.png" id="10_yh6gh"]
 
 [node name="WaterCooler" type="Control"]
 layout_mode = 3
@@ -19,16 +24,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nweno")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_hdfoc")
+texture = ExtResource("2_vjb18")
 
 [node name="ShadySamButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1599.0
 offset_top = 267.0
@@ -42,22 +48,34 @@ texture_disabled = ExtResource("8_50lu2")
 texture_focused = ExtResource("7_kr4ge")
 
 [node name="BackButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 809.0
-offset_right = 607.0
-offset_bottom = 1321.0
-scale = Vector2(0.478202, 0.451049)
-texture_normal = ExtResource("5_rvpqo")
-texture_pressed = ExtResource("6_k1hqr")
-texture_hover = ExtResource("7_kr4ge")
-texture_disabled = ExtResource("8_50lu2")
-texture_focused = ExtResource("7_kr4ge")
+offset_left = 40.0
+offset_top = 784.0
+offset_right = 552.0
+offset_bottom = 1296.0
+scale = Vector2(1.10605, 1.04325)
+texture_normal = ExtResource("7_trq6l")
+texture_pressed = ExtResource("8_xa3bx")
+texture_hover = ExtResource("9_yfhil")
+texture_click_mask = ExtResource("10_yh6gh")
 
 [node name="ShadySamAnimation" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ShadySamAnimation0" type="TextureRect" parent="ShadySamAnimation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 1871.0
+offset_bottom = 1032.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_27pwy")
 
 [node name="ShadySamAnimation1" type="TextureRect" parent="ShadySamAnimation"]
 visible = false

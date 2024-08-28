@@ -2,7 +2,7 @@ extends Node2D
 
 # can be set [1, 3]
 const MINIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
-const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 1;
+const MAXIMUM_KEY_PRESSES_PER_CHALLENGE = 2;
 
 
 var seconds_per_day : float = 60;

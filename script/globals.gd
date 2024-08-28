@@ -33,3 +33,8 @@ const SCENE_OPTIONS_MENU := "res://scene/options_menu.tscn";
 const SCENE_WATER_COOLER := "res://scene/water_cooler.tscn";
 const SCENE_EMPLOYEE_STORE := "res://scene/employee_store.tscn";
 const SCENE_GAME_OVER := "res://scene/game_over.tscn";
+
+
+const TRINKET_KOBOLD := "kobold_bobble_head_trinket";
+const TRINKET_BALL := "throw_ball_trinket";
+const TRINKET_CLOCK := "clock_trinket";

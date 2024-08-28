@@ -1,19 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://c37egpepk78y2"]
+[gd_scene load_steps=19 format=3 uid="uid://c37egpepk78y2"]
 
 [ext_resource type="Script" path="res://script/employee_store.gd" id="1_lcorx"]
 [ext_resource type="Texture2D" uid="uid://bk6sf1hj6oq5l" path="res://asset/background/store_1.png" id="2_hobv2"]
-[ext_resource type="Texture2D" uid="uid://canxihhafwe05" path="res://asset/background/store_2.png" id="3_8n2sp"]
 [ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="4_6srie"]
 [ext_resource type="PackedScene" uid="uid://dbu88awi58qi2" path="res://scene/store_item.tscn" id="5_epf2n"]
 [ext_resource type="Texture2D" uid="uid://c6oy5w58i07p7" path="res://asset/desk_trinkets/throw_ball/throw_ball_normal.png" id="6_ivghw"]
-[ext_resource type="Texture2D" uid="uid://b3173kd24b7iq" path="res://asset/pepper.png" id="6_swgdw"]
 [ext_resource type="Texture2D" uid="uid://bn2kqxp6xml3g" path="res://asset/desk_trinkets/throw_ball/throw_ball_pressed.png" id="7_7c0o0"]
-[ext_resource type="Texture2D" uid="uid://beq6v33y56spe" path="res://asset/pepper_pressed.png" id="7_yippu"]
-[ext_resource type="Texture2D" uid="uid://c8sxuybxeutro" path="res://asset/pepper_hover.png" id="8_5f2sp"]
 [ext_resource type="Texture2D" uid="uid://g0egcwaivalk" path="res://asset/desk_trinkets/throw_ball/throw_ball_hover.png" id="8_08jc0"]
-[ext_resource type="Texture2D" uid="uid://cg1j44d27a21v" path="res://asset/pepper_disabled.png" id="9_gaod0"]
+[ext_resource type="Texture2D" uid="uid://ddyd1kc3s1upd" path="res://asset/desk_trinkets/kobold/kobold_1.png" id="10_8p3eu"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="10_q7gwf"]
+[ext_resource type="Texture2D" uid="uid://bl3esla3egl0m" path="res://asset/desk_trinkets/kobold/kobold_hover.png" id="11_8wjx4"]
+[ext_resource type="BitMap" uid="uid://bdn8gcis4h87i" path="res://asset/desk_trinkets/kobold/kobold_click_mask.png" id="12_f5hgv"]
+[ext_resource type="Texture2D" uid="uid://bxi7pj7qaol2h" path="res://asset/desk_trinkets/clock/clock_store_image_normal.png" id="13_swr3a"]
+[ext_resource type="Texture2D" uid="uid://c2pwriqyp6xnr" path="res://asset/desk_trinkets/clock/clock_store_image_hover.png" id="14_napig"]
 [ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="14_tbfow"]
+[ext_resource type="Texture2D" uid="uid://b5d7ahdi7oyeo" path="res://asset/back_arrow.png" id="15_jvgv7"]
+[ext_resource type="Texture2D" uid="uid://cxqucd1rej3au" path="res://asset/back_arrow_pressed.png" id="16_3f2al"]
+[ext_resource type="Texture2D" uid="uid://c1u0ix0si0xgm" path="res://asset/back_arrow_hover.png" id="17_03hwm"]
+[ext_resource type="BitMap" uid="uid://b15aw4muvlplt" path="res://asset/back_arrow_mask.png" id="18_8x5mc"]
 
 [node name="EmployeeStore" type="Control"]
 layout_mode = 3
@@ -24,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lcorx")
 
-[node name="Background_1" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,15 +36,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hobv2")
-
-[node name="Background_2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_8n2sp")
 
 [node name="ItemDescription" type="Control" parent="."]
 visible = false
@@ -112,10 +107,10 @@ offset_bottom = 40.0
 
 [node name="BaseballItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
-offset_left = 870.0
-offset_top = 469.0
-offset_right = 1342.0
-offset_bottom = 941.0
+offset_left = 544.0
+offset_top = 334.0
+offset_right = 1016.0
+offset_bottom = 806.0
 scale = Vector2(0.192943, 0.192943)
 texture_normal = ExtResource("6_ivghw")
 texture_pressed = ExtResource("7_7c0o0")
@@ -126,41 +121,66 @@ cost = 5
 description = "It has small teeth marks, as if chewed by a small dog."
 item_name = "Baseball"
 
-[node name="StoreItem2" parent="StoreItems" instance=ExtResource("5_epf2n")]
+[node name="KoboldItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
-offset_left = 555.0
-offset_top = 446.0
-offset_right = 1027.0
-offset_bottom = 918.0
-scale = Vector2(0.256253, 0.256253)
-description = "It's low"
-item_name = "Lower Pepper"
+offset_left = 624.0
+offset_top = 300.0
+offset_right = 1096.0
+offset_bottom = 772.0
+scale = Vector2(0.835575, 0.835575)
+texture_normal = ExtResource("10_8p3eu")
+texture_pressed = null
+texture_hover = ExtResource("11_8wjx4")
+texture_disabled = null
+texture_focused = null
+texture_click_mask = ExtResource("12_f5hgv")
+cost = 15
+description = "A morale-boosting instrument of mysterious origin."
+item_name = "Kobold Bobblehead"
 
-[node name="StoreItem3" parent="StoreItems" instance=ExtResource("5_epf2n")]
+[node name="ClockItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
-offset_left = 870.0
-offset_top = 397.0
-offset_right = 1342.0
-offset_bottom = 869.0
-scale = Vector2(0.226222, 0.0843427)
-description = "It's quite flat"
-item_name = "Flat Pepper"
+offset_left = 1065.0
+offset_top = 166.0
+offset_right = 1537.0
+offset_bottom = 638.0
+scale = Vector2(0.21051, 0.21051)
+texture_normal = ExtResource("13_swr3a")
+texture_pressed = null
+texture_hover = ExtResource("14_napig")
+texture_disabled = null
+texture_focused = null
+cost = 10
+description = "Keeping time since the 13th century! Helps indicate how close you are to end of your current shift."
+item_name = "Clock"
 
 [node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 353.0
-offset_right = 572.0
-offset_bottom = 865.0
-scale = Vector2(0.478202, 0.451049)
-texture_normal = ExtResource("6_swgdw")
-texture_pressed = ExtResource("7_yippu")
-texture_hover = ExtResource("8_5f2sp")
-texture_disabled = ExtResource("9_gaod0")
-texture_focused = ExtResource("8_5f2sp")
+offset_left = 27.0
+offset_top = 447.0
+offset_right = 539.0
+offset_bottom = 959.0
+scale = Vector2(1.10605, 1.04325)
+texture_normal = ExtResource("15_jvgv7")
+texture_pressed = ExtResource("16_3f2al")
+texture_hover = ExtResource("17_03hwm")
+texture_click_mask = ExtResource("18_8x5mc")
 
 [node name="Fader" parent="." instance=ExtResource("10_q7gwf")]
 visible = false
 layout_mode = 1
 
+[node name="WalletText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 45.0
+offset_right = 339.0
+offset_bottom = 125.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Wallet: $X"
+
+[connection signal="button_down" from="StoreItems/BaseballItem" to="." method="_on_baseball_item_button_down"]
+[connection signal="button_down" from="StoreItems/KoboldItem" to="." method="_on_kobold_item_button_down"]
+[connection signal="button_down" from="StoreItems/ClockItem" to="." method="_on_clock_item_button_down"]
 [connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]
