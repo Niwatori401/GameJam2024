@@ -11,6 +11,10 @@ var game_win := false;
 const POINTS_FOR_KEY_HIT : float = 5;
 const POINTS_FOR_KEY_FAIL : float = -5;
 
+@export var face_graphics : Array[Texture2D];
+# if above this percent, show that index
+var face_graphic_threshold_percentage : Array[float] = [ 85, 60, 40, -100000 ];
+
 func _on_game_win() -> void:
 	game_win = true;
 
@@ -29,7 +33,18 @@ func _process(delta: float) -> void:
 		return;
 	
 	do_gained_change_amount(delta);
+	update_bar_graphic();
 
+var last_index = 0;
+func update_bar_graphic():
+	for threshold_index in range(len(face_graphic_threshold_percentage)):
+		if value >= face_graphic_threshold_percentage[threshold_index]:
+			if last_index == threshold_index:
+				return;
+				
+			texture_over = face_graphics[threshold_index];
+			last_index = threshold_index;
+			return;
 
 func do_basic_fall_amount(delta : float) -> void:
 	var base_fall_amount : float = 100 * delta / seconds_to_fall;

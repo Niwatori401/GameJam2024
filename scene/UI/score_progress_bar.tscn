@@ -1,18 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5w6ltojx3g88"]
+[gd_scene load_steps=8 format=3 uid="uid://b5w6ltojx3g88"]
 
-[ext_resource type="Texture2D" uid="uid://6y8qvtq80dme" path="res://asset/progress_bar/progress_bar_background.png" id="1_jbca1"]
-[ext_resource type="Texture2D" uid="uid://c5jjwdv83yc2w" path="res://asset/progress_bar/progress_bar_top.png" id="2_wyytl"]
-[ext_resource type="Texture2D" uid="uid://dkpv6iipie3mv" path="res://asset/progress_bar/progress_bar_progress.png" id="3_oj38d"]
+[ext_resource type="Texture2D" uid="uid://bgsdu7sybmk1" path="res://asset/progress_bar/health_bar_background_1.png" id="1_b0hmf"]
+[ext_resource type="Texture2D" uid="uid://cicdbj2dxnqgv" path="res://asset/progress_bar/health_bar_back.png" id="1_ekgrg"]
+[ext_resource type="Texture2D" uid="uid://c3xlbcik33ygr" path="res://asset/progress_bar/health_bar_progress.png" id="2_wnncr"]
+[ext_resource type="Texture2D" uid="uid://cwadkpmxtafx2" path="res://asset/progress_bar/health_bar_background_2.png" id="4_1qt2k"]
 [ext_resource type="Script" path="res://script/score_progress_bar.gd" id="4_6emfk"]
+[ext_resource type="Texture2D" uid="uid://cyu4gahi6b40n" path="res://asset/progress_bar/health_bar_background_3.png" id="5_k261a"]
+[ext_resource type="Texture2D" uid="uid://reihhl04qnqd" path="res://asset/progress_bar/health_bar_background_4.png" id="6_de3iw"]
 
 [node name="ScoreProgressBar" type="TextureProgressBar"]
-offset_left = 437.0
-offset_top = 741.0
-offset_right = 1445.0
-offset_bottom = 1070.0
+offset_left = 360.0
+offset_top = 780.0
+offset_right = 1560.0
+offset_bottom = 1080.0
 step = 0.05
 value = 90.0
-texture_under = ExtResource("1_jbca1")
-texture_over = ExtResource("2_wyytl")
-texture_progress = ExtResource("3_oj38d")
+texture_under = ExtResource("1_ekgrg")
+texture_over = ExtResource("1_b0hmf")
+texture_progress = ExtResource("2_wnncr")
 script = ExtResource("4_6emfk")
+face_graphics = Array[Texture2D]([ExtResource("1_b0hmf"), ExtResource("4_1qt2k"), ExtResource("5_k261a"), ExtResource("6_de3iw")])

@@ -70,7 +70,6 @@ freeze = true
 
 [node name="ScoreProgressBar" parent="." instance=ExtResource("17_2xc6k")]
 offset_left = 498.0
-offset_top = 780.0
 offset_right = 1506.0
 offset_bottom = 1109.0
 
