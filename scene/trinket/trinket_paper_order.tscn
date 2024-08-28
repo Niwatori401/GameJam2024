@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bawgs5q2lprsq"]
+[gd_scene load_steps=3 format=3 uid="uid://bhwvl3k2qmcaj"]
 
-[ext_resource type="Texture2D" uid="uid://csw3exbwipxjv" path="res://asset/desk_trinkets/paper_orders/paper_button_normal.png" id="1_ydnx8"]
-[ext_resource type="Texture2D" uid="uid://br31vx0g1asna" path="res://asset/desk_trinkets/paper_orders/paper_button_hover.png" id="2_7qk8w"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_si7m8"]
+load_path = "res://.godot/imported/paper_button_normal.png-11459fa96e82aa96d2b380047ddb9499.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qiw6t"]
+load_path = "res://.godot/imported/paper_button_hover.png-5380acb422e9049baac52b7ab0cfdac4.ctex"
 
 [node name="TrinketPaperOrder" type="Control"]
 layout_mode = 3
@@ -11,6 +14,6 @@ anchors_preset = 0
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
-texture_normal = ExtResource("1_ydnx8")
-texture_hover = ExtResource("2_7qk8w")
-texture_focused = ExtResource("2_7qk8w")
+texture_normal = SubResource("CompressedTexture2D_si7m8")
+texture_hover = SubResource("CompressedTexture2D_qiw6t")
+texture_focused = SubResource("CompressedTexture2D_qiw6t")
