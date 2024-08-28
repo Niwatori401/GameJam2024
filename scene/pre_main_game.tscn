@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=4 uid="uid://cg48jhonjof11"]
+[gd_scene load_steps=28 format=4 uid="uid://cg48jhonjof11"]
 
 [ext_resource type="Script" path="res://script/pre_main_game.gd" id="1_au5ao"]
 [ext_resource type="Texture2D" uid="uid://djwg5qq683s1i" path="res://asset/background/office_background.png" id="6_h1l6h"]
 [ext_resource type="Texture2D" uid="uid://cscyitfi0804o" path="res://asset/desk.png" id="7_f18fr"]
+[ext_resource type="PackedScene" uid="uid://bmy46xaejnksv" path="res://scene/trinket/kobold_trinket.tscn" id="8_0b0cq"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="8_n12im"]
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_6e1r2"]
 [ext_resource type="Texture2D" uid="uid://dc52ksuwmmm4v" path="res://asset/desk_trinkets/paper_orders/clipboard_new_normal.png" id="9_ns4ni"]
@@ -72,6 +73,9 @@ volume_db = -8.884
 position = Vector2(652, 558)
 scale = Vector2(0.371042, 0.371042)
 not_moving = true
+
+[node name="KoboldTrinket" parent="Trinkets" instance=ExtResource("8_0b0cq")]
+position = Vector2(1119, 536)
 
 [node name="ThrowBall" parent="." instance=ExtResource("12_xc2kt")]
 position = Vector2(1705, 600)

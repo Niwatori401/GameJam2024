@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=25 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_hen2x"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="9_l1df8"]
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="10_xxeil"]
+[ext_resource type="PackedScene" uid="uid://bmy46xaejnksv" path="res://scene/trinket/kobold_trinket.tscn" id="13_1i8sf"]
 [ext_resource type="PackedScene" uid="uid://bux7apbqh8fim" path="res://scene/trinket/Clipboard.tscn" id="14_2aa7m"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="15_5waki"]
 [ext_resource type="PackedScene" uid="uid://m1530d5sq1w" path="res://scene/trinket/pneumatic_tube.tscn" id="15_vtya6"]
@@ -66,9 +67,12 @@ volume_db = -8.884
 position = Vector2(652, 558)
 scale = Vector2(0.371042, 0.371042)
 
-[node name="ThrowBall" parent="." instance=ExtResource("10_xxeil")]
+[node name="ThrowBall" parent="Trinkets" instance=ExtResource("10_xxeil")]
 position = Vector2(1705, 600)
 freeze = true
+
+[node name="KoboldTrinket" parent="Trinkets" instance=ExtResource("13_1i8sf")]
+position = Vector2(1119, 536)
 
 [node name="ScoreProgressBar" parent="." instance=ExtResource("17_2xc6k")]
 offset_left = 498.0

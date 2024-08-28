@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmy46xaejnksv"]
+
+[ext_resource type="Texture2D" uid="uid://ddyd1kc3s1upd" path="res://asset/desk_trinkets/kobold/kobold_1.png" id="1_qertd"]
+[ext_resource type="Texture2D" uid="uid://2qahlnktuxvk" path="res://asset/desk_trinkets/kobold/kobold_2.png" id="2_jlfdx"]
+[ext_resource type="Texture2D" uid="uid://doqennmvk0vsm" path="res://asset/desk_trinkets/kobold/kobold_3.png" id="3_5m340"]
+[ext_resource type="Texture2D" uid="uid://be1cu578iiaec" path="res://asset/desk_trinkets/kobold/kobold_4.png" id="4_j3r0k"]
+[ext_resource type="Texture2D" uid="uid://bf6cnbbw23b2k" path="res://asset/desk_trinkets/kobold/kobold_5.png" id="5_ylibn"]
+[ext_resource type="Script" path="res://scene/kobold_trinket.gd" id="6_bnabj"]
+[ext_resource type="PackedScene" uid="uid://86syd1gxc5vg" path="res://scene/button_with_label.tscn" id="6_kj4uk"]
+[ext_resource type="Texture2D" uid="uid://bl3esla3egl0m" path="res://asset/desk_trinkets/kobold/kobold_hover.png" id="8_2yran"]
+[ext_resource type="BitMap" uid="uid://bdn8gcis4h87i" path="res://asset/desk_trinkets/kobold/kobold_click_mask.png" id="9_3igv5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udh53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qertd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jlfdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5m340")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j3r0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ylibn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qertd")
+}],
+"loop": false,
+"name": &"bobble",
+"speed": 16.0
+}]
+
+[node name="KoboldTrinket" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_udh53")
+animation = &"bobble"
+script = ExtResource("6_bnabj")
+
+[node name="ButtonWithLabel" parent="." instance=ExtResource("6_kj4uk")]
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_hover = ExtResource("8_2yran")
+texture_focused = ExtResource("8_2yran")
+texture_click_mask = ExtResource("9_3igv5")
+button_description_text = "Kobold Bobblehead"
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="button_down" from="ButtonWithLabel" to="." method="_on_button_with_label_button_down"]

@@ -9,7 +9,6 @@ var seconds_per_day : float = 60;
 var seconds_elapsed_total : float = 0;
 
 var delay_seconds : float = 1;
-#var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
 var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.UP]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];

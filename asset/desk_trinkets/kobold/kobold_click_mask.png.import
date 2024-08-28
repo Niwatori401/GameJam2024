@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bdn8gcis4h87i"
+path="res://.godot/imported/kobold_click_mask.png-6a38f95b33d28c0da265920ad7e1f198.res"
+
+[deps]
+
+source_file="res://asset/desk_trinkets/kobold/kobold_click_mask.png"
+dest_files=["res://.godot/imported/kobold_click_mask.png-6a38f95b33d28c0da265920ad7e1f198.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
