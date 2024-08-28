@@ -2,16 +2,31 @@ extends Control
 
 var current_item_name : String = "";
 
+func day_to_manager_dialog = {}
+
+
+
 func _ready() -> void:
 	$Fader.lighten(1);
 	SignalBus.store_item_selected.connect(set_text_for_currently_selected_item);
 	SignalBus.no_item_selected.connect(hide_description);
-	$WalletText.text = "Wallet: $%d" % [Inventory.get_money_amount()];
+	update_wallet_text();
+	update_shown_items();
 	$BackButton.grab_focus();
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("accept"):
 		$DynamicTextBox.display_next_line();
+
+func update_wallet_text():
+	$WalletText.text = "Wallet: $%d" % [Inventory.get_money_amount()];
+
+func update_shown_items():
+	$StoreItems/BaseballItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
+	$StoreItems/ClockItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
+	$StoreItems/KoboldItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
+
 
 
 func set_text_for_currently_selected_item(item_name, description, price) -> void:
@@ -30,20 +45,21 @@ func _on_back_button_button_down() -> void:
 	$Fader.darken(1);
 
 
-func _on_clock_item_button_down() -> void:
-	if Inventory.get_money_amount() >= 10:
-		Inventory.unlock_trinket(Globals.TRINKET_CLOCK);
-		Inventory.change_and_commit_money_amount(-10);
+func try_buy_item(item_name : String, cost : int):
+	if Inventory.is_trinket_unlocked(item_name):
+		return;
+		
+	if Inventory.get_money_amount() >= cost:
+		Inventory.unlock_trinket(item_name);
+		Inventory.change_and_commit_money_amount(-cost);
+		update_shown_items();
+		update_wallet_text();
 
+func _on_clock_item_button_down() -> void:
+	try_buy_item(Globals.TRINKET_CLOCK, 10);
 
 func _on_baseball_item_button_down() -> void:
-	if Inventory.get_money_amount() >= 5:
-		Inventory.unlock_trinket(Globals.TRINKET_BALL);
-		Inventory.change_and_commit_money_amount(-5);
-		
-
+	try_buy_item(Globals.TRINKET_BALL, 5);
 
 func _on_kobold_item_button_down() -> void:
-	if Inventory.get_money_amount() >= 15:
-		Inventory.unlock_trinket(Globals.TRINKET_KOBOLD);
-		Inventory.change_and_commit_money_amount(-15);
+	try_buy_item(Globals.TRINKET_KOBOLD, 15);

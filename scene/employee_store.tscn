@@ -1,21 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://c37egpepk78y2"]
+[gd_scene load_steps=21 format=3 uid="uid://c37egpepk78y2"]
 
 [ext_resource type="Script" path="res://script/employee_store.gd" id="1_lcorx"]
 [ext_resource type="Texture2D" uid="uid://bk6sf1hj6oq5l" path="res://asset/background/store_1.png" id="2_hobv2"]
 [ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="4_6srie"]
 [ext_resource type="PackedScene" uid="uid://dbu88awi58qi2" path="res://scene/store_item.tscn" id="5_epf2n"]
 [ext_resource type="Texture2D" uid="uid://c6oy5w58i07p7" path="res://asset/desk_trinkets/throw_ball/throw_ball_normal.png" id="6_ivghw"]
-[ext_resource type="Texture2D" uid="uid://bn2kqxp6xml3g" path="res://asset/desk_trinkets/throw_ball/throw_ball_pressed.png" id="7_7c0o0"]
 [ext_resource type="Texture2D" uid="uid://g0egcwaivalk" path="res://asset/desk_trinkets/throw_ball/throw_ball_hover.png" id="8_08jc0"]
+[ext_resource type="Texture2D" uid="uid://cdol2p636vmso" path="res://asset/desk_trinkets/throw_ball/throw_ball_disabled.png" id="9_3syyo"]
 [ext_resource type="Texture2D" uid="uid://ddyd1kc3s1upd" path="res://asset/desk_trinkets/kobold/kobold_1.png" id="10_8p3eu"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="10_q7gwf"]
 [ext_resource type="Texture2D" uid="uid://bl3esla3egl0m" path="res://asset/desk_trinkets/kobold/kobold_hover.png" id="11_8wjx4"]
+[ext_resource type="Texture2D" uid="uid://c0gcwq1twc0fd" path="res://asset/desk_trinkets/kobold/kobold_disabled.png" id="12_8716d"]
 [ext_resource type="BitMap" uid="uid://bdn8gcis4h87i" path="res://asset/desk_trinkets/kobold/kobold_click_mask.png" id="12_f5hgv"]
 [ext_resource type="Texture2D" uid="uid://bxi7pj7qaol2h" path="res://asset/desk_trinkets/clock/clock_store_image_normal.png" id="13_swr3a"]
 [ext_resource type="Texture2D" uid="uid://c2pwriqyp6xnr" path="res://asset/desk_trinkets/clock/clock_store_image_hover.png" id="14_napig"]
 [ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="14_tbfow"]
 [ext_resource type="Texture2D" uid="uid://b5d7ahdi7oyeo" path="res://asset/back_arrow.png" id="15_jvgv7"]
 [ext_resource type="Texture2D" uid="uid://cxqucd1rej3au" path="res://asset/back_arrow_pressed.png" id="16_3f2al"]
+[ext_resource type="Texture2D" uid="uid://dkb0gdcapvstn" path="res://asset/desk_trinkets/clock/clock_store_image_disabled.png" id="16_l63np"]
 [ext_resource type="Texture2D" uid="uid://c1u0ix0si0xgm" path="res://asset/back_arrow_hover.png" id="17_03hwm"]
 [ext_resource type="BitMap" uid="uid://b15aw4muvlplt" path="res://asset/back_arrow_mask.png" id="18_8x5mc"]
 
@@ -36,40 +38,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hobv2")
-
-[node name="ItemDescription" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 500.0
-
-[node name="ColorRect" type="ColorRect" parent="ItemDescription"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.419813, 0.419813, 0.419813, 1)
-
-[node name="ItemLabel" type="RichTextLabel" parent="ItemDescription"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -250.0
-offset_right = 450.0
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center][font_size=100]Example Item[/font_size][/center]
-This item, is in fact an item"
-fit_content = true
 
 [node name="ButtonControls" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -99,6 +67,7 @@ buttonType = 6
 
 [node name="DynamicTextBox" parent="." instance=ExtResource("4_6srie")]
 layout_mode = 1
+mouse_filter = 2
 
 [node name="StoreItems" type="Control" parent="."]
 anchors_preset = 0
@@ -113,10 +82,10 @@ offset_right = 1016.0
 offset_bottom = 806.0
 scale = Vector2(0.192943, 0.192943)
 texture_normal = ExtResource("6_ivghw")
-texture_pressed = ExtResource("7_7c0o0")
+texture_pressed = null
 texture_hover = ExtResource("8_08jc0")
-texture_disabled = null
-texture_focused = ExtResource("8_08jc0")
+texture_disabled = ExtResource("9_3syyo")
+texture_focused = null
 cost = 5
 description = "It has small teeth marks, as if chewed by a small dog."
 item_name = "Baseball"
@@ -131,7 +100,7 @@ scale = Vector2(0.835575, 0.835575)
 texture_normal = ExtResource("10_8p3eu")
 texture_pressed = null
 texture_hover = ExtResource("11_8wjx4")
-texture_disabled = null
+texture_disabled = ExtResource("12_8716d")
 texture_focused = null
 texture_click_mask = ExtResource("12_f5hgv")
 cost = 15
@@ -148,7 +117,7 @@ scale = Vector2(0.21051, 0.21051)
 texture_normal = ExtResource("13_swr3a")
 texture_pressed = null
 texture_hover = ExtResource("14_napig")
-texture_disabled = null
+texture_disabled = ExtResource("16_l63np")
 texture_focused = null
 cost = 10
 description = "Keeping time since the 13th century! Helps indicate how close you are to end of your current shift."

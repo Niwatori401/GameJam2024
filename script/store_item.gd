@@ -24,10 +24,14 @@ func get_description() -> String:
 
 
 func _on_focus_entered() -> void:
+	if disabled:
+		return;
 	SignalBus.store_item_selected.emit(item_name, description, cost);
 
 
 func _on_mouse_entered() -> void:
+	if disabled:
+		return;
 	SignalBus.store_item_selected.emit(item_name, description, cost);
 
 
