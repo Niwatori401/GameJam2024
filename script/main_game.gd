@@ -10,7 +10,7 @@ var seconds_elapsed_total : float = 0;
 
 var delay_seconds : float = 1;
 #var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.UP, Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT, Enums.KEY_DIRECTION.RIGHT]
-var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT]
+var all_game_keys : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT, Enums.KEY_DIRECTION.LEFT]
 
 var current_keys : Array[Enums.KEY_DIRECTION] = [];
 @export var success_sounds : Array[AudioStream];
@@ -55,7 +55,7 @@ var saveFile = ConfigFile.new();
 
 var cycle_used_stamps := false;
 var player_hit_stamp_button_this_cycle := false;
-var stamp_directions : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.LEFT];
+var stamp_directions : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, Enums.KEY_DIRECTION.RIGHT];
 
 
 func _ready() -> void:
@@ -146,7 +146,7 @@ func handle_key_press(key : Enums.KEY_DIRECTION):
 			fail_cur_challenge();
 			return;
 			
-	if key == Enums.KEY_DIRECTION.LEFT or key == Enums.KEY_DIRECTION.DOWN:
+	if key == stamp_directions[0] or key == stamp_directions[1]:
 		player_hit_stamp_button_this_cycle = true;
 	
 	play_success_animation(key);
@@ -210,8 +210,14 @@ func set_random_new_keys():
 func play_success_animation(key_direction : Enums.KEY_DIRECTION):
 	if key_direction == Enums.KEY_DIRECTION.DOWN:
 		$Stamp_1.play("stamp1");
-	elif key_direction == Enums.KEY_DIRECTION.LEFT:
+	elif key_direction == Enums.KEY_DIRECTION.RIGHT:
 		$Stamp_2.play("stamp2");
+	elif key_direction == Enums.KEY_DIRECTION.LEFT:
+		$DeskButton.play("press_button");
+	elif key_direction == Enums.KEY_DIRECTION.UP:
+		pass
+	else:
+		printerr("Unknown button in play_success_animation");
 	
 func is_prelunch() -> bool:
 	return abs(day_number - roundi(day_number)) < 0.002;
