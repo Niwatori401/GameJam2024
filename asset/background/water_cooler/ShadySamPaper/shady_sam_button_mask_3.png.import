@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bepkbe47k6puo"
+path="res://.godot/imported/shady_sam_button_mask_3.png-5a0f435aab6b6a47500a754d7ae70c42.res"
+
+[deps]
+
+source_file="res://asset/background/water_cooler/ShadySamPaper/shady_sam_button_mask_3.png"
+dest_files=["res://.godot/imported/shady_sam_button_mask_3.png-5a0f435aab6b6a47500a754d7ae70c42.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

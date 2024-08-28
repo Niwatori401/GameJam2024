@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c821o5u8c75b3"
-path="res://.godot/imported/Shady_Sam.png-f42336597194daa679ac79aebf909bdc.ctex"
+uid="uid://ghr8kieji37e"
+path="res://.godot/imported/Shady Sam Paper Arm foreground.png-12f3befd8703c67bc2dfb2a0cb0c89bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/background/Shady_Sam.png"
-dest_files=["res://.godot/imported/Shady_Sam.png-f42336597194daa679ac79aebf909bdc.ctex"]
+source_file="res://asset/background/water_cooler/ShadySamPaper/Shady Sam Paper Arm foreground.png"
+dest_files=["res://.godot/imported/Shady Sam Paper Arm foreground.png-12f3befd8703c67bc2dfb2a0cb0c89bd.ctex"]
 
 [params]
 
