@@ -9,6 +9,7 @@ const CONFIG_KEY_VOLUME := "master_volume";
 const CONFIG_KEY_FULLSCREEN := "is_fullscreen";
 const CONFIG_KEY_CONTROL_SCEME := "control_scheme";
 const CONFIG_KEY_RESOLUTION := "resolution";
+const CONFIG_KEY_VOICED_DIALOG := "voiced_dialog";
 
 const SAVE_CATEGORY_INVENTORY := "Inventory";
 const SAVE_KEY_MONEY := "money";

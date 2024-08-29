@@ -120,7 +120,8 @@ func load_and_init_config_values():
 	var resolution = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, "1920 x 1080");
 	var is_fullscreen = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
 	var volume = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
-	
+	var has_voiced_dialog = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOICED_DIALOG, true);
+
 	# Control Glyphs
 	for glyph_index in range(len(glyph_options)):
 		if control_glyphs == glyph_options.values()[glyph_index]:
@@ -140,6 +141,9 @@ func load_and_init_config_values():
 		if video_resolutions.keys()[res_index] == resolution:
 			$Options/VideoSettings/VideoResolutionDropdown.select(res_index);
 			break;
+	
+	# Voiced Dialog
+	$Options/AudioSettings/DialogNoisesCheckbox.button_pressed = has_voiced_dialog;
 	
 	# Fullscreen
 	$Options/FullScreenCheckbox.button_pressed = is_fullscreen;
@@ -173,3 +177,8 @@ func _on_delete_save_button_button_down() -> void:
 	$BackButton.grab_focus();
 	$Options/DeleteSaveButton.disabled = true;
 	SignalBus.save_deleted.emit();
+
+
+func _on_dialog_noises_checkbox_toggled(toggled_on: bool) -> void:
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOICED_DIALOG, toggled_on);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);

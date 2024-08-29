@@ -28,6 +28,8 @@ var tag_to_voice = {
 		]
 }
 
+var voiced_dialog : bool = true;
+
 # 0 for instant
 @export var letters_per_second : float = 240;
 
@@ -51,6 +53,7 @@ var time_to_wait_between_pause = 0.5;
 var cur_pause_wait_time : float= 0;
 
 func _ready() -> void:
+	voiced_dialog = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOICED_DIALOG, true);
 	scale.x = 0;
 	visible = false;
 	open_mode = Enums.OPEN_MODE.NONE;
@@ -76,8 +79,8 @@ func _process(delta: float) -> void:
 		hide_continue_icon();
 	
 
-	if letters_per_second == 0:
-		$SpeechText.text = text_to_display[text_to_display_index];
+	if letters_per_second == -1:
+		$SpeechText.text = text_to_display[text_to_display_index].replace("/n", "\n").replace("`", "");
 		current_display_letter_index = len(text_to_display[text_to_display_index]);
 		return;
 		
@@ -128,14 +131,15 @@ func _process(delta: float) -> void:
 				return;
 				
 			$SpeechText.text += cur_char;
-			if voice_tag_array[text_to_display_index] != "" and voice_tag_array[text_to_display_index] != "p:" and cur_char != " " and cur_char != ".":
-				$Voice.stream = tag_to_voice[voice_tag_array[text_to_display_index]].pick_random();
-				if voice_tag_array[text_to_display_index] == "c:":
-					$Voice.pitch_scale = randf_range(0.7, 0.8);
-				else:
-					$Voice.pitch_scale = randf_range(0.95, 1.05);
-				
-				$Voice.play()
+			if voiced_dialog:
+				if voice_tag_array[text_to_display_index] != "" and voice_tag_array[text_to_display_index] != "p:" and cur_char != " " and cur_char != ".":
+					$Voice.stream = tag_to_voice[voice_tag_array[text_to_display_index]].pick_random();
+					if voice_tag_array[text_to_display_index] == "c:":
+						$Voice.pitch_scale = randf_range(0.7, 0.8);
+					else:
+						$Voice.pitch_scale = randf_range(0.95, 1.05);
+					
+					$Voice.play()
 				
 			current_display_letter_index += 1;
 			if done_with_last_letter():

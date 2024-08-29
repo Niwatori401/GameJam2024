@@ -64,7 +64,7 @@ fit_content = true
 
 [node name="ControlGlyphDropdown" type="OptionButton" parent="Options/ControlGlyphs"]
 layout_mode = 2
-tooltip_text = "Choose the button glyphs that show in-game"
+tooltip_text = "Choose the button glyphs that show in-game. Does not affect controls, just how they appear in-game. (Arrow keys will still work even with controller glyphs and vice-versa)"
 focus_neighbor_bottom = NodePath("../../VideoSettings/VideoResolutionDropdown")
 focus_next = NodePath("../../VideoSettings/VideoResolutionDropdown")
 theme_override_fonts/font = ExtResource("1_5ynfn")
@@ -135,14 +135,20 @@ fit_content = true
 layout_mode = 2
 value = 80.0
 
+[node name="DialogNoisesCheckbox" type="CheckBox" parent="Options/AudioSettings"]
+layout_mode = 2
+tooltip_text = "When enabled, characters will make simple sounds when they talk. If text speed is instant, dialog noise will never play.  (Recommended: ON)"
+theme_override_font_sizes/font_size = 24
+text = "Dialog Noises"
+
 [node name="TextSpeed" type="VBoxContainer" parent="Options"]
 layout_mode = 2
-tooltip_text = "The audio for this game is very important, so it is recommended not to turn this too low!"
+tooltip_text = "How fast text will display, in charcters per second. If instant, all text is displayed instantly.  (Recommended: 60)"
 theme_override_constants/separation = 5
 
 [node name="TextSpeedLabel" type="RichTextLabel" parent="Options/TextSpeed"]
 layout_mode = 2
-tooltip_text = "The audio for this game is very important, so it is recommended not to turn this too low!"
+tooltip_text = "How fast text will display, in charcters per second. If instant, all text is displayed instantly.  (Recommended: 60)"
 theme_override_constants/line_separation = 0
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
@@ -204,6 +210,7 @@ layout_mode = 1
 [connection signal="item_selected" from="Options/VideoSettings/VideoResolutionDropdown" to="." method="_on_video_resolution_dropdown_item_selected"]
 [connection signal="toggled" from="Options/FullScreenCheckbox" to="." method="_on_full_screen_checkbox_toggled"]
 [connection signal="value_changed" from="Options/AudioSettings/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="Options/AudioSettings/DialogNoisesCheckbox" to="." method="_on_dialog_noises_checkbox_toggled"]
 [connection signal="drag_ended" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_drag_ended"]
 [connection signal="value_changed" from="Options/TextSpeed/TextSpeedSlider" to="." method="_on_text_speed_slider_value_changed"]
 [connection signal="button_down" from="Options/DeleteSaveButton" to="." method="_on_delete_save_button_button_down"]
