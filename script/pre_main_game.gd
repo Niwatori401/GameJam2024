@@ -38,33 +38,77 @@ Failure to correctly process the required documents may result in early terminat
 
 Welcome to the team!",
 	#2
-	"You came back. Good. Seeing as you're a veteran workforce member, you're now entitled to have a [b]lunch break[/b] in the middle of your shifts. Make sure you head to the company lunchroom at the [b]lunch whistle[/b]. Got that?
-	
-Oh, and I'll need you to start putting these [b]tubes[/b] in the [b]pneumatic launcher[/b] starting today, as well. It's not difficult, so even you should be able to manage. Good luck.",
+	"You came back. Good. Seeing as you're now a veteran workforce member, you're now entitled to have a [b]lunch break[/b] in the middle of your shifts. Make sure you head to the company lunchroom at the [b]lunch whistle[/b]. Got that?
+
+Oh, and I'll need you to start stamping these [b]additional forms[/b] starting today, as well. It's not difficult, so even you should be able to manage. Good luck.",
 	# 3
-	"",
+	"Your work so far has been adequate. As a result, you'll now also be required to operate the release valves. Luckily for your dainty little hands, this has been optimized so that a single worker can achieve this by [b]pressing the shiny new red button[/b] on your desk. Do not press the button multiple times, this is not a quiz show. You would not believe how many times we've had to discipline people for that. Be different.
+
+Thanks,
+
+-Management",
 	# 4
-	"",
+	"You can evidently handle the bare minimum, so today you'll be sending packages through the [b]pneumatic tubes[/b] in addition to your regular workflow. This is also a relatively simple task, but do try not to get it confused with the shiny button, hmm?
+
+Also, and this is not an accusation, but there some suspicious looking characters seen around the lunchroom recently. If this is not you, please report anything you might have seen to Human Resources. Thanks.",
 	# 5
-	"",
+	"Hopefully you've settled in.
+	
+On a broader topic, concerns have been raised about the current state of the wall adjacent to the lunchroom table. We would like to remind all employees not to worry about matters above their payroll, and to keep their abnormally scruffy noses out of other people's business.
+
+If you feel you still have concerns, please report to HR so they can distract you by jingling keys until you forget all about it. 
+
+Best regards, 
+Management",
 	# 6
-	"",
+	"Due to a government mandated investigation into trivial matters such as \"forced labor\" and \"minimum wage\" laws, you may have noticed we have adjusted your salary accordingly to compensate. You are free to take this as a token of our appreciation, but it should also be noted that if we could force you to work for free, we would. 
+
+Don't forget, you're here forever.
+
+-Management <3",
 	# 7
-	"",
+	"Stop asking about the wall. Do not approach the wall. Do not even think about the wall. Employees caught thinking about the wall will be subject to bizarre wall-themed punishments as soon as we can come up with any. 
+
+-Management",
 	# 8
-	"",
+	"[font_size=15][font=\"res://asset/font/Baskervville_SC/BaskervvilleSC-Regular.ttf\"]Dear EMPLOYEE #41872-C,[/font][/font_size]
+
+Given the nature of the incident yesterday, we feel it may be prudent to clear the air. You are not in [b]too[/b] much trouble. We have generously installed a two-way monitor setup for you to communicate with your co-worker, as we believe this may expedite the process and improve overall morale.
+
+Please try to contain your conversation to work-related topics outside of the allotted work hours where possible. The lunchroom wall has been reassembled, although you may notice some of the reinforcements if you are particularly perceptive.
+
+Keep up the adequate work.
+-Management",
 	# 9
-	"",
+	"Someone appears to have stolen the entire fridge from my office. If I find out who did this, they will be severely punished, perhaps with more food. This is probably a reasonable punishment. 
+
+-Management",
 	# 10
-	"",
+	"As usual, please ignore the ominous gurgling and ungodly noises. You know what they are. Don't let them distract you too much. Work is important. Work makes everyone happy.
+
+Associate your work with happiness. Know that every time you stamp a form, someone in particular is very, very happy. It's not me. Couldn't be me.",
 	# 11
-	"",
+	"The company egg and spoon race has been canceled. This is due to the repurposing of said eggs for other, higher priority projects. 
+
+Thank you for your understanding, but unfortunately, we cannot offer you a nice egg in these trying times.",
 	# 12
-	"",
+	"This is a reminder to all employees on the third floor. You are not in danger. The localized earthquake yesterday was a result of- just  write some stupid excuse here, get Accounting to fabricate an excuse about a stray elephant or something. They'll believe anything.
+
+No, don't just write down literally everything I say, for God's sake. It's got to look like I write these myself. Is that an eclair? Give me that.
+
+-Management",
 	# 13
-	"",
+	"The company picnic has been moved up to this weekend, as the company will likely be acquiring a sizable amount of outdoor space in the near future.
+
+-Management",
 	# 14
-	"",  
+	"You have served us quite adequately these past two weeks. However, the elephant filling the room obviously cannot be ignored any longer. It is likely that we will have to relocate in the extremely near future. 
+
+In the meantime, please continue your work. Your company performance review indicates that employee happiness has risen over 615% since your employment. These numbers are somewhat skewed by a particular individual (I imagine even you are not so dull as to not know who I am referring to) but the statistics themselves do not lie.
+
+I am therefore pleased to promote you to Senior Junior Assistant Manager, effective immediately. You will not receive a pay rise or additional duties, nor any modicum of respect from your superiors. But it should be noted, whereupon I will never mention it again, that you have done a good job. Congratulations.
+
+-Management",  
 ]
 
 var day_to_cam_state = {
