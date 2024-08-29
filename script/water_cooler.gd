@@ -36,7 +36,7 @@ func _ready():
 	if day_number == null:
 		printerr("Day number failed to load in water_cooler");
 		
-	if floori(day_number) == 7:
+	if floori(day_number) == 7 or floori(day_number) < 4:
 		$ShadySamButton.visible = false;
 		$AudioFader.stream = break_room_theme;
 		$AudioFader.stream.loop = true;
