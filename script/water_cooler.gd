@@ -23,6 +23,7 @@ var shady_sam_click_mask_sprites : Array[BitMap] = [
 
 func _ready():
 	$Fader.lighten(0.5);
+	$AudioFader.fade_in(0.5);
 	secs_per_frame = animation_duration_secs / len(shady_sam_sprites);
 
 func _process(delta: float) -> void:
@@ -62,4 +63,6 @@ func play_animation():
 
 func _on_back_button_button_down() -> void:
 	$Fader.darken(0.5);
+	$AudioFader.fade_out(0.5);
+
 	Utility.load_scene(0.5, Globals.SCENE_BREAK_ROOM);
