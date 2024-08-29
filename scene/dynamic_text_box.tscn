@@ -68,3 +68,5 @@ offset_bottom = 928.0
 scale = Vector2(0.466223, 0.466223)
 controlFunctionText = ""
 buttonType = 4
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]

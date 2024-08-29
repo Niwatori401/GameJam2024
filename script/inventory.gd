@@ -13,11 +13,12 @@ var trinkets = {
 var money : int = 0;
 
 var save_file : ConfigFile = ConfigFile.new();
+var config_file : ConfigFile = ConfigFile.new();
 
 func _ready() -> void:
-	var status = save_file.load(Globals.USER_SAVE_FILE);
-	if status != OK:
-		return;
+	make_config_and_save_files_if_needed();
+	save_file.load(Globals.USER_SAVE_FILE);
+	config_file.load(Globals.USER_CONFIG_FILE);
 		
 	SignalBus.save_deleted.connect(load_inventory_from_file);
 	load_inventory_from_file();
@@ -28,7 +29,30 @@ func get_money_amount():
 func get_save():
 	return save_file;
 
+func get_config():
+	return config_file;
 
+func make_config_and_save_files_if_needed():
+	config_file = ConfigFile.new();
+	save_file = ConfigFile.new();
+	
+	var save_load_status = save_file.load(Globals.USER_SAVE_FILE);
+	var config_load_status = config_file.load(Globals.USER_CONFIG_FILE);
+
+	if save_load_status != OK:
+		save_file = ConfigFile.new();
+		save_file.save(Globals.USER_SAVE_FILE);
+		
+	if config_load_status != OK:
+		config_file = ConfigFile.new();
+		config_file.save(Globals.USER_CONFIG_FILE);
+
+
+
+func is_first_day() -> bool:
+	# Makes level dispatcher work correctly
+	return not get_save().has_section_key(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER);
+		
 func change_and_commit_money_amount(amount_to_change : int):
 	money += amount_to_change;
 	save_file.set_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_MONEY, money);

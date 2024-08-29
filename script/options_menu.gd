@@ -1,8 +1,6 @@
 class_name OptionsMenu extends Control
 
 
-var config = ConfigFile.new();
-
 const VOLUME_MIN_DB : float = -40;
 const VOLUME_MAX_DB : float = 10;
 
@@ -25,7 +23,6 @@ var glyph_options = {
 }
 
 func _ready() -> void:
-	config.load("user://config.cfg")
 	initialize_video_dropdown();
 	initialize_glyph_dropdown();
 	initialize_volume_slider();
@@ -39,20 +36,20 @@ func _on_full_screen_checkbox_toggled(toggled_on: bool) -> void:
 	else:
 		get_tree().get_root().set_mode(Window.MODE_WINDOWED);
 		
-	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, toggled_on);
-	config.save(Globals.USER_CONFIG_FILE);
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, toggled_on);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 
 func _on_video_resolution_dropdown_item_selected(index: int) -> void:
 	var resolution_string = $Options/VideoSettings/VideoResolutionDropdown.get_item_text(index);
 	var resolution = video_resolutions[resolution_string];
 	get_window().size = resolution;
-	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, resolution_string);
-	config.save(Globals.USER_CONFIG_FILE);
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, resolution_string);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 
 func _on_control_glyph_dropdown_item_selected(index: int) -> void:
 	var display_glyphs = glyph_options[$Options/ControlGlyphs/ControlGlyphDropdown.get_item_text(index)];
-	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, display_glyphs);
-	config.save(Globals.USER_CONFIG_FILE);
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, display_glyphs);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 	ButtonGraphics.set_key_set(display_glyphs);
 	SignalBus.glyphs_updated.emit();
 
@@ -60,8 +57,8 @@ func _on_control_glyph_dropdown_item_selected(index: int) -> void:
 func _on_volume_slider_value_changed(value: float) -> void:
 	set_volume(value);
 	update_volume_text();
-	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, value);
-	config.save(Globals.USER_CONFIG_FILE);
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, value);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 	
 func _on_back_button_button_up() -> void:
 	const DARKEN_SECONDS = 1;
@@ -118,11 +115,11 @@ func show_options():
 
 
 func load_and_init_config_values():
-	var control_glyphs = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.ARROW);
-	var text_speed = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, (MAX_TEXT_SPEED - MIN_TEXT_SPEED) / 2);
-	var resolution = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, "1920 x 1080");
-	var is_fullscreen = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
-	var volume = config.get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
+	var control_glyphs = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.ARROW);
+	var text_speed = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, (MAX_TEXT_SPEED - MIN_TEXT_SPEED) / 2);
+	var resolution = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, "1920 x 1080");
+	var is_fullscreen = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
+	var volume = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
 	
 	# Control Glyphs
 	for glyph_index in range(len(glyph_options)):
@@ -166,8 +163,8 @@ func _on_text_speed_slider_drag_ended(_value_changed: bool) -> void:
 	else:
 		value_to_save = $Options/TextSpeed/TextSpeedSlider.value;
 
-	config.set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, value_to_save);
-	config.save(Globals.USER_CONFIG_FILE);
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, value_to_save);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 
 
 func _on_delete_save_button_button_down() -> void:

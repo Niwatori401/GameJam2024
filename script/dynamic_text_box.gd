@@ -54,6 +54,7 @@ func _ready() -> void:
 	scale.x = 0;
 	visible = false;
 	open_mode = Enums.OPEN_MODE.NONE;
+	letters_per_second = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED);
 
 func _process(delta: float) -> void:
 
@@ -127,6 +128,15 @@ func _process(delta: float) -> void:
 				return;
 				
 			$SpeechText.text += cur_char;
+			if voice_tag_array[text_to_display_index] != "" and voice_tag_array[text_to_display_index] != "p:" and cur_char != " " and cur_char != ".":
+				$Voice.stream = tag_to_voice[voice_tag_array[text_to_display_index]].pick_random();
+				if voice_tag_array[text_to_display_index] == "c:":
+					$Voice.pitch_scale = randf_range(0.7, 0.8);
+				else:
+					$Voice.pitch_scale = randf_range(0.95, 1.05);
+				
+				$Voice.play()
+				
 			current_display_letter_index += 1;
 			if done_with_last_letter():
 				break;
@@ -187,15 +197,22 @@ func display_new_text(new_text: Array, client_cam_state : Array[Enums.CLIENT_CAM
 
 func replace_single_line(tag : String, line_index : int) -> void:
 	if text_to_display[line_index].contains(tag):
+			voice_tag_array.append(tag);
 			text_to_display[line_index] = text_to_display[line_index].replace(tag, tag_to_name_string[tag]);
 
+
+var voice_tag_array = [];
 func replace_tags_with_name_strings():
+	voice_tag_array = [];
 	for line_index in range(len(text_to_display)):
 		replace_single_line("m:", line_index);
 		replace_single_line("h:", line_index);
 		replace_single_line("p:", line_index);
 		replace_single_line("c:", line_index);
 		replace_single_line("s:", line_index);
+		
+		if line_index > len(voice_tag_array) - 1:
+			voice_tag_array.append("");
 
 # returns true if currently transitioning
 func do_box_transitions(delta) -> bool:
