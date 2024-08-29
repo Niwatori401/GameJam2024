@@ -74,6 +74,7 @@ func _ready() -> void:
 	show_only_unlocked_trinkets();
 	var is_beginning_of_day = show_clipboard and show_message;
 	if is_beginning_of_day:
+		$DayStartFX.play();
 		$NonGameOffice/TextureFader.texture = day_splash_screens[clampi(floori(day_number) - 1, 0, 14)];
 		$NonGameOffice/TextureFader.lighten(2, 2);
 		$NonGameOffice/Fader.visible = false;
