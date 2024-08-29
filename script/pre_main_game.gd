@@ -294,7 +294,7 @@ func _ready() -> void:
 var cam_state_index : int = 0;
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("accept"):
+	if Input.is_action_just_pressed("accept") and not $NonGameOffice/DynamicTextBox.is_finished():
 		$NonGameOffice/DynamicTextBox.display_next_line();
 		cam_state_index += 1;
 		if $NonGameOffice/DynamicTextBox.is_finished():
@@ -308,9 +308,9 @@ func _process(delta: float) -> void:
 			SignalBus.client_cam_state_changed.emit(day_to_cam_state[roundi(day_number - 1)][cam_state_index]);
 
 			
-	if Input.is_action_just_pressed("escape"):
-		$NonGameOffice/PaperMessage.start_move_down();
+	if Input.is_action_just_pressed("escape") and show_message:
 		if paper_is_up:
+			$NonGameOffice/PaperMessage.start_move_down();
 			paper_viewed = true;
 			paper_is_up = false;
 
