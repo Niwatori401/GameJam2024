@@ -19,6 +19,7 @@ func _ready() -> void:
 	if status != OK:
 		return;
 		
+	SignalBus.save_deleted.connect(load_inventory_from_file);
 	load_inventory_from_file();
 
 func get_money_amount():
@@ -51,8 +52,14 @@ func save_trinkets_to_file() -> void:
 	save_file.set_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS, trinkets);
 	save_file.save(Globals.USER_SAVE_FILE);
 
+func reset_trinkets():
+	for key in trinkets.keys():
+		trinkets[key] = false;
+		
 func load_inventory_from_file() -> void:
 	if save_file.has_section_key(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS):
 		trinkets = save_file.get_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_TRINKETS);
+	else:
+		reset_trinkets();
 		
 	money = save_file.get_value(Globals.SAVE_CATEGORY_INVENTORY, Globals.SAVE_KEY_MONEY, 0);
