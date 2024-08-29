@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b30doj1chobkp"]
+[gd_scene load_steps=26 format=4 uid="uid://b30doj1chobkp"]
 
 [ext_resource type="Script" path="res://script/main_game.gd" id="1_kpve5"]
 [ext_resource type="PackedScene" uid="uid://cy7jqkfn06u4w" path="res://scene/next_key_indicator.tscn" id="1_swcd6"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bfn80i1hwtcso" path="res://asset/sound/ButtonSounds/TUBE OGG.ogg" id="5_whq7l"]
 [ext_resource type="Texture2D" uid="uid://djwg5qq683s1i" path="res://asset/background/office_background.png" id="6_vqcy6"]
 [ext_resource type="Texture2D" uid="uid://cscyitfi0804o" path="res://asset/desk.png" id="7_q8brv"]
+[ext_resource type="PackedScene" uid="uid://bn5ft0pll1rs6" path="res://scene/trinket/client_cam.tscn" id="7_qflix"]
 [ext_resource type="Texture2D" uid="uid://c236jxuquhbtp" path="res://asset/desk_trinkets/computer/computer.png" id="9_hen2x"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="9_l1df8"]
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="10_xxeil"]
@@ -63,6 +64,8 @@ volume_db = -8.884
 
 [node name="Trinkets" type="Node2D" parent="."]
 
+[node name="ClientCam" parent="Trinkets" instance=ExtResource("7_qflix")]
+
 [node name="TrinketClock" parent="Trinkets" instance=ExtResource("9_l1df8")]
 position = Vector2(652, 558)
 scale = Vector2(0.371042, 0.371042)
@@ -72,7 +75,7 @@ position = Vector2(1705, 600)
 freeze = true
 
 [node name="KoboldTrinket" parent="Trinkets" instance=ExtResource("13_1i8sf")]
-position = Vector2(1119, 536)
+position = Vector2(1143, 558)
 
 [node name="ScoreProgressBar" parent="." instance=ExtResource("17_2xc6k")]
 offset_left = 498.0

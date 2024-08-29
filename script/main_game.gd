@@ -101,7 +101,8 @@ var stamp_directions : Array[Enums.KEY_DIRECTION] = [Enums.KEY_DIRECTION.DOWN, E
 func _ready() -> void:
 	Inventory.get_save().load(Globals.USER_SAVE_FILE);
 	day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
-	
+	$Trinkets/ClientCam.visible = day_number >= 8;
+		
 	if day_number == 1:
 		seconds_per_day = 30;
 		
@@ -177,11 +178,12 @@ func show_only_unlocked_trinkets():
 
 
 func set_correct_bgm(day_number : float) -> void:
-	if day_number >= 14:
+	# Day 8
+	if day_number >= 7:
 		$BGM.stream = music_tracks[music_track_index_by_day.back()];
-		return;
+	else:
+		$BGM.stream = music_tracks[floori(day_number) - 1];
 		
-	$BGM.stream = music_tracks[floori(day_number) - 1];
 	$BGM.stream.loop = true;
 	$BGM.play();
 	return;
@@ -295,7 +297,11 @@ func succeed_shift():
 		else:
 			Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
 		Inventory.change_and_commit_money_amount(5);
-		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
+		
+		if day_number >= 8:
+			Utility.load_scene(2, Globals.SCENE_END_OF_DAY_PRE_MAIN_GAME);
+		else:
+			Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
 	else:
 		$LunchTimeSound.play();
 		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);

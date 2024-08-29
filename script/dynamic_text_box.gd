@@ -5,6 +5,27 @@ var tag_to_name_string = {
 	"h:":"[color=#000000][b][i]Human Resources[/i][/b][/color]/n",
 	"p:":"[color=#51724c][b][i]You[/i][/b][/color]/n",
 	"c:":"[color=#c18332][b][i]The Client[/i][/b][/color]/n",
+	"s:":""
+}
+
+var tag_to_voice = {
+	"m:": [
+		preload("res://asset/sound/voiceBits/manager/voice_bit_management_1.ogg"),
+		preload("res://asset/sound/voiceBits/manager/voice_bit_management_2.ogg"),
+	],
+	"h:": [
+		preload("res://asset/sound/voiceBits/hr/voice_bit_hr1.ogg"),
+		preload("res://asset/sound/voiceBits/hr/voice_bit_hr2.ogg"),
+	],
+	"p:": null,
+	"c:": [
+		preload("res://asset/sound/voiceBits/client/voice_bit_client_1.ogg"),
+		preload("res://asset/sound/voiceBits/client/voice_bit_client_2.ogg"),
+		preload("res://asset/sound/voiceBits/client/voice_bit_client_3.ogg"),
+	],
+	"s:": [
+		preload("res://asset/sound/voiceBits/shady_sam/voice_bit_shady_sam.ogg")
+		]
 }
 
 # 0 for instant
@@ -14,6 +35,8 @@ var time_since_last_character : float = 0;
 
 var text_to_display : Array = [];
 var text_to_display_index : int = 0;
+
+var client_cam_state_for_text : Array[Enums.CLIENT_CAM_STATE] = [];
 
 var current_display_letter_index : int = 0;
 
@@ -26,6 +49,8 @@ var continue_progress : float = 0;
 var pause_symbol : String = "`"
 var time_to_wait_between_pause = 0.5;
 var cur_pause_wait_time : float= 0;
+
+
 
 
 func _process(delta: float) -> void:
@@ -116,7 +141,10 @@ func start_open_box():
 func display_next_line():
 	current_display_letter_index = 0;
 	text_to_display_index += 1;
+	if should_use_cam_state() and text_to_display_index < len(client_cam_state_for_text):
+		SignalBus.client_cam_state_changed.emit(client_cam_state_for_text[text_to_display_index]);
 	$SpeechText.text = "";
+
 
 func done_with_last_letter():
 	return current_display_letter_index > len(text_to_display[text_to_display_index]) - 1
@@ -135,13 +163,25 @@ func oscillate_continue_icon(delta):
 	continue_progress += delta;
 	$ContinueIcon.modulate.a = abs(sin(continue_progress));
 
-func display_new_text(new_text: Array):
+
+func should_use_cam_state() -> bool:
+	return len(client_cam_state_for_text) != 0;
+
+
+func display_new_text(new_text: Array, client_cam_state : Array[Enums.CLIENT_CAM_STATE] = []):
+	client_cam_state_for_text = client_cam_state;
+	if len(client_cam_state_for_text) != 0 and len(client_cam_state_for_text) != len(new_text):
+		printerr("Cam state was not set successfully!");
+		client_cam_state_for_text = [];
+		
 	text_to_display = new_text;
 	text_to_display_index = 0;
 	current_display_letter_index = 0;
 	$SpeechText.text = "";
 	replace_tags_with_name_strings();
 	start_open_box();
+	if should_use_cam_state():
+		SignalBus.client_cam_state_changed.emit(client_cam_state_for_text[0]);
 
 func replace_single_line(tag : String, line_index : int) -> void:
 	if text_to_display[line_index].contains(tag):

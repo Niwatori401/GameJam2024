@@ -12,3 +12,4 @@ signal key_hit
 signal save_deleted
 signal button_selected(button_name)
 signal button_exited(button_name)
+signal client_cam_state_changed(cam_state : Enums.CLIENT_CAM_STATE)

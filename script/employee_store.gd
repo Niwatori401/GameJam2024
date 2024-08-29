@@ -20,7 +20,7 @@ var day_to_unique_manager_dialog = {
 	3 : ["m:I told you, it's being sorted. Stop worrying about it.", "m:I need coffee. We don't have coffee. I am one missed latte away from going postal."],
 	4 : ["m:Yes, I see [i]him[/i]. We all see [i]him[/i].","m:He's just lucky my jurisdiction doesn't cover the water cooler. Crafty little git."],
 	5 : ["m:OH, THE CRACK IS GETTING BIGGER? THANKS EINSTEIN. I'LL GET RIGHT ON IT."],
-	6 : ["m:Don't touch the wall. Don't go near the wall. Don't even think about the wall."],
+	6 : ["m:Don't touch the wall. Don't go near the wall. Don't even think about the wall.", "m:Those earlier tremors were from a completely unrelated earthquake.", "m:Yes, an earthquake. At this time of day, in this part of the country, localized entirely within this office."],
 	7 : [],
 	8 : [],
 	9 : [],
@@ -54,13 +54,12 @@ func update_shown_items():
 	$StoreItems/BaseballItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
 	$StoreItems/ClockItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
 	$StoreItems/KoboldItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
-
-
+	
 
 func set_text_for_currently_selected_item(item_name, description, price) -> void:
 	if current_item_name == item_name:
 		return;
-		
+	
 	current_item_name = item_name;
 	$DynamicTextBox.display_new_text(["[center][font_size=55]%s[/font_size][/center]\n%s\nPrice: %d" % [item_name, description, price]]);
 

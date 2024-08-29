@@ -15,6 +15,7 @@ var cur_fade_time : float = 0;
 
 # Full of arrays of strings
 @export var text : Array[Array] = [[]];
+
 var is_ending := false;
 
 var need_to_add_text := true;

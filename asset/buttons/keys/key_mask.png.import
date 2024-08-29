@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bemoa64ihujv1"
+path="res://.godot/imported/key_mask.png-e311b2a97fc62c7aa050792c64752e05.res"
+
+[deps]
+
+source_file="res://asset/buttons/keys/key_mask.png"
+dest_files=["res://.godot/imported/key_mask.png-e311b2a97fc62c7aa050792c64752e05.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

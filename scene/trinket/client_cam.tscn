@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn5ft0pll1rs6"]
+
+[ext_resource type="Texture2D" uid="uid://i1w6q070mk4v" path="res://asset/desk_trinkets/client_cam/Client_screen.png" id="1_kg2ph"]
+[ext_resource type="Script" path="res://script/client_cam.gd" id="1_p5137"]
+[ext_resource type="Texture2D" uid="uid://dirteuk6vo60j" path="res://asset/desk_trinkets/client_cam/Client_screen_crt_effect.png" id="2_8n6ww"]
+[ext_resource type="Texture2D" uid="uid://cpurm0p78rbi8" path="res://asset/desk_trinkets/client_cam/Client_screen_off.png" id="2_lq7i5"]
+
+[node name="ClientCam" type="Node2D"]
+script = ExtResource("1_p5137")
+
+[node name="ClientFootage" type="Sprite2D" parent="."]
+texture = ExtResource("2_lq7i5")
+offset = Vector2(960, 540)
+
+[node name="CRT_Overlay" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_8n6ww")
+
+[node name="ClientCameraFrame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_kg2ph")
