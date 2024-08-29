@@ -23,17 +23,19 @@ func _on_focus_entered() -> void:
 	if disabled:
 		return;
 	SignalBus.store_item_selected.emit(item_name, description, cost);
+	print("_on_focus_entered")
 
 
 func _on_mouse_entered() -> void:
 	if disabled:
 		return;
 	SignalBus.store_item_selected.emit(item_name, description, cost);
-
+	print("_on_mouse_entered")
 
 func _on_focus_exited() -> void:
 	SignalBus.no_item_selected.emit();
-
+	print("_on_focus_exited")
 
 func _on_mouse_exited() -> void:
 	SignalBus.no_item_selected.emit();
+	print("_on_mouse_exited")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bvf3sr08tx8ce"
+path="res://.godot/imported/photo_clickmask.png-e970fb843f2b9debf5ca07b0134ac7c7.res"
+
+[deps]
+
+source_file="res://asset/buttons/shady_sam/photo_clickmask.png"
+dest_files=["res://.godot/imported/photo_clickmask.png-e970fb843f2b9debf5ca07b0134ac7c7.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

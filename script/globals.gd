@@ -20,6 +20,7 @@ const SAVE_KEY_THROWN_BALL_IMPACT_INDEX := "thrown_ball_impact_index";
 const SAVE_KEY_DAY_NUMBER := "day_number";
 const SAVE_KEY_IS_FIRST_HR_VISIT := "is_first_hr_visit";
 const SAVE_KEY_IS_FIRST_STORE_VISIT := "is_first_store_visit";
+const SAVE_KEY_IS_FIRST_SAM_VISIT := "is_first_sam_visit";
 
 const SCENE_LEVEL_DISPATCH := "res://scene/level_dispatch.tscn";
 const SCENE_OPENING_CUTSCENE := "res://scene/instances/cutscene/opening_cutscene.tscn";
@@ -41,3 +42,7 @@ const SCENE_GAME_OVER := "res://scene/game_over.tscn";
 const TRINKET_KOBOLD := "kobold_bobble_head_trinket";
 const TRINKET_BALL := "throw_ball_trinket";
 const TRINKET_CLOCK := "clock_trinket";
+const TRINKET_GALLERY_1 := "gallery_1";
+const TRINKET_GALLERY_2 := "gallery_2";
+const TRINKET_GALLERY_3 := "gallery_3";
+const TRINKET_GALLERY_4 := "gallery_4";

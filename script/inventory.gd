@@ -3,7 +3,11 @@ extends Node
 var trinkets = {
 	Globals.TRINKET_CLOCK: false,
 	Globals.TRINKET_BALL: false,
-	Globals.TRINKET_KOBOLD: false
+	Globals.TRINKET_KOBOLD: false,
+	Globals.TRINKET_GALLERY_1: false,
+	Globals.TRINKET_GALLERY_2: false,
+	Globals.TRINKET_GALLERY_3: false,
+	Globals.TRINKET_GALLERY_4: false,
 }
 
 var money : int = 0;
@@ -32,6 +36,7 @@ func change_and_commit_money_amount(amount_to_change : int):
 func is_trinket_unlocked(trinket_name : String) -> bool:
 	if not trinkets.has(trinket_name):
 		printerr("Invalid Trinket Name: %s" % [trinket_name]);
+		return false;
 
 	return trinkets[trinket_name];
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://gleu8c806ph0"]
+
+[ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="1_vr67l"]
+
+[node name="DynamicTextBox" instance=ExtResource("1_vr67l")]
+offset_left = 20.0
+offset_right = 20.0
+
+[node name="Background" parent="." index="0"]
+offset_left = 280.0
+offset_top = 651.0
+offset_right = -240.0
+offset_bottom = -29.0
+scale = Vector2(0.5, 1)
+
+[node name="SpeechText" parent="." index="1"]
+offset_left = -664.0
+offset_top = -412.0
+offset_right = 6.0
+offset_bottom = -52.0
+
+[node name="ContinueIcon" parent="." index="2"]
+offset_left = 887.0
+offset_top = 958.0
+offset_right = 887.0
+offset_bottom = 958.0

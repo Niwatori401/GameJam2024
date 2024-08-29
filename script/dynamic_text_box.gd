@@ -5,7 +5,7 @@ var tag_to_name_string = {
 	"h:":"[color=#000000][b][i]Human Resources[/i][/b][/color]/n",
 	"p:":"[color=#51724c][b][i]You[/i][/b][/color]/n",
 	"c:":"[color=#c18332][b][i]The Client[/i][/b][/color]/n",
-	"s:":""
+	"s:":"[color=#353535][b][i]Shady Sam[/i][/b][/color]/n"
 }
 
 var tag_to_voice = {
@@ -50,8 +50,10 @@ var pause_symbol : String = "`"
 var time_to_wait_between_pause = 0.5;
 var cur_pause_wait_time : float= 0;
 
-
-
+func _ready() -> void:
+	scale.x = 0;
+	visible = false;
+	open_mode = Enums.OPEN_MODE.NONE;
 
 func _process(delta: float) -> void:
 
@@ -193,6 +195,7 @@ func replace_tags_with_name_strings():
 		replace_single_line("h:", line_index);
 		replace_single_line("p:", line_index);
 		replace_single_line("c:", line_index);
+		replace_single_line("s:", line_index);
 
 # returns true if currently transitioning
 func do_box_transitions(delta) -> bool:
