@@ -9,8 +9,11 @@ var loading_next_area : bool = false;
 func _ready() -> void:
 	$Fader.lighten(1);
 	$WaterCoolerButton.grab_focus();
-	if floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)) == 7:
-		$EmployeeStoreButton.disabled = true;
+	
+	var is_day_7 = floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)) == 7;
+	$EmployeeStoreButton.disabled = is_day_7;
+	$ManagerStanding.visible = is_day_7;
+
 		
 	loading_next_area = false;
 	

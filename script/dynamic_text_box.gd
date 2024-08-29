@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 	if is_finished():
 		start_close_box();
 		return;
+	else:
+		pass;
 	
 	
 	if current_display_letter_index == len(text_to_display[text_to_display_index]):

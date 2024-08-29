@@ -2,25 +2,33 @@ extends Control
 
 var current_item_name : String = "";
 
-var day_to_random_manager_dialog = {
-	3 : [""]
-}
-
+# From days 3 - 6
+var random_manager_dialog = [
+	"m:Seriously, you're like a mouse. How have you survived this long?",
+	"m:You really do not present a picture of confidence.",
+	"m:If you find me to be condescending, then stop finding me.",
+	"m:Has anyone ever told you that you look like a wet cat?",
+	"m:If I give you another sandwich, will you stop bothering me?",
+	"m:No, you can't take me to dinner. You couldn't afford it.",
+	"m:Wow, you really will buy anything."
+	]
+	
+var current_day_dialog_index : int = 0;
 var day_to_unique_manager_dialog = {
-	1 : "",
-	2 : "",
-	3 : "",
-	4 : "",
-	5 : "",
-	6 : "",
-	7 : "",
-	8 : "",
-	9 : "",
-	10 : "",
-	11 : "",
-	12 : "",
-	13 : "",
-	14 : ""
+	1 : [],
+	2 : ["m:Yes, I've seen the crack in the wall. It's being sorted.", "m:You haven't seen a shadowy man running around, have you?"],
+	3 : ["m:I told you, it's being sorted. Stop worrying about it.", "m:I need coffee. We don't have coffee. I am one missed latte away from going postal."],
+	4 : ["m:Yes, I see [i]him[/i]. We all see [i]him[/i].","m:He's just lucky my jurisdiction doesn't cover the water cooler. Crafty little git."],
+	5 : ["m:OH, THE CRACK IS GETTING BIGGER? THANKS EINSTEIN. I'LL GET RIGHT ON IT."],
+	6 : ["m:Don't touch the wall. Don't go near the wall. Don't even think about the wall."],
+	7 : [],
+	8 : [],
+	9 : [],
+	10 : [],
+	11 : [],
+	12 : [],
+	13 : [],
+	14 : []
 }
 
 
@@ -36,7 +44,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("accept"):
+	if Input.is_action_just_pressed("accept") and not $DynamicTextBox.is_finished() and $DynamicTextBox.done_with_last_letter():
 		$DynamicTextBox.display_next_line();
 
 func update_wallet_text():
@@ -87,3 +95,18 @@ func _on_baseball_item_button_down() -> void:
 
 func _on_kobold_item_button_down() -> void:
 	try_buy_item(Globals.TRINKET_KOBOLD, 15);
+
+var random_lines_count : int = 0;
+const MAX_RANDOM_LINES_PER_DAY = 2;
+func _on_manager_button_button_down() -> void:
+	var current_day : int = floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER));
+	if len(day_to_unique_manager_dialog[current_day]) > current_day_dialog_index:
+		$DynamicTextBox.display_new_text([day_to_unique_manager_dialog[current_day][current_day_dialog_index]]);
+		current_day_dialog_index += 1;
+		return;
+	else:
+		if random_lines_count >= MAX_RANDOM_LINES_PER_DAY:
+			return;
+		
+		$DynamicTextBox.display_new_text([random_manager_dialog.pick_random()]);
+		random_lines_count += 1;

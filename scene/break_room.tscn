@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctpebmqtwkysr"]
+[gd_scene load_steps=18 format=3 uid="uid://ctpebmqtwkysr"]
 
 [ext_resource type="Script" path="res://script/break_room.gd" id="1_hnwux"]
 [ext_resource type="Texture2D" uid="uid://cc5x3uvoj0fah" path="res://asset/background/break_room/break_room_1.png" id="2_smvn6"]
 [ext_resource type="PackedScene" uid="uid://86syd1gxc5vg" path="res://scene/button_with_label.tscn" id="3_2hga7"]
 [ext_resource type="Texture2D" uid="uid://7pa05v0jm1ut" path="res://asset/buttons/water_cooler/water_cooler_base.png" id="3_38r4h"]
+[ext_resource type="Texture2D" uid="uid://cf3261rm40bp1" path="res://asset/background/manager_lunch_day7.png" id="3_vw7yg"]
 [ext_resource type="Texture2D" uid="uid://f8ff6llbadrc" path="res://asset/buttons/water_cooler/water_cooler_pressed.png" id="4_l33bx"]
 [ext_resource type="Texture2D" uid="uid://cpslbpwthb62l" path="res://asset/buttons/water_cooler/water_cooler_highlighted.png" id="5_ia5jr"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="6_724lq"]
@@ -34,6 +35,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_smvn6")
+
+[node name="ManagerStanding" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_vw7yg")
 
 [node name="EmployeeStoreButton" parent="." instance=ExtResource("3_2hga7")]
 layout_mode = 0

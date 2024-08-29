@@ -11,10 +11,6 @@ func _ready() -> void:
 	if Inventory.get_money_amount() < cost:
 		disabled = true;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func get_item_name() -> String:
 	return item_name;
 

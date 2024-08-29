@@ -189,6 +189,7 @@ autoplay = true
 low_db = -35.0
 high_db = -15.0
 
+[connection signal="button_down" from="ManagerButton" to="." method="_on_manager_button_button_down"]
 [connection signal="button_down" from="StoreItems/BaseballItem" to="." method="_on_baseball_item_button_down"]
 [connection signal="button_down" from="StoreItems/KoboldItem" to="." method="_on_kobold_item_button_down"]
 [connection signal="button_down" from="StoreItems/ClockItem" to="." method="_on_clock_item_button_down"]
