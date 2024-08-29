@@ -113,7 +113,6 @@ offset_bottom = 935.0
 texture_normal = ExtResource("9_ns4ni")
 texture_pressed = ExtResource("10_64dts")
 texture_hover = ExtResource("11_a2wdg")
-texture_focused = ExtResource("11_a2wdg")
 texture_click_mask = ExtResource("12_a8bi4")
 button_description_text = "start your day"
 
@@ -148,7 +147,6 @@ offset_bottom = 755.0
 texture_normal = ExtResource("15_jutod")
 texture_pressed = ExtResource("16_0dsh6")
 texture_hover = ExtResource("17_8jhg5")
-texture_focused = ExtResource("17_8jhg5")
 texture_click_mask = ExtResource("18_iw50c")
 button_description_text = "go to lunch"
 

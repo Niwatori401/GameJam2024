@@ -1,6 +1,13 @@
 extends Control
 
 
+var room_textures_by_day = {
+	3: preload("res://asset/background/break_room/break_room_1.png"),
+	5: preload("res://asset/background/break_room/break_room_2.png"),
+	6: preload("res://asset/background/break_room/break_room_3.png"),
+	7: preload("res://asset/background/break_room/break_room_4.png"),
+	8: preload("res://asset/background/break_room/break_room_5.png"),
+}
 
 
 var loading_next_area : bool = false;
@@ -9,11 +16,25 @@ var loading_next_area : bool = false;
 func _ready() -> void:
 	$Fader.lighten(1);
 	$WaterCoolerButton.grab_focus();
+	var day_number = floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER))
 	
-	var is_day_7 = floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)) == 7;
+	var is_day_7 = day_number == 7;
 	$EmployeeStoreButton.disabled = is_day_7;
 	$ManagerStanding.visible = is_day_7;
 
+	var wall_texture : Texture2D;
+	if day_number <= 3:
+		wall_texture = room_textures_by_day[3];
+	elif day_number <= 5:
+		wall_texture = room_textures_by_day[5];
+	elif day_number <= 6:
+		wall_texture = room_textures_by_day[6];
+	elif day_number <= 7:
+		wall_texture = room_textures_by_day[7];	
+	else:
+		wall_texture = room_textures_by_day[8];
+		
+	$Background.texture = wall_texture;
 		
 	loading_next_area = false;
 	
