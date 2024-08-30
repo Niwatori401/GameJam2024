@@ -5,10 +5,14 @@ var trinkets = {
 	Globals.TRINKET_BALL: false,
 	Globals.TRINKET_KOBOLD: false,
 	Globals.TRINKET_BLOOPY: false,
-	Globals.TRINKET_GALLERY_1: false,
-	Globals.TRINKET_GALLERY_2: false,
-	Globals.TRINKET_GALLERY_3: false,
-	Globals.TRINKET_GALLERY_4: false,
+	# Cutscenes itself
+	Globals.TRINKET_GALLERY_CUTSCENES: false,
+	# Concept
+	Globals.TRINKET_GALLERY_CONCEPT: false,
+	# Sketches
+	Globals.TRINKET_GALLERY_SKETCHES: false,
+	# Gallery itself
+	Globals.TRINKET_GALLERY_PER_SE: false,
 }
 
 var money : int = 0;

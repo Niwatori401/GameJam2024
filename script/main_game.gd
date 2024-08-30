@@ -320,7 +320,12 @@ func succeed_shift():
 			Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 1);
 		else:
 			Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, day_number + 0.5);
-		Inventory.change_and_commit_money_amount(5);
+		
+		if day_number < 6:
+			Inventory.change_and_commit_money_amount(5);
+		else:
+			Inventory.change_and_commit_money_amount(25);
+			
 		
 		if day_number >= 8:
 			Utility.load_scene(2, Globals.SCENE_END_OF_DAY_PRE_MAIN_GAME);

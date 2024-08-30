@@ -136,4 +136,5 @@ bus = &"Music"
 
 [connection signal="button_up" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_button_up"]
+[connection signal="button_down" from="VBoxContainer/GalleryButton" to="." method="_on_gallery_button_button_down"]
 [connection signal="button_up" from="VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_button_up"]

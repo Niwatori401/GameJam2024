@@ -199,13 +199,13 @@ func try_buy_item(item_name : String, cost : int):
 		$FailSFX.play(); 
 
 func _on_store_item_1_button_down() -> void:
-	try_buy_item(Globals.TRINKET_GALLERY_1, $StoreItems/StoreItem_1.cost);
+	try_buy_item(Globals.TRINKET_GALLERY_CUTSCENES, $StoreItems/StoreItem_1.cost);
 
 func _on_store_item_2_button_down() -> void:
-	try_buy_item(Globals.TRINKET_GALLERY_2, $StoreItems/StoreItem_2.cost);
+	try_buy_item(Globals.TRINKET_GALLERY_CONCEPT, $StoreItems/StoreItem_2.cost);
 
 func _on_store_item_3_button_down() -> void:
-	try_buy_item(Globals.TRINKET_GALLERY_3, $StoreItems/StoreItem_3.cost);
+	try_buy_item(Globals.TRINKET_GALLERY_SKETCHES, $StoreItems/StoreItem_3.cost);
 
 func _on_store_item_4_button_down() -> void:
-	try_buy_item(Globals.TRINKET_GALLERY_4, $StoreItems/StoreItem_4.cost);
+	try_buy_item(Globals.TRINKET_GALLERY_PER_SE, $StoreItems/StoreItem_4.cost);

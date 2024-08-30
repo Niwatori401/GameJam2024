@@ -98,7 +98,6 @@ texture_hover = ExtResource("9_yfhil")
 texture_click_mask = ExtResource("10_yh6gh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -111,11 +110,10 @@ offset_bottom = 40.0
 
 [node name="StoreItem_1" parent="StoreItems" instance=ExtResource("11_r1u1t")]
 layout_mode = 1
-offset_left = 1136.0
-offset_top = 490.0
-offset_right = 1608.0
-offset_bottom = 962.0
-rotation = 0.279253
+offset_left = 1377.0
+offset_top = 681.0
+offset_right = 1849.0
+offset_bottom = 1153.0
 scale = Vector2(0.232559, 0.232559)
 texture_normal = ExtResource("12_pmvro")
 texture_pressed = null
@@ -124,9 +122,9 @@ texture_disabled = ExtResource("14_ox2ft")
 texture_focused = null
 texture_click_mask = ExtResource("15_momft")
 stretch_mode = 0
-cost = 100
-description = "A fun photo of the Client"
-item_name = "Photo of the Client"
+cost = 45
+description = "Unlocks cutscenes from the game in the gallery"
+item_name = "Cutscenes"
 
 [node name="StoreItem_2" parent="StoreItems" instance=ExtResource("11_r1u1t")]
 layout_mode = 1
@@ -142,16 +140,16 @@ texture_disabled = ExtResource("14_ox2ft")
 texture_focused = null
 texture_click_mask = ExtResource("15_momft")
 stretch_mode = 0
-cost = 100
-description = "A fun photo of the Client"
-item_name = "Photo of the Client"
+cost = 40
+description = "Unlocks a concept art pack in the gallery"
+item_name = "Concept Art"
 
 [node name="StoreItem_3" parent="StoreItems" instance=ExtResource("11_r1u1t")]
 layout_mode = 1
-offset_left = 1140.0
-offset_top = 721.0
-offset_right = 1612.0
-offset_bottom = 1193.0
+offset_left = 1146.0
+offset_top = 742.0
+offset_right = 1618.0
+offset_bottom = 1214.0
 rotation = -0.139626
 scale = Vector2(0.232559, 0.232559)
 texture_normal = ExtResource("12_pmvro")
@@ -161,16 +159,16 @@ texture_disabled = ExtResource("14_ox2ft")
 texture_focused = null
 texture_click_mask = ExtResource("15_momft")
 stretch_mode = 0
-cost = 100
-description = "A fun photo of the Client"
-item_name = "Photo of the Client"
+cost = 45
+description = "Unlocks more sketches"
+item_name = "Sketches"
 
 [node name="StoreItem_4" parent="StoreItems" instance=ExtResource("11_r1u1t")]
 layout_mode = 1
-offset_left = 1366.0
-offset_top = 708.0
-offset_right = 1838.0
-offset_bottom = 1180.0
+offset_left = 1104.0
+offset_top = 519.0
+offset_right = 1576.0
+offset_bottom = 991.0
 scale = Vector2(0.232559, 0.232559)
 texture_normal = ExtResource("17_sn4fs")
 texture_pressed = null
@@ -179,6 +177,9 @@ texture_disabled = ExtResource("19_6x4mf")
 texture_focused = null
 texture_click_mask = ExtResource("20_r04je")
 stretch_mode = 0
+cost = 35
+description = "Unlocks the gallery option in the main menu"
+item_name = "Unlock Gallery"
 
 [node name="DynamicTextBox" parent="." instance=ExtResource("21_6ka30")]
 layout_mode = 1

@@ -22,6 +22,7 @@ const SAVE_KEY_DAY_NUMBER := "day_number";
 const SAVE_KEY_IS_FIRST_HR_VISIT := "is_first_hr_visit";
 const SAVE_KEY_IS_FIRST_STORE_VISIT := "is_first_store_visit";
 const SAVE_KEY_IS_FIRST_SAM_VISIT := "is_first_sam_visit";
+const SAVE_KEY_FINISHED_GAME := "finished_game";
 
 const SCENE_LEVEL_DISPATCH := "res://scene/level_dispatch.tscn";
 const SCENE_OPENING_CUTSCENE := "res://scene/instances/cutscene/opening_cutscene.tscn";
@@ -38,13 +39,14 @@ const SCENE_OPTIONS_MENU := "res://scene/options_menu.tscn";
 const SCENE_WATER_COOLER := "res://scene/water_cooler.tscn";
 const SCENE_EMPLOYEE_STORE := "res://scene/employee_store.tscn";
 const SCENE_GAME_OVER := "res://scene/game_over.tscn";
+const SCENE_GALLERY := "res://scene/gallery.tscn"
 
 
 const TRINKET_KOBOLD := "kobold_bobble_head_trinket";
 const TRINKET_BALL := "throw_ball_trinket";
 const TRINKET_CLOCK := "clock_trinket";
 const TRINKET_BLOOPY := "bloopy_plush"
-const TRINKET_GALLERY_1 := "gallery_1";
-const TRINKET_GALLERY_2 := "gallery_2";
-const TRINKET_GALLERY_3 := "gallery_3";
-const TRINKET_GALLERY_4 := "gallery_4";
+const TRINKET_GALLERY_CUTSCENES := "gallery_1";
+const TRINKET_GALLERY_CONCEPT := "gallery_2";
+const TRINKET_GALLERY_SKETCHES := "gallery_3";
+const TRINKET_GALLERY_PER_SE := "gallery_4";

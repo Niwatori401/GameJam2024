@@ -46,3 +46,9 @@ func hide_options_menu():
 	$Fader.visible = true;
 	$Fader.lighten(1);
 	$VBoxContainer/StartGameButton.grab_focus();
+
+
+func _on_gallery_button_button_down() -> void:
+	$Fader.darken(1);
+	$AudioFader.fade_out(1);
+	Utility.load_scene(1, Globals.SCENE_GALLERY);

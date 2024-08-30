@@ -114,7 +114,7 @@ texture_pressed = null
 texture_hover = ExtResource("8_08jc0")
 texture_disabled = ExtResource("9_3syyo")
 texture_focused = null
-cost = 5
+cost = 10
 description = "It has small teeth marks, as if chewed by a small dog."
 item_name = "Baseball"
 
@@ -164,7 +164,7 @@ texture_pressed = null
 texture_hover = ExtResource("14_napig")
 texture_disabled = ExtResource("16_l63np")
 texture_focused = null
-cost = 10
+cost = 5
 description = "Keeping time since the 13th century! Helps indicate how close you are to end of your current shift."
 item_name = "Clock"
 
