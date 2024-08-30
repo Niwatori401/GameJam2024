@@ -204,7 +204,7 @@ var day_to_text = {
 		],
 	9: [
 		"c:Hi! So, it's official--I'm stuck. I've eaten SO much chocolate that I can't move. That's super impressive, right?",
-		"c:I was thinking deserve some sort of prize or promotion for my work, because I don't think anyone's ever eaten so much chocolate.",
+		"c:I was thinking I deserve some sort of prize or promotion for my work, because I don't think anyone's ever eaten so much chocolate.",
 		"c:But do you think the prize could just be more chocolate? 'Cause that sounds way more my tempo.",
 		"c:You'd think that being an immobile pile of fat wouldn't be terribly exciting, but it's actually pretty awesome. I get to watch whatever I want, eat whatever I want, and talk to you all day, every day.",
 		"c:And the bigger I get, the more I get paid! I'd say you should join me, but someone's gotta do the important stuff, you know?",
