@@ -270,6 +270,9 @@ func _ready() -> void:
 		$Computer.texture = dark_computer;
 	$Trinkets/ClientCam.visible = day_number >= 8;
 	$NonGameOffice/CamButton.visible = (day_number >= 8 and end_of_day) or (day_number == 8 and show_message);
+	if $NonGameOffice/CamButton.visible:
+		SignalBus.do_incoming_call_graphic.emit();
+	
 	var is_beginning_of_day = show_clipboard and show_message;
 	if is_beginning_of_day:
 		$DayStartFX.play();

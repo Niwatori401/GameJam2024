@@ -96,13 +96,33 @@ var day_to_cam_graphics = {
 	}
 }
 
+var cur_cam_state := Enums.CLIENT_CAM_STATE.OFF;
+var incoming_call_graphic := preload("res://asset/desk_trinkets/client_cam/Client_screen_incoming_call.png");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.client_cam_state_changed.connect(update_cam_graphic);
+	SignalBus.do_incoming_call_graphic.connect(func (): do_incoming_call_graphic = true);
 
+var seconds_to_change : float = 1;
+var seconds_since_last_change : float = 0;
+var is_on_call_graphic := false;
+var do_incoming_call_graphic := false;
+func _process(delta: float) -> void:
+	if do_incoming_call_graphic:
+		seconds_since_last_change += delta;
+		if seconds_since_last_change >= seconds_to_change:
+			seconds_since_last_change -= seconds_to_change;
+			if is_on_call_graphic:
+				$ClientFootage.texture = day_to_cam_graphics[8][Enums.CLIENT_CAM_STATE.OFF];
+			else:
+				$ClientFootage.texture = incoming_call_graphic;
+		
+			is_on_call_graphic = not is_on_call_graphic;
+		
 
 func update_cam_graphic(cam_state : Enums.CLIENT_CAM_STATE):
+	do_incoming_call_graphic = false;
 	var day = floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER));
 	if not day_to_cam_graphics.has(day) or not day_to_cam_graphics[day].has(cam_state):
 		printerr("Failed to find possible graphic for cam state in client cam");
