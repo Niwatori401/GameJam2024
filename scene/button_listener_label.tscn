@@ -11,5 +11,5 @@ theme_override_colors/font_outline_color = Color(0.462291, 0.462291, 0.462291, 1
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Lorem Ipsum[/center]"
+text = "[center][/center]"
 script = ExtResource("1_d2iyg")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cua4p08opu3yu" path="res://scene/cutscene.tscn" id="1_kf8ok"]
 [ext_resource type="Texture2D" uid="uid://dkbo3fhikeplj" path="res://asset/black.png" id="2_jm4ob"]
-[ext_resource type="Texture2D" uid="uid://wl72a7qm0bq6" path="res://asset/cutscene/end_photo_temp.png" id="3_8w5fr"]
+[ext_resource type="Texture2D" uid="uid://bb3n5g7gkxafy" path="res://asset/cutscene/end_photo.png" id="3_2vxkr"]
 [ext_resource type="Texture2D" uid="uid://bo3qtr4f0orkg" path="res://asset/background/the_end.png" id="4_5pxih"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_nw1uj"]
@@ -11,7 +11,7 @@ loop = true
 
 [node name="Cutscene" instance=ExtResource("1_kf8ok")]
 scene_to_load_upon_completion = "res://scene/main_menu.tscn"
-frames = Array[Texture2D]([ExtResource("2_jm4ob"), ExtResource("3_8w5fr"), ExtResource("4_5pxih"), ExtResource("2_jm4ob")])
+frames = Array[Texture2D]([ExtResource("2_jm4ob"), ExtResource("3_2vxkr"), ExtResource("4_5pxih"), ExtResource("2_jm4ob")])
 delays = Array[float]([0.0, 8.0, 3.0, 0.0])
 text = Array[Array]([["m:Well, I see the two of you have been hard at work.", "c:Huff...hrf...", "m:Normally, I'd be upset about the destruction of company property...but given that you've gotten to such a SIZE...", "m:I [i]might[/i] be willing to overlook it, provided you keep up the good work.", "m:Now, I've received word from the higher ups...it's time to begin phase two. But before that, it's about time for this year's company picnic.", "m:And don't bring those pathetic sandwiches with you. It's about time you both had some real food."], [], [], ["Thank you for playing! It means a lot to us that you stuck with it and played our little game all the way to the end.", "If you enjoyed it, your feedback is extremely valuable to us.", "If you'd like to do us a favor- participate in the discussion on the Gain Jam thread, and include the word \"subversive\" so that we know you played it to this point.", "Let us know what you liked and what we could've done better. Once again, our deepest thanks for surviving Another Day In Paradise!"]])
 

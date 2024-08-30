@@ -101,3 +101,8 @@ func _on_gallery_item_concept_5_button_down() -> void:
 func _on_gallery_item_concept_6_button_down() -> void:
 	$DisplayItem.visible = true;
 	$DisplayItem.texture = preload("res://asset/gallery/concept/protagonist.png");
+
+
+func _on_gallery_item_finale_image_button_down() -> void:
+	$DisplayItem.visible = true;
+	$DisplayItem.texture = preload("res://asset/cutscene/end_photo.png");

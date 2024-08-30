@@ -50,7 +50,7 @@ Thanks,
 	# 4
 	"You can evidently handle the bare minimum, so today you'll be sending packages through the [b]pneumatic tubes[/b] in addition to your regular workflow. This is also a relatively simple task, but do try not to get it confused with the shiny button, hmm?
 
-Also, and this is not an accusation, but there some suspicious looking characters seen around the lunchroom recently. If this is not you, please report anything you might have seen to Human Resources. Thanks.",
+Also, and this is not an accusation, but there have been some suspicious looking characters seen around the lunchroom recently. If this is not you, please report anything you might have seen to Human Resources. Thanks.",
 	# 5
 	"Hopefully you've settled in.
 	

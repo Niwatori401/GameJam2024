@@ -186,4 +186,4 @@ buttonType = 6
 [connection signal="button_down" from="GalleryGrid/GalleryItem_concept_5" to="." method="_on_gallery_item_concept_5_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_concept_6" to="." method="_on_gallery_item_concept_6_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_ClientSequence" to="." method="_on_gallery_item_client_sequence_button_down"]
-[connection signal="button_down" from="GalleryGrid/GalleryItem_FinaleImage" to="." method="_on_gallery_item_sketch_1_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_FinaleImage" to="." method="_on_gallery_item_finale_image_button_down"]
