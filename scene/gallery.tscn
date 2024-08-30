@@ -49,7 +49,7 @@ layout_mode = 2
 texture_normal = ExtResource("4_55xxr")
 texture_disabled = ExtResource("5_b7oy1")
 stretch_mode = 0
-button_description_text = "EndingScene"
+button_description_text = "Opening Cutscene"
 
 [node name="GalleryItem_EndingScene" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
