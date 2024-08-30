@@ -44,7 +44,7 @@ var day_to_max_arrows = {
 	10: 2,
 	11: 2,
 	12: 2,
-	13: 2,
+	13: 3,
 	14: 3,
 }
 
@@ -255,15 +255,35 @@ func play_success_sound(pressed_key_direction : Enums.KEY_DIRECTION) -> void:
 	$SFX.stop();
 	$SFX.stream = success_sounds[pressed_key_direction];
 	$SFX.play();
-	
+
+var group_three_cooldown : int = 0;
 func set_random_new_keys():
 	cycle_used_stamps = false;
 	current_keys.clear();
-	var num_of_keys = randi_range(minimum_key_presses_per_challenge, maximum_key_presses_per_challenge);
-	for i in range(num_of_keys):
-		var cur_key = day_to_button_map.get(floori(day_number)).pick_random();
-		cycle_used_stamps = cycle_used_stamps or cur_key == stamp_directions[0] or cur_key == stamp_directions[1];
-		current_keys.append(cur_key);
+	
+	var num_of_keys : int;
+	if group_three_cooldown > 0:
+		num_of_keys = randi_range(minimum_key_presses_per_challenge, 2);
+		group_three_cooldown -= 1;
+	else:
+		num_of_keys = randi_range(minimum_key_presses_per_challenge, maximum_key_presses_per_challenge);
+	
+	
+	if num_of_keys == 1 or num_of_keys == 2:
+		for i in range(num_of_keys):
+			var cur_key = day_to_button_map.get(floori(day_number)).pick_random();
+			cycle_used_stamps = cycle_used_stamps or cur_key == stamp_directions[0] or cur_key == stamp_directions[1];
+			current_keys.append(cur_key);
+		
+	elif num_of_keys == 3:
+		const NUM_TO_WAIT_AFTER_3GROUP : int = 3;
+		group_three_cooldown = NUM_TO_WAIT_AFTER_3GROUP;
+		var first_key = day_to_button_map.get(floori(day_number)).pick_random();
+		var second_key = day_to_button_map.get(floori(day_number)).pick_random();
+		current_keys = [second_key, first_key, first_key];
+	else:
+		printerr("Invalid number of keys given in set_random_new_keys");
+	
 	$NextKeyIndicator.set_next_key_texture(current_keys);
 
 func play_success_animation(key_direction : Enums.KEY_DIRECTION):

@@ -77,6 +77,8 @@ Given the nature of the incident yesterday, we feel it may be prudent to clear t
 
 Please try to contain your conversation to work-related topics outside of the allotted work hours where possible. The lunchroom wall has been reassembled, although you may notice some of the reinforcements if you are particularly perceptive.
 
+Also, we are legally obliged to also warn you that your tasks will be more complex from here on out. The order that you complete the simultaneous tasks is not important. Do not disappoint.
+
 Keep up the adequate work.
 -Management",
 	# 9
