@@ -129,11 +129,11 @@ func _on_manager_button_button_down() -> void:
 			return;
 		var day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER);
 		if day_number <= 7:		
-			get_random_day_appropriate_line(random_manager_dialog_2_6);
+			display_random_day_appropriate_line(random_manager_dialog_2_6);
 		else:
-			get_random_day_appropriate_line(random_manager_dialog_8_14)
+			display_random_day_appropriate_line(random_manager_dialog_8_14)
 
-func get_random_day_appropriate_line(dialog_list : Array):
+func display_random_day_appropriate_line(dialog_list : Array):
 	var cur_random_dialog_index = randi_range(0, len(dialog_list) - 1);
 	if cur_random_dialog_index == last_random_index:
 		cur_random_dialog_index = (cur_random_dialog_index + 1) % len(dialog_list);

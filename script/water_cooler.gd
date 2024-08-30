@@ -162,16 +162,26 @@ func play_sam_dialog() -> void:
 	var sam_first_time = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_IS_FIRST_SAM_VISIT, true);
 	
 	if sam_first_time:
-		$DynamicTextBox.display_new_text(["s:Psst. Hey you! Yeah, you.", "You're the new kid? I got some...interestin' stuff. Don't tell nobody. For you, real cheap. Won't sell to nobody else. Don't worry about it.", "Now are youse gonna buy somethin', or just stand there lookin' like a sad puppy?"])
+		$DynamicTextBox.display_new_text(["s:Psst. Hey you! Yeah, you.", "s:You're the new kid? I got some...interestin' stuff. Don't tell nobody.", "s:For you, real cheap. Won't sell to nobody else. Don't worry about it.", "s:Now are youse gonna buy somethin', or just stand there lookin' like a sad puppy?"])
 		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_IS_FIRST_SAM_VISIT, false);
 		Inventory.get_save().save(Globals.USER_SAVE_FILE);
 	else:
 		if random_lines_count >= MAX_RANDOM_LINES_PER_DAY:
 			return;
 		
-		$DynamicTextBox.display_new_text([random_sam_dialog.pick_random()]);
+		display_random_day_appropriate_line(random_sam_dialog);
 		random_lines_count += 1;
 
+var cur_random_dialog_index : int = 0;
+var last_random_index : int = -1;
+func display_random_day_appropriate_line(dialog_list : Array):
+	var cur_random_dialog_index = randi_range(0, len(dialog_list) - 1);
+	if cur_random_dialog_index == last_random_index:
+		cur_random_dialog_index = (cur_random_dialog_index + 1) % len(dialog_list);
+		
+	$DynamicTextBox.display_new_text([dialog_list[cur_random_dialog_index]]);
+	last_random_index = cur_random_dialog_index;
+	random_lines_count += 1;
 
 func try_buy_item(item_name : String, cost : int):
 	if Inventory.is_trinket_unlocked(item_name):
