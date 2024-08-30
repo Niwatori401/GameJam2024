@@ -280,7 +280,10 @@ func set_random_new_keys():
 		group_three_cooldown = NUM_TO_WAIT_AFTER_3GROUP;
 		var first_key = day_to_button_map.get(floori(day_number)).pick_random();
 		var second_key = day_to_button_map.get(floori(day_number)).pick_random();
-		current_keys = [second_key, first_key, first_key];
+		if day_number < 14:
+			current_keys = [first_key, first_key, first_key];
+		else:
+			current_keys = [second_key, first_key, first_key];
 	else:
 		printerr("Invalid number of keys given in set_random_new_keys");
 	
