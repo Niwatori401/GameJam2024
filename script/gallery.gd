@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready() -> void:
+	$Fader.lighten(2);
 	$CutscenePlayer.finished.connect(func(): $CutscenePlayer.visible = false);
 	$CutscenePlayer.visible = false;
 	$DisplayItem.visible = false;
@@ -106,3 +107,8 @@ func _on_gallery_item_concept_6_button_down() -> void:
 func _on_gallery_item_finale_image_button_down() -> void:
 	$DisplayItem.visible = true;
 	$DisplayItem.texture = preload("res://asset/cutscene/end_photo.png");
+
+
+func _on_back_button_button_down() -> void:
+	$Fader.darken(2);
+	Utility.load_scene(2, Globals.SCENE_MAIN_MENU);
