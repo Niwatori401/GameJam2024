@@ -54,7 +54,7 @@ func update_shown_items():
 	$StoreItems/BaseballItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
 	$StoreItems/ClockItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
 	$StoreItems/KoboldItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
-	
+	$StoreItems/BloopyItem.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_BLOOPY);
 
 func set_text_for_currently_selected_item(item_name, description, price) -> void:
 	if current_item_name == item_name:
@@ -87,13 +87,18 @@ func try_buy_item(item_name : String, cost : int):
 		$FailSFX.play();
 
 func _on_clock_item_button_down() -> void:
-	try_buy_item(Globals.TRINKET_CLOCK, 10);
+	try_buy_item(Globals.TRINKET_CLOCK, $StoreItems/ClockItem.cost);
 
 func _on_baseball_item_button_down() -> void:
-	try_buy_item(Globals.TRINKET_BALL, 5);
+	try_buy_item(Globals.TRINKET_BALL, $StoreItems/BaseballItem.cost);
 
 func _on_kobold_item_button_down() -> void:
-	try_buy_item(Globals.TRINKET_KOBOLD, 15);
+	try_buy_item(Globals.TRINKET_KOBOLD, $StoreItems/KoboldItem.cost);
+
+
+func _on_bloopy_item_button_down() -> void:
+	try_buy_item(Globals.TRINKET_BLOOPY, $StoreItems/BloopyItem.cost);
+
 
 var random_lines_count : int = 0;
 const MAX_RANDOM_LINES_PER_DAY = 2;

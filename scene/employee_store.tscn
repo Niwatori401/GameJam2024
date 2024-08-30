@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c37egpepk78y2"]
+[gd_scene load_steps=33 format=4 uid="uid://c37egpepk78y2"]
 
 [ext_resource type="Script" path="res://script/employee_store.gd" id="1_lcorx"]
 [ext_resource type="Texture2D" uid="uid://bk6sf1hj6oq5l" path="res://asset/background/store_1.png" id="2_hobv2"]
@@ -14,11 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="10_q7gwf"]
 [ext_resource type="Texture2D" uid="uid://bl3esla3egl0m" path="res://asset/desk_trinkets/kobold/kobold_hover.png" id="11_8wjx4"]
 [ext_resource type="Texture2D" uid="uid://c0gcwq1twc0fd" path="res://asset/desk_trinkets/kobold/kobold_disabled.png" id="12_8716d"]
+[ext_resource type="Texture2D" uid="uid://b76ukwqkuacns" path="res://asset/desk_trinkets/bloopy_plush/bloopy_plush.png" id="12_dhbl1"]
 [ext_resource type="BitMap" uid="uid://bdn8gcis4h87i" path="res://asset/desk_trinkets/kobold/kobold_click_mask.png" id="12_f5hgv"]
 [ext_resource type="Texture2D" uid="uid://bxi7pj7qaol2h" path="res://asset/desk_trinkets/clock/clock_store_image_normal.png" id="13_swr3a"]
+[ext_resource type="Texture2D" uid="uid://c2kv7ya13ol44" path="res://asset/desk_trinkets/bloopy_plush/bloopy_plush_hover.png" id="13_xbrfi"]
+[ext_resource type="Texture2D" uid="uid://bxg6l2jxjme3e" path="res://asset/desk_trinkets/bloopy_plush/bloopy_plush_disabled.png" id="14_h6yet"]
 [ext_resource type="Texture2D" uid="uid://c2pwriqyp6xnr" path="res://asset/desk_trinkets/clock/clock_store_image_hover.png" id="14_napig"]
 [ext_resource type="PackedScene" uid="uid://dsl6rcjklo1pb" path="res://scene/UI/control_hint.tscn" id="14_tbfow"]
 [ext_resource type="Texture2D" uid="uid://b5d7ahdi7oyeo" path="res://asset/back_arrow.png" id="15_jvgv7"]
+[ext_resource type="BitMap" uid="uid://bhivwdwj81usv" path="res://asset/desk_trinkets/bloopy_plush/bloopy_plush_mask.png" id="15_x5dph"]
 [ext_resource type="Texture2D" uid="uid://cxqucd1rej3au" path="res://asset/back_arrow_pressed.png" id="16_3f2al"]
 [ext_resource type="Texture2D" uid="uid://dkb0gdcapvstn" path="res://asset/desk_trinkets/clock/clock_store_image_disabled.png" id="16_l63np"]
 [ext_resource type="Texture2D" uid="uid://c1u0ix0si0xgm" path="res://asset/back_arrow_hover.png" id="17_03hwm"]
@@ -114,13 +118,30 @@ cost = 5
 description = "It has small teeth marks, as if chewed by a small dog."
 item_name = "Baseball"
 
+[node name="BloopyItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
+layout_mode = 1
+offset_left = 717.0
+offset_top = 132.0
+offset_right = 1582.0
+offset_bottom = 1060.0
+scale = Vector2(0.248814, 0.248814)
+texture_normal = ExtResource("12_dhbl1")
+texture_pressed = null
+texture_hover = ExtResource("13_xbrfi")
+texture_disabled = ExtResource("14_h6yet")
+texture_focused = null
+texture_click_mask = ExtResource("15_x5dph")
+cost = 30
+description = "[font_size=40]An extremely soft, adorable plushie. It's slightly damp and smells of pennies and chlorine. For some reason, looking at it makes you want to punch it.[/font_size]"
+item_name = "Damp Plushie"
+
 [node name="KoboldItem" parent="StoreItems" instance=ExtResource("5_epf2n")]
 layout_mode = 1
-offset_left = 624.0
-offset_top = 300.0
-offset_right = 1096.0
-offset_bottom = 772.0
-scale = Vector2(0.835575, 0.835575)
+offset_left = 684.0
+offset_top = 334.0
+offset_right = 1156.0
+offset_bottom = 806.0
+scale = Vector2(0.746535, 0.746535)
 texture_normal = ExtResource("10_8p3eu")
 texture_pressed = null
 texture_hover = ExtResource("11_8wjx4")
@@ -191,6 +212,7 @@ high_db = -15.0
 
 [connection signal="button_down" from="ManagerButton" to="." method="_on_manager_button_button_down"]
 [connection signal="button_down" from="StoreItems/BaseballItem" to="." method="_on_baseball_item_button_down"]
+[connection signal="button_down" from="StoreItems/BloopyItem" to="." method="_on_bloopy_item_button_down"]
 [connection signal="button_down" from="StoreItems/KoboldItem" to="." method="_on_kobold_item_button_down"]
 [connection signal="button_down" from="StoreItems/ClockItem" to="." method="_on_clock_item_button_down"]
 [connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]

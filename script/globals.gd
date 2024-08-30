@@ -43,6 +43,7 @@ const SCENE_GAME_OVER := "res://scene/game_over.tscn";
 const TRINKET_KOBOLD := "kobold_bobble_head_trinket";
 const TRINKET_BALL := "throw_ball_trinket";
 const TRINKET_CLOCK := "clock_trinket";
+const TRINKET_BLOOPY := "bloopy_plush"
 const TRINKET_GALLERY_1 := "gallery_1";
 const TRINKET_GALLERY_2 := "gallery_2";
 const TRINKET_GALLERY_3 := "gallery_3";

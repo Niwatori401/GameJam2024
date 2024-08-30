@@ -4,6 +4,7 @@ var trinkets = {
 	Globals.TRINKET_CLOCK: false,
 	Globals.TRINKET_BALL: false,
 	Globals.TRINKET_KOBOLD: false,
+	Globals.TRINKET_BLOOPY: false,
 	Globals.TRINKET_GALLERY_1: false,
 	Globals.TRINKET_GALLERY_2: false,
 	Globals.TRINKET_GALLERY_3: false,

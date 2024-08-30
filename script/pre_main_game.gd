@@ -360,6 +360,7 @@ func show_only_unlocked_trinkets():
 	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
 	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
 	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
+	$NonGameOffice/BloopyPlush.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BLOOPY);
 
 
 func _on_cam_button_button_down() -> void:

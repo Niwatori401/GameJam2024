@@ -11,6 +11,9 @@ show_clipboard = false
 show_message = false
 end_of_day = true
 
+[node name="BloopyPlush" parent="NonGameOffice" index="0"]
+layout_mode = 0
+
 [node name="Keys" parent="NonGameOffice" index="8" instance=ExtResource("2_is21o")]
 layout_mode = 0
 offset_left = 806.0

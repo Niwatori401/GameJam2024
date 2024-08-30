@@ -175,6 +175,7 @@ func show_only_unlocked_trinkets():
 	$Trinkets/ThrowBall.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BALL);
 	$Trinkets/TrinketClock.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_CLOCK);
 	$Trinkets/KoboldTrinket.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_KOBOLD);
+	$Trinkets/BloopyPlush.visible = Inventory.is_trinket_unlocked(Globals.TRINKET_BLOOPY);
 
 
 func set_correct_bgm(day_number : float) -> void:

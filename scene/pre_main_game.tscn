@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cg48jhonjof11"]
+[gd_scene load_steps=34 format=4 uid="uid://cg48jhonjof11"]
 
 [ext_resource type="Script" path="res://script/pre_main_game.gd" id="1_au5ao"]
 [ext_resource type="Texture2D" uid="uid://djwg5qq683s1i" path="res://asset/background/office_background.png" id="6_h1l6h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dkaefbyq1imkn" path="res://asset/desk_trinkets/paper_orders/clipboard_new_press.png" id="10_64dts"]
 [ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="10_ljkkg"]
 [ext_resource type="Texture2D" uid="uid://ccjls7sg7x43m" path="res://asset/desk_trinkets/paper_orders/clipboard_new_hover.png" id="11_a2wdg"]
+[ext_resource type="PackedScene" uid="uid://bpvwdwge4hckk" path="res://scene/trinket/bloopy_plush.tscn" id="11_jvata"]
 [ext_resource type="PackedScene" uid="uid://bx5eyyickk0p4" path="res://scene/trinket_clock.tscn" id="11_ry31e"]
 [ext_resource type="BitMap" uid="uid://beffoy8mwx73a" path="res://asset/desk_trinkets/paper_orders/clipboard_new_mask.bmp" id="12_a8bi4"]
 [ext_resource type="PackedScene" uid="uid://bf7m2nikhypqm" path="res://scene/trinket/throw_ball.tscn" id="12_xc2kt"]
@@ -105,6 +106,14 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="BloopyPlush" parent="NonGameOffice" instance=ExtResource("11_jvata")]
+layout_mode = 0
+offset_left = 1595.0
+offset_top = 620.0
+offset_right = 2500.0
+offset_bottom = 1588.0
+scale = Vector2(0.42693, 0.42693)
 
 [node name="ButtonLabel" parent="NonGameOffice" instance=ExtResource("21_nyv0n")]
 layout_mode = 0
