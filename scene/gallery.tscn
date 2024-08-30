@@ -33,16 +33,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
+offset_left = 259.0
 offset_top = 50.0
-offset_right = 1620.0
-offset_bottom = 930.0
+offset_right = 1339.0
+offset_bottom = 670.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 60
-columns = 4
+columns = 5
 
 [node name="GalleryItem_OpeningCutscene" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
@@ -51,53 +51,83 @@ texture_disabled = ExtResource("5_b7oy1")
 stretch_mode = 0
 button_description_text = "Opening Cutscene"
 
-[node name="GalleryItem_EndingScene" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
-layout_mode = 2
-texture_normal = ExtResource("4_55xxr")
-texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
-
 [node name="GalleryItem_WallCutscene" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("4_55xxr")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "Lunch Incident Cutscene"
 
 [node name="GalleryItem_Sketch_1" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("6_mn438")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "Client Sizes"
 
 [node name="GalleryItem_Sketch_2" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("6_mn438")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "HR / Mangement"
+
+[node name="GalleryItem_Sketch_3" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("6_mn438")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Protagonist Scolded"
+
+[node name="GalleryItem_Sketch_4" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("6_mn438")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Style Guide"
 
 [node name="GalleryItem_concept_1" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("7_tk81c")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "Character Lineup"
 
 [node name="GalleryItem_concept_2" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("7_tk81c")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "Sweet Marshmallow"
 
-[node name="GalleryItem_FinaleImage" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+[node name="GalleryItem_concept_3" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
-texture_normal = ExtResource("6_mn438")
+texture_normal = ExtResource("7_tk81c")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "HR Concept"
+
+[node name="GalleryItem_concept_4" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("7_tk81c")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Manager Shaded"
+
+[node name="GalleryItem_concept_5" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("7_tk81c")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Manager Concept"
+
+[node name="GalleryItem_concept_6" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("7_tk81c")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Outfit Experiments"
 
 [node name="GalleryItem_ClientSequence" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
 layout_mode = 2
 texture_normal = ExtResource("4_55xxr")
 texture_disabled = ExtResource("5_b7oy1")
-button_description_text = "EndingScene"
+button_description_text = "Client Camera Compilation"
+
+[node name="GalleryItem_FinaleImage" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("6_mn438")
+texture_disabled = ExtResource("5_b7oy1")
+button_description_text = "Finale Image"
 
 [node name="CutscenePlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
@@ -106,9 +136,12 @@ offset_bottom = 40.0
 bus = &"Music"
 
 [node name="DisplayItem" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ButtonControls" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -143,5 +176,14 @@ buttonType = 6
 
 [connection signal="button_down" from="GalleryGrid/GalleryItem_OpeningCutscene" to="." method="_on_gallery_item_opening_cutscene_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_1" to="." method="_on_gallery_item_sketch_1_button_down"]
-[connection signal="button_down" from="GalleryGrid/GalleryItem_FinaleImage" to="." method="_on_gallery_item_sketch_1_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_2" to="." method="_on_gallery_item_sketch_2_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_3" to="." method="_on_gallery_item_sketch_3_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_4" to="." method="_on_gallery_item_sketch_4_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_1" to="." method="_on_gallery_item_concept_1_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_2" to="." method="_on_gallery_item_concept_2_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_3" to="." method="_on_gallery_item_concept_3_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_4" to="." method="_on_gallery_item_concept_4_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_5" to="." method="_on_gallery_item_concept_5_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_6" to="." method="_on_gallery_item_concept_6_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_ClientSequence" to="." method="_on_gallery_item_client_sequence_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_FinaleImage" to="." method="_on_gallery_item_sketch_1_button_down"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://j0ytyv0ir6fj"]
+[gd_scene load_steps=27 format=4 uid="uid://j0ytyv0ir6fj"]
 
 [ext_resource type="Script" path="res://script/water_cooler.gd" id="1_nweno"]
 [ext_resource type="Texture2D" uid="uid://b5i1ihqs64xuk" path="res://asset/background/water_cooler/water_cooler_formatted.png" id="2_vjb18"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cxqucd1rej3au" path="res://asset/back_arrow_pressed.png" id="8_xa3bx"]
 [ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/fader.tscn" id="9_sesrh"]
 [ext_resource type="Texture2D" uid="uid://c1u0ix0si0xgm" path="res://asset/back_arrow_hover.png" id="9_yfhil"]
-[ext_resource type="PackedScene" uid="uid://gs525m4r8f4r" path="res://scene/dynamic_text_box.tscn" id="10_2fogd"]
-[ext_resource type="Texture2D" uid="uid://doj44wdqrge7y" path="res://asset/background/water_cooler/ShadySamPaper/Shady_Sam_3.png" id="10_33d3n"]
 [ext_resource type="BitMap" uid="uid://b15aw4muvlplt" path="res://asset/back_arrow_mask.png" id="10_yh6gh"]
 [ext_resource type="PackedScene" uid="uid://cdgg31rmv17fh" path="res://scene/audio_fader.tscn" id="11_6qqkh"]
 [ext_resource type="PackedScene" uid="uid://dbu88awi58qi2" path="res://scene/store_item.tscn" id="11_r1u1t"]
@@ -97,12 +95,6 @@ texture_pressed = ExtResource("8_xa3bx")
 texture_hover = ExtResource("9_yfhil")
 texture_click_mask = ExtResource("10_yh6gh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("10_33d3n")
-
 [node name="StoreItems" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -182,11 +174,6 @@ description = "Unlocks the gallery option in the main menu"
 item_name = "Unlock Gallery"
 
 [node name="DynamicTextBox" parent="." instance=ExtResource("21_6ka30")]
-layout_mode = 1
-mouse_filter = 2
-
-[node name="1" parent="." instance=ExtResource("10_2fogd")]
-visible = false
 layout_mode = 1
 mouse_filter = 2
 

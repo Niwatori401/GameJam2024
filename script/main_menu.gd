@@ -15,7 +15,9 @@ func _ready() -> void:
 	SignalBus.back_button_pressed.connect(hide_options_menu);
 	SignalBus.save_deleted.connect(func() : $VBoxContainer/StartGameButton.text = "Start Game");
 	$OptionsMenu/Options/DeleteSaveButton.disabled = false;
-
+	
+	$VBoxContainer/GalleryButton.disabled = not Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_PER_SE);
+	
 
 func _on_exit_game_button_button_up() -> void:
 	get_tree().quit();

@@ -132,10 +132,10 @@ func hide_description():
 
 
 func update_shown_items():
-	$StoreItems/StoreItem_1.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_1);
-	$StoreItems/StoreItem_2.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_2);
-	$StoreItems/StoreItem_3.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_3);
-	$StoreItems/StoreItem_4.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_4);
+	$StoreItems/StoreItem_1.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_CUTSCENES);
+	$StoreItems/StoreItem_2.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_CONCEPT);
+	$StoreItems/StoreItem_3.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_SKETCHES);
+	$StoreItems/StoreItem_4.disabled = Inventory.is_trinket_unlocked(Globals.TRINKET_GALLERY_PER_SE);
 
 
 
