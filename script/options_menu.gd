@@ -129,10 +129,15 @@ func load_and_init_config_values():
 			break;
 	
 	ButtonGraphics.set_key_set(control_glyphs);
+	if not Inventory.get_config().has_section_key(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME):
+		Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, control_glyphs);
+	
+	
 	
 	# Volume
 	set_volume(volume);
 	update_volume_text();
+	# Setting volume automatically saves it
 	$Options/AudioSettings/VolumeSlider.set_value(volume);
 
 	# Resolution
@@ -141,11 +146,18 @@ func load_and_init_config_values():
 		if video_resolutions.keys()[res_index] == resolution:
 			$Options/VideoSettings/VideoResolutionDropdown.select(res_index);
 			break;
+			
+	if not Inventory.get_config().has_section_key(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION):
+		Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, resolution);
+		
+	
 	
 	# Voiced Dialog
+	# is saved by setting the value like this
 	$Options/AudioSettings/DialogNoisesCheckbox.button_pressed = has_voiced_dialog;
 	
 	# Fullscreen
+	# is saved by setting the value like this
 	$Options/FullScreenCheckbox.button_pressed = is_fullscreen;
 	if is_fullscreen:
 		get_tree().get_root().set_mode(Window.MODE_EXCLUSIVE_FULLSCREEN);
@@ -153,7 +165,14 @@ func load_and_init_config_values():
 		get_tree().get_root().set_mode(Window.MODE_WINDOWED);
 	
 	# Text speed
+	$Options/TextSpeed/TextSpeedSlider.set_value(text_speed);
 	update_text_speed_slider(text_speed);
+	if not Inventory.get_config().has_section_key(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED):
+		Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, text_speed);
+		
+	
+	# Save changed made for defaults
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
 
 
 func _on_text_speed_slider_value_changed(value: float) -> void:
