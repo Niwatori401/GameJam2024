@@ -135,8 +135,13 @@ func _process(delta: float) -> void:
 				if voice_tag_array[text_to_display_index] != "" and voice_tag_array[text_to_display_index] != "p:" and cur_char != " " and cur_char != ".":
 					$Voice.stream = tag_to_voice[voice_tag_array[text_to_display_index]].pick_random();
 					if voice_tag_array[text_to_display_index] == "c:":
+						$Voice.volume_db = 0;
 						$Voice.pitch_scale = randf_range(0.7, 0.8);
+					elif voice_tag_array[text_to_display_index] == "m:":
+						$Voice.volume_db = -15;
+						$Voice.pitch_scale = randf_range(0.95, 1.05);
 					else:
+						$Voice.volume_db = 0;
 						$Voice.pitch_scale = randf_range(0.95, 1.05);
 					
 					$Voice.play()

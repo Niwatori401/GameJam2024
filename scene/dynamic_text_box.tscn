@@ -70,3 +70,4 @@ controlFunctionText = ""
 buttonType = 4
 
 [node name="Voice" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

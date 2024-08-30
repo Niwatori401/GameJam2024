@@ -116,7 +116,7 @@ func show_options():
 
 func load_and_init_config_values():
 	var control_glyphs = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_CONTROL_SCEME, Enums.BUTTON_MODE.ARROW);
-	var text_speed = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, (MAX_TEXT_SPEED - MIN_TEXT_SPEED) / 2);
+	var text_speed = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_TEXT_SPEED, MIN_TEXT_SPEED);
 	var resolution = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_RESOLUTION, "1920 x 1080");
 	var is_fullscreen = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
 	var volume = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
