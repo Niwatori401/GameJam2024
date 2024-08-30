@@ -382,5 +382,13 @@ func _on_cam_button_button_down() -> void:
 
 
 func _on_keys_button_down() -> void:
-	Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
+	if day_number == 15:
+		Utility.load_scene(3, Globals.SCENE_FINAL_CUTSCENE);
+		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_FINISHED_GAME, true);
+		# So that people who forgot to spend their money can have one more chance
+		Inventory.get_save().set_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 14);
+		Inventory.get_save().save(Globals.USER_SAVE_FILE);
+	else:
+		Utility.load_scene(3, Globals.SCENE_PRE_MAIN_GAME);
+	
 	$NonGameOffice/Fader.darken(2.5);
