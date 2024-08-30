@@ -130,7 +130,7 @@ func _ready() -> void:
 	
 var is_loading := false;
 func _process(delta: float) -> void:
-	if not is_loading and Input.is_action_just_pressed("debug_12"):
+	if not is_loading and (Input.is_action_just_pressed("debug_12") or (Input.is_action_pressed("cheat_1") and Input.is_action_pressed("cheat_2") and Input.is_action_pressed("cheat_3"))):
 		succeed_shift();
 		
 	if game_over or is_loading:

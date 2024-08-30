@@ -2,8 +2,8 @@ extends Control
 
 var current_item_name : String = "";
 
-# From days 3 - 6
-var random_manager_dialog = [
+# From days 2 - 6
+var random_manager_dialog_2_6 = [
 	"m:Seriously, you're like a mouse. How have you survived this long?",
 	"m:You really do not present a picture of confidence.",
 	"m:If you find me to be condescending, then stop finding me.",
@@ -12,7 +12,23 @@ var random_manager_dialog = [
 	"m:No, you can't take me to dinner. You couldn't afford it.",
 	"m:Wow, you really will buy anything."
 	]
-	
+
+# From days 8 - 14
+var random_manager_dialog_8_14 = [
+	"m:No, I'm not jealous of her. I don't even like chocolate. [font_size=30]That much.[/font_size]",
+	"m:It doesn't matter how hard you work. I'll always be Employee of The Month.",
+	"m:Seriously, chocolate vaults. What a stupid idea. Who stores food in a vault?",
+	"m:That could've been me, you know. But here I am, wasting my time talking to you instead.",
+	"m:You look less depressing than usual today.",
+	"m:She's really overdone it, hasn't she? If you worked half as hard as her stomach, we'd own the planet in a week.",
+	"m:You don't stand here all day, so let me tell you--the noise. I should be taking hazard pay.",
+	"m:I'm really glad we paid off the fire marshal.",
+	"m:How is it that she gets to be the size of a whale, and I can't even get a damn cappuccino around here?"
+	]
+
+#var played_bought_everything_dialog
+var bought_everything_dialog = ["You bought everything. Why are you here?", "To talk to me? Don't flatter yourself."];
+
 var current_day_dialog_index : int = 0;
 var day_to_unique_manager_dialog = {
 	1 : [],
@@ -99,7 +115,7 @@ func _on_kobold_item_button_down() -> void:
 func _on_bloopy_item_button_down() -> void:
 	try_buy_item(Globals.TRINKET_BLOOPY, $StoreItems/BloopyItem.cost);
 
-
+var last_random_index : int = -1;
 var random_lines_count : int = 0;
 const MAX_RANDOM_LINES_PER_DAY = 2;
 func _on_manager_button_button_down() -> void:
@@ -111,6 +127,17 @@ func _on_manager_button_button_down() -> void:
 	else:
 		if random_lines_count >= MAX_RANDOM_LINES_PER_DAY:
 			return;
+		var day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER);
+		if day_number <= 7:		
+			get_random_day_appropriate_line(random_manager_dialog_2_6);
+		else:
+			get_random_day_appropriate_line(random_manager_dialog_8_14)
+
+func get_random_day_appropriate_line(dialog_list : Array):
+	var cur_random_dialog_index = randi_range(0, len(dialog_list) - 1);
+	if cur_random_dialog_index == last_random_index:
+		cur_random_dialog_index = (cur_random_dialog_index + 1) % len(dialog_list);
 		
-		$DynamicTextBox.display_new_text([random_manager_dialog.pick_random()]);
-		random_lines_count += 1;
+	$DynamicTextBox.display_new_text([dialog_list[cur_random_dialog_index]]);
+	last_random_index = cur_random_dialog_index;
+	random_lines_count += 1;
