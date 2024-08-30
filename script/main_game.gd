@@ -283,7 +283,7 @@ func set_random_new_keys():
 		if day_number < 14:
 			current_keys = [first_key, first_key, first_key];
 		else:
-			current_keys = [second_key, first_key, first_key];
+			current_keys = [first_key, first_key, second_key];
 	else:
 		printerr("Invalid number of keys given in set_random_new_keys");
 	

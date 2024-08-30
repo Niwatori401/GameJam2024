@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy7jqkfn06u4w"]
+[gd_scene load_steps=14 format=3 uid="uid://cy7jqkfn06u4w"]
 
 [ext_resource type="Script" path="res://script/next_key_indicator.gd" id="1_0soux"]
 [ext_resource type="Texture2D" uid="uid://vewf3h3p15kx" path="res://asset/NextKeyIndicator/ControlGlyphs/WASD/w.png" id="1_4ln66"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://d2vpb2riyiaij" path="res://asset/NextKeyIndicator/SuccessIcons/transparent.png" id="4_hgsoo"]
 [ext_resource type="Texture2D" uid="uid://bj5ampg5vdgew" path="res://asset/NextKeyIndicator/Monitor/crt_background.png" id="5_t0ama"]
 [ext_resource type="Texture2D" uid="uid://dy4qfd30qj3l5" path="res://asset/NextKeyIndicator/SuccessIcons/fail.png" id="7_0qloh"]
+[ext_resource type="Texture2D" uid="uid://2sv0c5o3hkep" path="res://asset/NextKeyIndicator/ControlGlyphs/Arrow/left.png" id="8_0bpsr"]
+[ext_resource type="Texture2D" uid="uid://dmxeii6222skb" path="res://asset/NextKeyIndicator/ControlGlyphs/Arrow/Up.png" id="8_fanfe"]
+[ext_resource type="Texture2D" uid="uid://ckp3g6l6r6ob7" path="res://asset/NextKeyIndicator/ControlGlyphs/Arrow/right.png" id="9_arn1c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wnq51"]
 animations = [{
@@ -44,6 +47,7 @@ foreground_color = Color(1, 1, 1, 1)
 disabled_color = Color(3.85046e-07, 0.53824, 0.613723, 1)
 
 [node name="Single" type="Node2D" parent="NextKeyGroup"]
+visible = false
 
 [node name="NextKeyIndicator" type="Sprite2D" parent="NextKeyGroup/Single"]
 position = Vector2(9.53674e-07, -9.53674e-07)
@@ -51,6 +55,7 @@ scale = Vector2(0.46875, 0.46875)
 texture = ExtResource("1_4ln66")
 
 [node name="Double" type="Node2D" parent="NextKeyGroup"]
+visible = false
 
 [node name="NextKeyIndicator" type="Sprite2D" parent="NextKeyGroup/Double"]
 position = Vector2(-22, 0)
@@ -65,19 +70,19 @@ texture = ExtResource("1_4ln66")
 [node name="Triple" type="Node2D" parent="NextKeyGroup"]
 
 [node name="NextKeyIndicator" type="Sprite2D" parent="NextKeyGroup/Triple"]
-position = Vector2(0, -14)
+position = Vector2(-36.11, -2)
 scale = Vector2(0.243253, 0.243253)
-texture = ExtResource("1_4ln66")
+texture = ExtResource("8_0bpsr")
 
 [node name="NextKeyIndicator2" type="Sprite2D" parent="NextKeyGroup/Triple"]
-position = Vector2(-19, 15)
+position = Vector2(-6.11, -2)
 scale = Vector2(0.243253, 0.243253)
-texture = ExtResource("1_4ln66")
+texture = ExtResource("9_arn1c")
 
 [node name="NextKeyIndicator3" type="Sprite2D" parent="NextKeyGroup/Triple"]
-position = Vector2(18, 15)
+position = Vector2(23.89, -2)
 scale = Vector2(0.243253, 0.243253)
-texture = ExtResource("1_4ln66")
+texture = ExtResource("8_fanfe")
 
 [node name="SuccessIndicator" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.4)
