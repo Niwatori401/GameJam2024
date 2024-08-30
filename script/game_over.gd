@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 
 		if Input.is_action_just_pressed("accept"):
 			is_skipping = true;
-			Utility.load_scene(2, Globals.SCENE_PRE_MAIN_GAME);
+			Utility.load_scene(2, Globals.SCENE_LEVEL_DISPATCH);
 			$Fader.darken(2);
 		if Input.is_action_just_pressed("escape"):
 			is_skipping = true;
