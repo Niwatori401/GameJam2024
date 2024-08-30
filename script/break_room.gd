@@ -70,4 +70,8 @@ func _on_employee_store_button_button_down() -> void:
 func _on_return_to_work_button_button_down() -> void:
 	$Fader.darken(LONG_FADE_OUT_TIME);
 	$AudioFader.fade_out(LONG_FADE_OUT_TIME);
-	Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_POST_LUNCH_PRE_MAIN_GAME);
+	
+	if floori(Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER)) == 7:
+		Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_LUNCH_INCIDENT);
+	else:
+		Utility.load_scene(LONG_FADE_OUT_TIME, Globals.SCENE_POST_LUNCH_PRE_MAIN_GAME);

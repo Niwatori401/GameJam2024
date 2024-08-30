@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GameJam2024"
+config/name="Another Day In Paradise"
+config/version="1.0"
 run/main_scene="res://scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 

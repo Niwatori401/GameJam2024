@@ -28,6 +28,7 @@ const SCENE_LEVEL_DISPATCH := "res://scene/level_dispatch.tscn";
 const SCENE_OPENING_CUTSCENE := "res://scene/opening_cutscene_animated.tscn";
 const SCENE_HR_FIRST_TIME_CUTSCENE := "res://scene/instances/cutscene/hr_1st_encounter.tscn";
 const SCENE_STORE_FIRST_TIME_CUTSCENE := "res://scene/instances/cutscene/employee_shop_cutscene.tscn";
+const SCENE_LUNCH_INCIDENT := "res://scene/lunch_cutscene_animated.tscn";
 const SCENE_BREAK_ROOM := "res://scene/break_room.tscn";
 const SCENE_MAIN_GAME := "res://scene/main_game.tscn";
 const SCENE_PRE_MAIN_GAME := "res://scene/pre_main_game.tscn";
