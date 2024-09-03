@@ -121,6 +121,7 @@ func load_and_init_config_values():
 	var is_fullscreen = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_FULLSCREEN, true);
 	var volume = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOLUME, 50);
 	var has_voiced_dialog = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOICED_DIALOG, true);
+	var using_short_days = Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_SHORT_DAYS, false);
 
 	# Control Glyphs
 	for glyph_index in range(len(glyph_options)):
@@ -155,6 +156,9 @@ func load_and_init_config_values():
 	# Voiced Dialog
 	# is saved by setting the value like this
 	$Options/AudioSettings/DialogNoisesCheckbox.button_pressed = has_voiced_dialog;
+	
+	# Short days
+	$Options/ShortDaysCheckbox.button_pressed = using_short_days;
 	
 	# Fullscreen
 	# is saved by setting the value like this
@@ -200,4 +204,9 @@ func _on_delete_save_button_button_down() -> void:
 
 func _on_dialog_noises_checkbox_toggled(toggled_on: bool) -> void:
 	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_VOICED_DIALOG, toggled_on);
+	Inventory.get_config().save(Globals.USER_CONFIG_FILE);
+
+
+func _on_short_days_checkbox_toggled(toggled_on: bool) -> void:
+	Inventory.get_config().set_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_SHORT_DAYS, toggled_on);
 	Inventory.get_config().save(Globals.USER_CONFIG_FILE);

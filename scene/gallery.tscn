@@ -146,6 +146,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackButton" parent="." instance=ExtResource("8_35x70")]
+layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -194,6 +195,7 @@ visible = false
 layout_mode = 1
 
 [connection signal="button_down" from="GalleryGrid/GalleryItem_OpeningCutscene" to="." method="_on_gallery_item_opening_cutscene_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_WallCutscene" to="." method="_on_gallery_item_wall_cutscene_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_1" to="." method="_on_gallery_item_sketch_1_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_2" to="." method="_on_gallery_item_sketch_2_button_down"]
 [connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_3" to="." method="_on_gallery_item_sketch_3_button_down"]

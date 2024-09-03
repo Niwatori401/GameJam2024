@@ -112,3 +112,9 @@ func _on_gallery_item_finale_image_button_down() -> void:
 func _on_back_button_button_down() -> void:
 	$Fader.darken(2);
 	Utility.load_scene(2, Globals.SCENE_MAIN_MENU);
+
+
+func _on_gallery_item_wall_cutscene_button_down() -> void:
+	$CutscenePlayer.visible = true;
+	$CutscenePlayer.stream = preload("res://asset/gallery/lunch_cutscene.ogv");
+	$CutscenePlayer.play();

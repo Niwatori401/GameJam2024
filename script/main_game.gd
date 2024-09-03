@@ -103,7 +103,7 @@ func _ready() -> void:
 	day_number = Inventory.get_save().get_value(Globals.SAVE_CATEGORY_PROGRESS, Globals.SAVE_KEY_DAY_NUMBER, 1);
 	$Trinkets/ClientCam.visible = day_number >= 8;
 		
-	if day_number == 1:
+	if day_number == 1 or Inventory.get_config().get_value(Globals.CONFIG_CATEGORY_OPTIONS, Globals.CONFIG_KEY_SHORT_DAYS):
 		seconds_per_day = 30;
 		
 	maximum_key_presses_per_challenge = day_to_max_arrows.get(floori(day_number));
